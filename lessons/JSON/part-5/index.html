@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSON - JSON in APIs</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css"
+            rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+            rel="stylesheet" />
+        <style>
+            body {
+                font-family: 'Open Sans', sans-serif;
+                max-width: 850px;
+                margin: 0 auto;
+                padding: 30px;
+                line-height: 1.7;
+                background-color: #eceff1;
+                color: #333;
+            }
+            h1,
+            h2,
+            h3 {
+                color: #1a237e;
+            }
+            h1 {
+                font-size: 2.2em;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.8em;
+                margin-top: 40px;
+                border-bottom: 3px solid #1a237e;
+                padding-bottom: 8px;
+            }
+            h3 {
+                font-size: 1.4em;
+                margin-top: 25px;
+                color: #283593;
+            }
+            pre {
+                background-color: #37474f;
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid #546e7a;
+                overflow-x: auto;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+            }
+            code {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            p {
+                margin-bottom: 20px;
+            }
+            ul {
+                margin-bottom: 20px;
+                padding-left: 25px;
+            }
+            .exercise {
+                background-color: #e0f7fa;
+                padding: 15px;
+                border-left: 5px solid #00acc1;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Understanding JSON: Storing and Exchanging Data</h1>
+        <h2>5. JSON in APIs</h2>
+        <p>
+            JSON is the standard format for data exchange in web APIs. You’ll
+            use it to fetch data from external services or send data to servers.
+        </p>
+        <ul>
+            <li>
+                <strong>How It Works:</strong> APIs return JSON data, which your
+                app can parse and use.
+            </li>
+            <li>
+                <strong>Example Use:</strong> Fetching user data from an API
+                like Instagram.
+            </li>
+        </ul>
+        <h3>Example: Fetching JSON</h3>
+        <p>Use <code>fetch</code> to get JSON from an API.</p>
+        <pre><code class="language-javascript">
+fetch('https://jsonplaceholder.typicode.com/users/1')
+    .then(response => response.json())
+    .then(data => console.log(data));
+    </code></pre>
+        <p><strong>Response (JSON):</strong></p>
+        <pre><code class="language-json">
+{
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz"
+}
+    </code></pre>
+        <div class="exercise">
+            <p>
+                <strong>Mini Exercise:</strong> In your browser’s console, use
+                <code>fetch</code> to get a post from
+                <code>https://jsonplaceholder.typicode.com/posts/1</code>. Log
+                the JSON response and identify one key-value pair.
+            </p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    </body>
+</html>
