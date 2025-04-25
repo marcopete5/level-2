@@ -72,13 +72,17 @@
         <h1>Mastering CRUD: Core Data Operations in Web Development</h1>
         <h2>6. Applying CRUD with a Simple Server</h2>
         <p>
-            CRUD operations come to life in a REST API server. Using Node.js and
-            Express, you can handle all CRUD requests for a resource like tasks.
+            This section introduces what a basic REST API server looks like,
+            handling CRUD operations for a resource like tasks. You’ll learn to
+            create servers later in the course, but for now, this code shows the
+            backend perspective. Your focus will be on interacting with existing
+            APIs using tools like <code>fetch</code>.
         </p>
         <h3>Example: Basic CRUD Server</h3>
         <p>
-            This server supports CRUD operations for a task list stored in
-            memory.
+            This Node.js and Express server supports CRUD operations for a task
+            list stored in memory. It’s a simplified example to illustrate how
+            servers process your CRUD requests.
         </p>
         <pre><code class="language-javascript">
 const express = require('express');
@@ -112,16 +116,6 @@ app.delete('/tasks/:id', (req, res) => {
 
 app.listen(3000, () => console.log('Server running on port 3000'));
     </code></pre>
-        <div class="exercise">
-            <p>
-                <strong>Mini Exercise:</strong> Set up the above server
-                (requires Node.js and Express). Use a tool like Postman to send
-                a <code>POST</code> request to
-                <code>http://localhost:3000/tasks</code> with a task object
-                (e.g., <code>{ "title": "Study CRUD" }</code>). Verify the
-                response.
-            </p>
-        </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
