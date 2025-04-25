@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Time Counter</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Time Tracker</h1>
+            <div id="sessionTime" class="counter">Session Time: 0 seconds</div>
+            <div id="totalTime" class="counter">Total Time: 0 seconds</div>
+            <p>
+                Try leaving this page by closing it and then reopening it, you
+                will notice the session storage restarts but the total time does
+                not. (The counters are updated every second using setInterval.)
+            </p>
+            <p>
+                also if you wait at least 10 seconds you will see a popup show.
+                (This is using setTimeout)
+            </p>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>

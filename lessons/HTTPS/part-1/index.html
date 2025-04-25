@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTTP - Introduction</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+            rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            rel="stylesheet" />
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                max-width: 850px;
+                margin: 0 auto;
+                padding: 30px;
+                line-height: 1.7;
+                background-color: #f8f9fa;
+                color: #333;
+            }
+            h1,
+            h2,
+            h3 {
+                color: #6b48ff;
+            }
+            h1 {
+                font-size: 2.2em;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.8em;
+                margin-top: 40px;
+                border-bottom: 3px solid #6b48ff;
+                padding-bottom: 8px;
+            }
+            h3 {
+                font-size: 1.4em;
+                margin-top: 25px;
+                color: #5039cc;
+            }
+            pre {
+                background-color: #2d2d2d;
+                padding: 20px;
+                border-radius: 8px;
+                overflow-x: auto;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            code {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 15px;
+            }
+            p {
+                margin-bottom: 20px;
+            }
+            ul {
+                margin-bottom: 20px;
+                padding-left: 25px;
+            }
+            .exercise {
+                background-color: #e6fffa;
+                padding: 15px;
+                border-left: 5px solid #00c4b4;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                font-weight: 500;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Understanding HTTP: The Web’s Communication Protocol</h1>
+        <p>
+            This 30-minute module introduces HTTP, the foundation of web
+            communication. You’ll learn how browsers and servers exchange data,
+            preparing you to work with web servers in your applications.
+        </p>
+
+        <h2>1. What is HTTP?</h2>
+        <p>
+            <strong>HTTP</strong> (Hypertext Transfer Protocol) is the set of
+            rules governing how web browsers (clients) and web servers
+            communicate. It defines how requests are sent and responses are
+            received, enabling websites to load data like text, images, and
+            more.
+        </p>
+        <ul>
+            <li>
+                <strong>Key Point:</strong> Every web URL starts with
+                <code>http://</code> or <code>https://</code>, indicating the
+                protocol used.
+            </li>
+            <li>
+                <strong>Client-Server Model:</strong> The client (your browser)
+                sends a request, and the server responds with data.
+            </li>
+        </ul>
+        <h3>Example: Visiting a Website</h3>
+        <p>
+            When you type <code>https://www.google.com</code> and press Enter,
+            your browser sends an HTTP request to Google’s server, which
+            responds with the homepage’s HTML, CSS, and JavaScript.
+        </p>
+        <pre><code class="language-http">
+GET / HTTP/1.1
+Host: www.google.com
+    </code></pre>
+        <p><strong>Response (simplified):</strong></p>
+        <pre><code class="language-http">
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html>...</html>
+    </code></pre>
+        <div class="exercise">
+            <p>
+                <strong>Mini Exercise:</strong> Open your browser’s developer
+                tools (F12, Network tab) and visit a website. Find one HTTP
+                request and note the URL and method (e.g., GET). Share your
+                observation.
+            </p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-http.min.js"></script>
+    </body>
+</html>

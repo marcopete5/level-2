@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS Transitions Demo</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>CSS Transitions Practical Demo</h1>
+
+            <div class="section">
+                <h2>1. Basic Button Transition</h2>
+                <p>Hover over the button to see a smooth color transition:</p>
+                <div class="demo-area">
+                    <button class="basic-button">Hover Me</button>
+                </div>
+                <p>CSS used:</p>
+                <pre><code>
+.basic-button {
+    background-color: blue;
+    transition: background-color 0.3s ease;
+}
+
+.basic-button:hover {
+    background-color: darkblue;
+}
+            </code></pre>
+            </div>
+
+            <div class="section">
+                <h2>2. Multiple Property Transitions</h2>
+                <p>
+                    Hover over the card to see multiple properties transition
+                    with different timings:
+                </p>
+                <div class="demo-area">
+                    <div class="card">Hover Me</div>
+                </div>
+                <p>CSS used:</p>
+                <pre><code>
+.card {
+    width: 200px;
+    height: 300px;
+    opacity: 0.8;
+    transition: width 0.5s ease, 
+                height 0.8s ease-in,
+                opacity 0.3s linear;
+}
+
+.card:hover {
+    width: 220px;
+    height: 320px;
+    opacity: 1;
+}
+            </code></pre>
+            </div>
+
+            <div class="section">
+                <h2>3. Transform with Transitions</h2>
+                <p>
+                    Hover over the card to see a transform effect with
+                    transition:
+                </p>
+                <div class="demo-area">
+                    <div class="grow-card">Hover to Scale</div>
+                </div>
+                <p>CSS used:</p>
+                <pre><code>
+.grow-card {
+    transform: scale(1);
+    transition: transform 0.3s ease-out;
+}
+
+.grow-card:hover {
+    transform: scale(1.1);
+}
+            </code></pre>
+            </div>
+
+            <div class="section">
+                <h2>4. Timing Functions</h2>
+                <p>
+                    Hover over each box to see how different timing functions
+                    affect the transition:
+                </p>
+                <div class="demo-area timing-function-demo">
+                    <div class="timing-box ease">ease</div>
+                    <div class="timing-box linear">linear</div>
+                    <div class="timing-box ease-in">ease-in</div>
+                    <div class="timing-box ease-out">ease-out</div>
+                    <div class="timing-box ease-in-out">ease-in-out</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. Menu Underline Effect</h2>
+                <p>
+                    Hover over these menu items to see a smooth underline
+                    transition:
+                </p>
+                <div class="demo-area">
+                    <nav class="nav">
+                        <a href="#" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">About</a>
+                        <a href="#" class="nav-link">Services</a>
+                        <a href="#" class="nav-link">Contact</a>
+                    </nav>
+                </div>
+                <p>CSS used:</p>
+                <pre><code>
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff6b6b;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+            </code></pre>
+            </div>
+
+            <div class="section">
+                <h2>6. Duration and Delay Controls</h2>
+                <p>
+                    Adjust the controls to see how duration and delay affect
+                    transitions:
+                </p>
+                <div class="controls">
+                    <select id="durationControl">
+                        <option value="0.2">Duration: 0.2s</option>
+                        <option value="0.5" selected>Duration: 0.5s</option>
+                        <option value="1">Duration: 1s</option>
+                        <option value="2">Duration: 2s</option>
+                    </select>
+
+                    <select id="delayControl">
+                        <option value="0" selected>Delay: 0s</option>
+                        <option value="0.5">Delay: 0.5s</option>
+                        <option value="1">Delay: 1s</option>
+                        <option value="2">Delay: 2s</option>
+                    </select>
+                </div>
+                <div class="demo-area">
+                    <div class="delay-box">Hover Me</div>
+                </div>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,219 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+h2 {
+    margin: 25px 0 15px;
+    color: #444;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.controls {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.demo-area {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* EXAMPLE 1: Basic Button Transition */
+.basic-button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    /* Basic transition */
+    transition: background-color 0.3s ease;
+}
+
+.basic-button:hover {
+    background-color: darkblue;
+}
+
+/* EXAMPLE 2: Multiple Properties */
+.card {
+    width: 200px;
+    height: 300px;
+    background-color: #e74c3c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    opacity: 0.8;
+    /* Multiple transitions with different durations */
+    transition: width 0.5s ease, height 0.8s ease-in, opacity 0.3s linear;
+}
+
+.card:hover {
+    width: 220px;
+    height: 320px;
+    opacity: 1;
+}
+
+/* EXAMPLE 3: Transform + Transition */
+.grow-card {
+    width: 150px;
+    height: 150px;
+    background-color: #9b59b6;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transform: scale(1);
+    transition: transform 0.3s ease-out;
+}
+
+.grow-card:hover {
+    transform: scale(1.1);
+}
+
+/* EXAMPLE 4: Different Timing Functions */
+.timing-function-demo {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.timing-box {
+    width: 80px;
+    height: 80px;
+    background-color: #2ecc71;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    border-radius: 5px;
+    transition-property: transform;
+    transition-duration: 1s;
+}
+
+.timing-box:hover {
+    transform: translateX(100px);
+}
+
+.ease {
+    transition-timing-function: ease;
+}
+.linear {
+    transition-timing-function: linear;
+}
+.ease-in {
+    transition-timing-function: ease-in;
+}
+.ease-out {
+    transition-timing-function: ease-out;
+}
+.ease-in-out {
+    transition-timing-function: ease-in-out;
+}
+
+/* EXAMPLE 5: Menu Underline Effect */
+.nav {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.nav-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff6b6b;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* EXAMPLE 6: Delay and Duration Control */
+.delay-box {
+    width: 100px;
+    height: 50px;
+    background-color: #f39c12;
+    margin-bottom: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition-property: background-color;
+    transition-timing-function: ease;
+}
+
+.delay-box:hover {
+    background-color: #d35400;
+}
+
+#durationControl,
+#delayControl {
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Accessibility - Respecting reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

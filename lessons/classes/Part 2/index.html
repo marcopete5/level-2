@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript Classes - Creating and Using</title>
+        <!-- Prism.js CSS for syntax highlighting -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+            rel="stylesheet" />
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                line-height: 1.6;
+            }
+            h1,
+            h2,
+            h3 {
+                color: #333;
+            }
+            h2 {
+                margin-top: 30px;
+                border-bottom: 2px solid #007bff;
+                padding-bottom: 5px;
+            }
+            h3 {
+                margin-top: 20px;
+                color: #0056b3;
+            }
+            pre {
+                background-color: #f4f4f4;
+                padding: 15px;
+                border-radius: 5px;
+                overflow-x: auto;
+            }
+            code {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 14px;
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            ul {
+                margin-bottom: 15px;
+                padding-left: 20px;
+            }
+            .exercise {
+                background-color: #e9f7ff;
+                padding: 10px;
+                border-left: 4px solid #007bff;
+                margin-bottom: 15px;
+            }
+            .navigation {
+                margin: 20px 0;
+                font-size: 16px;
+            }
+            .navigation a {
+                color: #007bff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            .navigation a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>JavaScript Classes: A Modern Approach</h1>
+        <h2>2. Creating and Using Classes</h2>
+        <p>
+            Classes are templates for objects. Use the
+            <code>constructor</code> to initialize properties and define methods
+            directly in the class body.
+        </p>
+        <h3>Syntax and Usage</h3>
+        <pre><code class="language-javascript">
+class Player {
+    constructor(name, totalCoins, status, hasStar) {
+        this.name = name;
+        this.totalCoins = totalCoins;
+        this.status = status;
+        this.hasStar = hasStar;
+    }
+    addCoin() {
+        this.totalCoins++;
+    }
+    print() {
+        console.log(`Name: ${this.name}\nCoins: ${this.totalCoins}\nStatus: ${this.status}\nStar: ${this.hasStar}`);
+    }
+}
+
+// Instantiate and use
+const mario = new Player("Mario", 0, "Small", false);
+mario.addCoin();
+mario.print();
+    </code></pre>
+        <p><strong>Output:</strong></p>
+        <pre><code>
+Name: Mario
+Coins: 1
+Status: Small
+Star: false
+    </code></pre>
+        <div class="exercise">
+            <p>
+                <strong>Mini Exercise:</strong> Add a
+                <code>setName(namePicked)</code> method to the
+                <code>Player</code> class that sets <code>this.name</code> to
+                "Mario" or "Luigi" based on <code>namePicked</code>. Test it by
+                changing the player's name.
+            </p>
+        </div>
+
+        <!-- Prism.js JavaScript for syntax highlighting -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    </body>
+</html>
