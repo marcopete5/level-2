@@ -74,33 +74,83 @@
         <h1>Mastering API Requests: Fetch, Dev Tools, Axios</h1>
         <h2>6. Debugging with Network Dev Tool</h2>
         <p>
-            Use Chrome Network Dev Tool to debug failed requests, inspect
-            response headers, and measure request timing.
+            Use Chrome’s Network Dev Tool to debug failed requests, inspect
+            response data, and analyze headers and timing. Access it via
+            <strong>F12</strong> (Windows) or
+            <strong>Command + Option + I</strong> (Mac), then select the Network
+            tab.
         </p>
         <ul>
             <li>
                 <strong>Debugging Tips:</strong> Look for red status codes
-                (e.g., 404), check “Response” tab for errors, use “Timing” to
-                analyze delays.
+                (e.g., 404 for Not Found), check the “Response” tab for error
+                messages, and use “Headers” to inspect metadata like
+                Content-Type or Cache-Control.
             </li>
             <li>
-                <strong>Common Issues:</strong> Wrong URL, server errors, CORS
-                issues.
+                <strong>Common Issues:</strong> Incorrect URLs, server errors
+                (e.g., 500), CORS restrictions.
             </li>
         </ul>
         <h3>Example: Debugging a Bad Request</h3>
-        <p>Try a bad URL:</p>
+        <p>Try a request to an invalid URL and inspect it:</p>
         <pre><code class="language-javascript">
+// Attempt to fetch data from an invalid endpoint
 fetch("https://swapi.co/api/invalid")
     .then(res => res.json())
-    .catch(err => console.log("Error:", err));
+    .catch(err => console.log("Error:", err)); // Logs network or parsing error
     </code></pre>
-        <p>Check Network tab for a 404 error.</p>
+        <p>
+            Open Dev Tools (F12 on Windows, Command + Option + I on Mac), go to
+            the Network tab, and run the code. You’ll see a 404 status code.
+            Check the “Response” tab for the error message (e.g., “Not found”)
+            and the “Headers” tab for details like:
+        </p>
+        <ul>
+            <li><strong>Status:</strong> 404 Not Found</li>
+            <li><strong>Content-Type:</strong> application/json</li>
+            <li>
+                <strong>Cache-Control:</strong> no-cache (controls caching
+                behavior)
+            </li>
+            <li>
+                <strong>Access-Control-Allow-Origin:</strong> * (allows
+                cross-origin requests)
+            </li>
+        </ul>
+        <h3>Why Examine Headers?</h3>
+        <p>
+            Headers provide metadata about the request and response, helping you
+            debug issues:
+        </p>
+        <ul>
+            <li>
+                <strong>Content-Type:</strong> Confirms the response format
+                (e.g., application/json).
+            </li>
+            <li>
+                <strong>Cache-Control:</strong> Indicates if the response is
+                cached or fresh.
+            </li>
+            <li>
+                <strong>Access-Control-Allow-Origin:</strong> Checks for CORS
+                permissions (e.g., blocked requests).
+            </li>
+            <li>
+                <strong>Authorization:</strong> Verifies authentication tokens
+                if required.
+            </li>
+        </ul>
         <div class="exercise">
             <p>
-                <strong>Mini Exercise (5 min):</strong> Run the code above, open
-                Network Dev Tool, and find the failed request. Note the status
-                code (404) and error message in the “Response” tab.
+                <strong>Mini Exercise (5 min):</strong> Run the code above in
+                your browser console. Open the Network tab (F12 on Windows,
+                Command + Option + I on Mac), find the failed request to
+                <code>invalid</code>, and note the status code (404) and error
+                message in the “Response” tab. Then, check the “Headers” tab and
+                identify the <code>Content-Type</code>,
+                <code>Cache-Control</code>, and
+                <code>Access-Control-Allow-Origin</code> values.
             </p>
         </div>
 

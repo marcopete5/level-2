@@ -76,33 +76,68 @@
         <p>
             <strong>Axios</strong> is a JavaScript library for making HTTP
             requests, simplifying AJAX calls with a clean API. It’s
-            promise-based and widely used in React.
+            promise-based and widely used in React for its ease of use.
         </p>
         <ul>
             <li>
                 <strong>Why Axios?</strong> Easier syntax than fetch, automatic
-                JSON parsing, better error handling.
+                JSON parsing, robust error handling.
             </li>
             <li>
-                <strong>Setup:</strong> Use via CDN or npm for Node projects.
+                <strong>Installation:</strong>
+                <ul>
+                    <li>
+                        <strong>CDN:</strong> Add
+                        <code
+                            >&lt;script
+                            src="https://unpkg.com/axios/dist/axios.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        to your HTML for browser use.
+                    </li>
+                    <li>
+                        <strong>NPM:</strong> Run <code>npm init -y</code>, then
+                        <code>npm install axios</code>, and use
+                        <code>const axios = require("axios")</code> in Node.js.
+                    </li>
+                </ul>
             </li>
         </ul>
         <h3>Example: Axios with SWAPI</h3>
-        <p>Fetch Luke Skywalker’s data:</p>
+        <p>Fetch Luke Skywalker’s data using Axios:</p>
         <pre><code class="language-html">
+<!-- Include Axios via CDN -->
 &lt;script src="https://unpkg.com/axios/dist/axios.min.js"&gt;&lt;/script&gt;
 &lt;script&gt;
+// Make a GET request to SWAPI
 axios.get("https://swapi.co/api/people/1")
-    .then(response => console.log(response.data.name)) // "Luke Skywalker"
-    .catch(error => console.log("Error:", error));
+    .then(response => console.log(response.data.name)) // Logs "Luke Skywalker"
+    .catch(error => console.log("Error:", error)); // Logs errors
 &lt;/script&gt;
+    </code></pre>
+        <h3>Using Config Objects</h3>
+        <p>
+            Axios allows a <code>config</code> object to customize requests,
+            such as adding headers for content preferences or authentication.
+        </p>
+        <pre><code class="language-javascript">
+// Fetch data with a config object specifying headers
+axios.get("https://swapi.co/api/people/1", {
+    headers: {
+        "Accept": "application/json", // Request JSON response
+        "User-Agent": "My-App/1.0" // Custom identifier for the app
+    }
+})
+    .then(response => console.log(response.data.name)) // Logs "Luke Skywalker"
+    .catch(error => console.log("Error:", error)); // Logs errors
     </code></pre>
         <div class="exercise">
             <p>
                 <strong>Mini Exercise (5 min):</strong> Create an HTML file,
-                include Axios via CDN, and use <code>axios.get</code> to fetch
-                <code>https://swapi.co/api/planets/1</code>. Log the planet’s
-                name (Tatooine).
+                include Axios via CDN, and use <code>axios.get</code> with a
+                <code>config</code> object (e.g.,
+                <code>{ headers: { "Accept": "application/json" } }</code>) to
+                fetch <code>https://swapi.co/api/planets/1</code>. Log the
+                planet’s name (Tatooine).
             </p>
         </div>
 
