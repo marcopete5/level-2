@@ -22,7 +22,8 @@
             }
             h1,
             h2,
-            h3 {
+            h3,
+            h4 {
                 color: #2e7d32;
             }
             h1 {
@@ -38,6 +39,11 @@
             h3 {
                 font-size: 1.5em;
                 margin-top: 30px;
+                color: #1b5e20;
+            }
+            h4 {
+                font-size: 1.3em;
+                margin-top: 20px;
                 color: #1b5e20;
             }
             pre {
@@ -81,7 +87,7 @@
         <ul>
             <li>
                 <strong>Technique:</strong> After a <code>post</code> creates a
-                new resource, re-fetch data with <code>get</code> to update the
+                new todo, re-fetch data with <code>get</code> to update the
                 display.
             </li>
             <li>
@@ -91,106 +97,122 @@
         </ul>
         <h3>Example: Auto-Updating Todo List</h3>
         <p>
-            The code below creates a form to add todos and a div to display
-            them. When a todo is posted, the page fetches and displays the
-            updated todo list automatically.
+            The example below uses two files: an HTML file with a form and a div
+            for todos, and a JavaScript file to handle fetching and posting
+            todos. When a todo is added, the list updates automatically.
         </p>
+        <h4>HTML (index.html)</h4>
         <pre><code class="language-html">
-
-&lt;!-- HTML --&gt;
-
-
-&lt;!-- Form to add a new todo --&gt;
-&lt;form name="todoform"&gt;
-    &lt;input name="title" placeholder="Title"&gt;
-    &lt;button type="submit"&gt;Add Todo&lt;/button&gt;
-&lt;/form&gt;
-
-&lt;!-- Div to display all todos --&gt;
-&lt;div id="todos"&gt;&lt;/div&gt;
-
-&lt;!-- Include Axios library via CDN --&gt;
-&lt;script src="https://unpkg.com/axios/dist/axios.min.js"&gt;&lt;/script&gt;
-
-
-</code></pre>
-
+&lt;!-- Basic HTML structure for the todo app --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Form to add a new todo --&gt;
+        &lt;form name="todo-form"&gt;
+            &lt;input type="text" name="title" placeholder="Title"/&gt;
+            &lt;button&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;!-- Div to display the list of todos --&gt;
+        &lt;div id="todo-list"&gt;&lt;/div&gt;
+        &lt;!-- Include Axios library for HTTP requests --&gt;
+        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"&gt;&lt;/script&gt;
+        &lt;!-- Include JavaScript file for logic --&gt;
+        &lt;script src="index.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+        <h4>JavaScript (index.js)</h4>
         <pre><code class="language-javascript">
-
-// JavaScript
-
-// Select form and todos div from the DOM
-const todoForm = document.todoform;
-const todosDiv = document.getElementById("todos");
-
-// Function to fetch and display todos
-function displayTodos() {
-    // Clear the todos div to avoid duplicates
-    todosDiv.innerHTML = "";
-    // Fetch all todos from the V School Todo API
+// Fetches todos from the V School Todo API
+function getData() {
     axios.get("https://api.vschool.io/yourname/todo")
-        .then(response => {
-            // Loop through each todo in the response data
-            for (let todo of response.data) {
-                // Create an h1 element for each todo's title
-                const h1 = document.createElement("h1");
-                h1.textContent = todo.title;
-                // Append the h1 to the todos div
-                todosDiv.appendChild(h1);
-            }
-        })
-        .catch(error => console.log("Error fetching todos:", error));
+        .then(res => listData(res.data)) // Pass data to listData function
+        .catch(err => console.log("Error fetching todos:", err)); // Log errors
 }
 
-// Add submit event listener to the form
-todoForm.addEventListener("submit", function(event) {
-    // Prevent default form submission (page reload)
-    event.preventDefault();
-    // Create a new todo object from form input
-    const newTodo = { title: todoForm.title.value };
-    // Post the new todo to the V School Todo API
-    axios.post("https://api.vschool.io/yourname/todo", newTodo)
-        .then(() => displayTodos()) // Re-fetch and display todos after posting
-        .catch(error => console.log("Error posting todo:", error));
-});
+// Displays todo titles in the DOM
+function listData(data) {
+    clearList(); // Clear existing todos to avoid duplicates
+    // Loop through each todo in the data array
+    for (let i = 0; i < data.length; i++) {
+        const h1 = document.createElement('h1'); // Create an h1 element
+        h1.textContent = data[i].title; // Set h1 text to todo title
+        document.getElementById('todo-list').appendChild(h1); // Append h1 to todo-list div
+    }
+}
 
-// Initial call to display todos when the page loads
-displayTodos();
+// Clears the todo list in the DOM
+function clearList() {
+    const el = document.getElementById('todo-list'); // Get todo-list div
+    while (el.firstChild) { // Remove all child elements
+        el.removeChild(el.firstChild);
+    }
+}
+
+// Fetch and display todos when the page loads
+getData();
+
+// Handle form submission to post new todos
+const todoForm = document["todo-form"];
+todoForm.addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent page reload on form submission
+    // Create a new todo object from form input
+    const newTodo = {
+        title: todoForm.title.value
+    };
+    todoForm.title.value = ""; // Clear the input field
+    // Post the new todo to the API
+    axios.post("https://api.vschool.io/yourname/todo", newTodo)
+        .then(res => getData()) // Re-fetch and display todos after posting
+        .catch(err => console.log("Error posting todo:", err)); // Log errors
+});
     </code></pre>
 
         <h3>Explaining the Auto-Updating Todo List Code (Super Simple!)</h3>
         <p>
-            This code is like a magic notepad that lets you add tasks (todos)
-            and instantly shows the updated list without refreshing the page. It
-            uses Axios to talk to the V School Todo API, sending new todos and
-            fetching the latest list. Let’s break it down like we’re organizing
-            a to-do list for a party!
+            This code is like a digital to-do list app where you can add tasks
+            (todos) and see them appear instantly without refreshing the page.
+            It uses Axios to talk to the V School Todo API, sending new tasks
+            and fetching the updated list. Think of it as a whiteboard where you
+            write tasks and it magically updates to show all tasks! Let’s break
+            it down.
         </p>
         <ul>
             <li>
-                <strong>What’s the Goal?</strong> We want a web page where you
-                can type a task (like “Buy balloons”), click a button, and see
-                it appear in a list with all your other tasks, all without
-                reloading the page.
+                <strong>What’s the Goal?</strong> Create a web page with a form
+                to add tasks (like “Buy milk”) and a list to show all tasks,
+                updating automatically when you add a new one.
             </li>
             <li>
                 <strong>The Pieces:</strong>
                 <ul>
                     <li>
-                        <strong>Form:</strong> The
-                        <code>&lt;form name="todoform"&gt;</code> is like a
-                        sticky note where you write your task. It has an input
-                        for the title and a submit button.
+                        <strong>HTML (index.html):</strong>
+                        <ul>
+                            <li>
+                                <strong>Form:</strong> The
+                                <code>&lt;form name="todo-form"&gt;</code> is
+                                like a sticky note for writing tasks, with a
+                                text input and submit button.
+                            </li>
+                            <li>
+                                <strong>Todo List Div:</strong> The
+                                <code>&lt;div id="todo-list"&gt;</code> is like
+                                a whiteboard where tasks are displayed as
+                                headings.
+                            </li>
+                            <li>
+                                <strong>Scripts:</strong> Includes Axios for API
+                                requests and <code>index.js</code> for the app’s
+                                logic.
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <strong>Todos Div:</strong> The
-                        <code>&lt;div id="todos"&gt;</code> is like a bulletin
-                        board where all tasks are displayed as headings.
-                    </li>
-                    <li>
-                        <strong>Axios:</strong> Our helper that sends tasks to
-                        the API (like mailing the sticky note) and fetches the
-                        latest task list (like checking the bulletin board).
+                        <strong>JavaScript (index.js):</strong> Handles fetching
+                        tasks, displaying them, and adding new ones.
                     </li>
                 </ul>
             </li>
@@ -198,98 +220,129 @@ displayTodos();
                 <strong>How the Code Works, Step by Step:</strong>
                 <ol>
                     <li>
-                        <strong>Setup:</strong> We grab the form
-                        (<code>todoForm</code>) and div (<code>todosDiv</code>)
-                        from the page so we can work with them, like picking up
-                        the sticky note and bulletin board.
-                    </li>
-                    <li>
-                        <strong>Display Todos Function:</strong>
+                        <strong>Fetching Todos (<code>getData</code>):</strong>
                         <ul>
                             <li>
-                                The <code>displayTodos</code> function is like
-                                refreshing the bulletin board. It clears old
-                                tasks (<code>todosDiv.innerHTML = ""</code>) to
-                                avoid duplicates.
+                                This function is like checking the whiteboard
+                                for tasks. It uses <code>axios.get</code> to
+                                fetch all todos from the API.
                             </li>
                             <li>
-                                It uses <code>axios.get</code> to fetch all
-                                todos from the API, like asking, “What’s on the
-                                server’s task list?”
+                                When the API responds, it passes the data to
+                                <code>listData</code> to display the todos.
                             </li>
                             <li>
-                                When the API responds, it loops through each
-                                todo, creates an <code>h1</code> for the title
-                                (like pinning a task to the board), and adds it
-                                to the div.
-                            </li>
-                            <li>
-                                If something goes wrong (like a bad internet
-                                connection), it logs an error.
+                                If there’s an error (e.g., no internet), it logs
+                                a message.
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <strong>Form Submission:</strong>
+                        <strong
+                            >Displaying Todos (<code>listData</code>):</strong
+                        >
                         <ul>
                             <li>
-                                We add a listener to the form’s submit event,
-                                like saying, “When someone adds a task, do
-                                this.”
+                                This function takes the API data (an array of
+                                todos) and shows each task on the whiteboard.
                             </li>
                             <li>
-                                <code>event.preventDefault()</code> stops the
-                                page from reloading, keeping things smooth.
+                                It calls <code>clearList</code> to wipe the
+                                whiteboard clean, preventing duplicate tasks.
                             </li>
                             <li>
-                                We create a <code>newTodo</code> object with the
-                                form’s title input, like writing “Buy balloons”
-                                on the sticky note.
+                                It loops through the todos, creating an
+                                <code>h1</code> for each title (like writing a
+                                task on the board) and adds it to the
+                                <code>todo-list</code> div.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong
+                            >Clearing the List (<code>clearList</code>):</strong
+                        >
+                        <ul>
+                            <li>
+                                This function is like erasing the whiteboard. It
+                                removes all child elements from the
+                                <code>todo-list</code> div to start fresh.
+                            </li>
+                            <li>
+                                It uses a <code>while</code> loop to delete each
+                                child until none remain.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Initial Load:</strong>
+                        <ul>
+                            <li>
+                                The <code>getData</code> call at the start runs
+                                when the page loads, showing any existing todos
+                                right away.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Adding a Todo (Form Submission):</strong>
+                        <ul>
+                            <li>
+                                The form listener waits for you to submit a
+                                task, like writing on a sticky note.
+                            </li>
+                            <li>
+                                <code>e.preventDefault()</code> stops the page
+                                from reloading, keeping the app smooth.
+                            </li>
+                            <li>
+                                It creates a <code>newTodo</code> object with
+                                the input’s title (e.g., “Buy milk”).
+                            </li>
+                            <li>
+                                It clears the input field (<code
+                                    >todoForm.title.value = ""</code
+                                >) for the next task.
                             </li>
                             <li>
                                 <code>axios.post</code> sends the todo to the
-                                API, like mailing the note to the server.
+                                API, like sticking the note on the server’s
+                                whiteboard.
                             </li>
                             <li>
-                                When the post succeeds, we call
-                                <code>displayTodos</code> to refresh the list,
-                                showing the new todo instantly.
+                                When the post succeeds, it calls
+                                <code>getData</code> to re-fetch and display the
+                                updated list.
                             </li>
                             <li>If the post fails, it logs an error.</li>
                         </ul>
-                    </li>
-                    <li>
-                        <strong>Initial Load:</strong> We call
-                        <code>displayTodos</code> when the page loads to show
-                        any existing todos, like checking the bulletin board
-                        first thing.
                     </li>
                 </ol>
             </li>
             <li>
                 <strong>Why Auto-Updating?</strong> After posting a new todo, we
-                re-fetch the entire list with <code>axios.get</code> to ensure
-                the page shows the server’s latest data. This keeps the UI in
-                sync without a refresh, like magically updating the bulletin
-                board.
+                re-fetch the entire list with <code>axios.get</code> to show the
+                server’s latest data, like refreshing the whiteboard to include
+                the new task. This keeps the page in sync without reloading.
             </li>
             <li>
-                <strong>Why Axios?</strong> Axios makes sending and fetching
-                data easy with promises, and it automatically handles JSON, so
-                we can focus on building the app.
+                <strong>Why Axios?</strong> Axios simplifies sending and
+                fetching data with promises and automatic JSON parsing, making
+                our app easy to build.
             </li>
         </ul>
         <p>
-            This code creates a dynamic, user-friendly todo app where tasks
-            appear instantly, making it feel like a real-time notepad!
+            This code creates a dynamic todo app where tasks appear instantly,
+            like a whiteboard that updates itself!
         </p>
 
         <div class="exercise">
             <p>
-                <strong>Mini Exercise (5 min):</strong> Extend the code above to
-                include a description input in the form. Update
-                <code>displayTodos</code> to show both title and description.
-                Test adding a todo and verify it appears.
+                <strong>Mini Exercise (5 min):</strong> Extend the HTML form to
+                include a description input. Update <code>listData</code> in
+                <code>index.js</code> to display both title and description
+                (e.g., as <code>h1</code> and <code>p</code> elements). Test
+                adding a todo and verify it appears.
             </p>
         </div>
 
