@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Axios - Auto-Updating</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css"
+            rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+            rel="stylesheet" />
+        <style>
+            body {
+                font-family: 'Quicksand', sans-serif;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 35px;
+                line-height: 1.7;
+                background-color: #f5f5f5;
+                color: #333;
+            }
+            h1,
+            h2,
+            h3 {
+                color: #2e7d32;
+            }
+            h1 {
+                font-size: 2.3em;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 1.9em;
+                margin-top: 45px;
+                border-bottom: 3px solid #2e7d32;
+                padding-bottom: 10px;
+            }
+            h3 {
+                font-size: 1.5em;
+                margin-top: 30px;
+                color: #1b5e20;
+            }
+            pre {
+                background-color: #37474f;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #546e7a;
+                overflow-x: auto;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            code {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            p {
+                margin-bottom: 20px;
+            }
+            ul {
+                margin-bottom: 20px;
+                padding-left: 30px;
+            }
+            .exercise {
+                background-color: #fff8e5;
+                padding: 15px;
+                border-left: 6px solid #ffb300;
+                border-radius: 6px;
+                margin-bottom: 25px;
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Mastering API Requests: Fetch, Dev Tools, Axios</h1>
+        <h2>12. Auto-Updating a Web Page with Axios</h2>
+        <p>
+            Combine Axios <code>get</code> and <code>post</code> to auto-update
+            a web page when adding new data, keeping the UI in sync with the
+            server without refreshing.
+        </p>
+        <ul>
+            <li>
+                <strong>Technique:</strong> After a <code>post</code> creates a
+                new resource, re-fetch data with <code>get</code> to update the
+                display.
+            </li>
+            <li>
+                <strong>Use Case:</strong> Show new todos instantly in a todo
+                list application.
+            </li>
+        </ul>
+        <h3>Example: Auto-Updating Todo List</h3>
+        <p>
+            The code below creates a form to add todos and a div to display
+            them. When a todo is posted, the page fetches and displays the
+            updated todo list automatically.
+        </p>
+        <pre><code class="language-html">
+
+&lt;!-- HTML --&gt;
+
+
+&lt;!-- Form to add a new todo --&gt;
+&lt;form name="todoform"&gt;
+    &lt;input name="title" placeholder="Title"&gt;
+    &lt;button type="submit"&gt;Add Todo&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Div to display all todos --&gt;
+&lt;div id="todos"&gt;&lt;/div&gt;
+
+&lt;!-- Include Axios library via CDN --&gt;
+&lt;script src="https://unpkg.com/axios/dist/axios.min.js"&gt;&lt;/script&gt;
+
+
+</code></pre>
+
+        <pre><code class="language-javascript">
+
+// JavaScript
+
+// Select form and todos div from the DOM
+const todoForm = document.todoform;
+const todosDiv = document.getElementById("todos");
+
+// Function to fetch and display todos
+function displayTodos() {
+    // Clear the todos div to avoid duplicates
+    todosDiv.innerHTML = "";
+    // Fetch all todos from the V School Todo API
+    axios.get("https://api.vschool.io/yourname/todo")
+        .then(response => {
+            // Loop through each todo in the response data
+            for (let todo of response.data) {
+                // Create an h1 element for each todo's title
+                const h1 = document.createElement("h1");
+                h1.textContent = todo.title;
+                // Append the h1 to the todos div
+                todosDiv.appendChild(h1);
+            }
+        })
+        .catch(error => console.log("Error fetching todos:", error));
+}
+
+// Add submit event listener to the form
+todoForm.addEventListener("submit", function(event) {
+    // Prevent default form submission (page reload)
+    event.preventDefault();
+    // Create a new todo object from form input
+    const newTodo = { title: todoForm.title.value };
+    // Post the new todo to the V School Todo API
+    axios.post("https://api.vschool.io/yourname/todo", newTodo)
+        .then(() => displayTodos()) // Re-fetch and display todos after posting
+        .catch(error => console.log("Error posting todo:", error));
+});
+
+// Initial call to display todos when the page loads
+displayTodos();
+    </code></pre>
+
+        <h3>Explaining the Auto-Updating Todo List Code (Super Simple!)</h3>
+        <p>
+            This code is like a magic notepad that lets you add tasks (todos)
+            and instantly shows the updated list without refreshing the page. It
+            uses Axios to talk to the V School Todo API, sending new todos and
+            fetching the latest list. Let’s break it down like we’re organizing
+            a to-do list for a party!
+        </p>
+        <ul>
+            <li>
+                <strong>What’s the Goal?</strong> We want a web page where you
+                can type a task (like “Buy balloons”), click a button, and see
+                it appear in a list with all your other tasks, all without
+                reloading the page.
+            </li>
+            <li>
+                <strong>The Pieces:</strong>
+                <ul>
+                    <li>
+                        <strong>Form:</strong> The
+                        <code>&lt;form name="todoform"&gt;</code> is like a
+                        sticky note where you write your task. It has an input
+                        for the title and a submit button.
+                    </li>
+                    <li>
+                        <strong>Todos Div:</strong> The
+                        <code>&lt;div id="todos"&gt;</code> is like a bulletin
+                        board where all tasks are displayed as headings.
+                    </li>
+                    <li>
+                        <strong>Axios:</strong> Our helper that sends tasks to
+                        the API (like mailing the sticky note) and fetches the
+                        latest task list (like checking the bulletin board).
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>How the Code Works, Step by Step:</strong>
+                <ol>
+                    <li>
+                        <strong>Setup:</strong> We grab the form
+                        (<code>todoForm</code>) and div (<code>todosDiv</code>)
+                        from the page so we can work with them, like picking up
+                        the sticky note and bulletin board.
+                    </li>
+                    <li>
+                        <strong>Display Todos Function:</strong>
+                        <ul>
+                            <li>
+                                The <code>displayTodos</code> function is like
+                                refreshing the bulletin board. It clears old
+                                tasks (<code>todosDiv.innerHTML = ""</code>) to
+                                avoid duplicates.
+                            </li>
+                            <li>
+                                It uses <code>axios.get</code> to fetch all
+                                todos from the API, like asking, “What’s on the
+                                server’s task list?”
+                            </li>
+                            <li>
+                                When the API responds, it loops through each
+                                todo, creates an <code>h1</code> for the title
+                                (like pinning a task to the board), and adds it
+                                to the div.
+                            </li>
+                            <li>
+                                If something goes wrong (like a bad internet
+                                connection), it logs an error.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Form Submission:</strong>
+                        <ul>
+                            <li>
+                                We add a listener to the form’s submit event,
+                                like saying, “When someone adds a task, do
+                                this.”
+                            </li>
+                            <li>
+                                <code>event.preventDefault()</code> stops the
+                                page from reloading, keeping things smooth.
+                            </li>
+                            <li>
+                                We create a <code>newTodo</code> object with the
+                                form’s title input, like writing “Buy balloons”
+                                on the sticky note.
+                            </li>
+                            <li>
+                                <code>axios.post</code> sends the todo to the
+                                API, like mailing the note to the server.
+                            </li>
+                            <li>
+                                When the post succeeds, we call
+                                <code>displayTodos</code> to refresh the list,
+                                showing the new todo instantly.
+                            </li>
+                            <li>If the post fails, it logs an error.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Initial Load:</strong> We call
+                        <code>displayTodos</code> when the page loads to show
+                        any existing todos, like checking the bulletin board
+                        first thing.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <strong>Why Auto-Updating?</strong> After posting a new todo, we
+                re-fetch the entire list with <code>axios.get</code> to ensure
+                the page shows the server’s latest data. This keeps the UI in
+                sync without a refresh, like magically updating the bulletin
+                board.
+            </li>
+            <li>
+                <strong>Why Axios?</strong> Axios makes sending and fetching
+                data easy with promises, and it automatically handles JSON, so
+                we can focus on building the app.
+            </li>
+        </ul>
+        <p>
+            This code creates a dynamic, user-friendly todo app where tasks
+            appear instantly, making it feel like a real-time notepad!
+        </p>
+
+        <div class="exercise">
+            <p>
+                <strong>Mini Exercise (5 min):</strong> Extend the code above to
+                include a description input in the form. Update
+                <code>displayTodos</code> to show both title and description.
+                Test adding a todo and verify it appears.
+            </p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+    </body>
+</html>
