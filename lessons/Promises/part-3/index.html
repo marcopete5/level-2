@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Async - Asynchronous Code</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+            rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
+            rel="stylesheet" />
+        <style>
+            body {
+                font-family: 'Source Sans Pro', sans-serif;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 35px;
+                line-height: 1.7;
+                background-color: #fff8e1;
+                color: #333;
+            }
+            h1,
+            h2,
+            h3 {
+                color: #ff5252;
+            }
+            h1 {
+                font-size: 2.3em;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 1.9em;
+                margin-top: 45px;
+                border-bottom: 3px solid #ff5252;
+                padding-bottom: 10px;
+            }
+            h3 {
+                font-size: 1.5em;
+                margin-top: 30px;
+                color: #d32f2f;
+            }
+            pre {
+                background-color: #eceff1;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #b0bec5;
+                overflow-x: auto;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            }
+            code {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            p {
+                margin-bottom: 20px;
+            }
+            ul {
+                margin-bottom: 20px;
+                padding-left: 30px;
+            }
+            .exercise {
+                background-color: #e6f4f1;
+                padding: 15px;
+                border-left: 6px solid #26a69a;
+                border-radius: 6px;
+                margin-bottom: 25px;
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Promises: Synchronous vs. Asynchronous Programming</h1>
+        <h2>3. Asynchronous Code Examples</h2>
+        <p>
+            Asynchronous code, or <strong>non-blocking code</strong>, starts
+            tasks without waiting, allowing other code to run, ideal for slow
+            operations like API calls or user input.
+        </p>
+        <ul>
+            <li>
+                <strong>Characteristics:</strong> Non-predictable order,
+                improves app responsiveness.
+            </li>
+            <li>
+                <strong>Examples:</strong> Timers, event listeners, API
+                requests.
+            </li>
+        </ul>
+        <h3>Example: Asynchronous Code</h3>
+        <p>Non-blocking execution:</p>
+        <pre><code class="language-javascript">
+setTimeout(() => console.log("Inside setTimeout"), 500);
+console.log("Outside setTimeout"); // Runs first
+document.getElementById("thing").addEventListener("click", () => console.log("Clicked!"));
+fetch("https://swapi.dev/api/people/1/")
+    .then(res => res.json())
+    .then(data => console.log(data.name)) // Runs second
+console.log("Outside fetch"); // Runs first
+    </code></pre>
+        <div class="exercise">
+            <p>
+                <strong>Mini Exercise:</strong> Create an HTML button with
+                <code>id="thing"</code>. Add the
+                <code>addEventListener</code> example above and click the
+                button. Verify the console logs “Clicked!”.
+            </p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    </body>
+</html>
