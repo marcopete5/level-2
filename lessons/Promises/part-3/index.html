@@ -88,11 +88,13 @@
                 requests.
             </li>
         </ul>
-        <h3>Example: Asynchronous Code</h3>
+        <h3>2 Examples: Asynchronous Code</h3>
         <p>Non-blocking execution:</p>
         <pre><code class="language-javascript">
 setTimeout(() => console.log("Inside setTimeout"), 500);
 console.log("Outside setTimeout"); // Runs first
+
+
 document.getElementById("thing").addEventListener("click", () => console.log("Clicked!"));
 fetch("https://swapi.dev/api/people/1/")
     .then(res => res.json())
