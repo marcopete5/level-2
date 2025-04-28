@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pokémon API - Mastery Task</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css"
+            rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+            rel="stylesheet" />
+        <style>
+            body {
+                font-family: 'Quicksand', sans-serif;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 35px;
+                line-height: 1.7;
+                background-color: #f5f5f5;
+                color: #333;
+            }
+            h1,
+            h2,
+            h3 {
+                color: #2e7d32;
+            }
+            h1 {
+                font-size: 2.3em;
+                margin-bottom: 10px;
+            }
+            h2 {
+                font-size: 1.6em;
+                margin-top: 0;
+                margin-bottom: 25px;
+                color: #1b5e20;
+            }
+            h3 {
+                font-size: 1.5em;
+                margin-top: 30px;
+                color: #1b5e20;
+            }
+            pre {
+                background-color: #37474f;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #546e7a;
+                overflow-x: auto;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            code {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            p {
+                margin-bottom: 20px;
+            }
+            ul {
+                margin-bottom: 20px;
+                padding-left: 30px;
+            }
+            .exercise {
+                background-color: #fff8e5;
+                padding: 15px;
+                border-left: 6px solid #ffb300;
+                border-radius: 6px;
+                margin-bottom: 25px;
+                font-weight: 600;
+            }
+            a {
+                padding: 20px;
+                display: inline-block;
+                font-size: 40px;
+                text-decoration: none;
+                color: #1a5e20;
+            }
+            a:hover {
+                color: #2e7d32;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Pokémon API</h1>
+        <h2>Mastery Task</h2>
+        <p>
+            This <strong>Mastery Task</strong> challenges you to use Axios in
+            <strong>vanilla JavaScript</strong> to fetch and display Pokémon
+            data from <code>https://api.vschool.io/pokemon</code>. You’ll
+            practice HTTP requests, JSON parsing, and DOM manipulation to show a
+            list of Pokémon names in the browser.
+        </p>
+        <p>
+            Complete the task in two steps: fetch the data, then display it. Use
+            only vanilla JavaScript (no frameworks).
+        </p>
+        <h3>Step One: Get the Data</h3>
+        <p>
+            Write a function that uses an Axios <code>GET</code> request to
+            fetch Pokémon data from <code>https://api.vschool.io/pokemon</code>.
+            The response data is structured like this:
+        </p>
+        <pre><code class="language-json">
+{
+    "meta": {
+        "limit": 1,
+        "next": null,
+        "offset": 0,
+        "previous": null,
+        "total_count": 1
+    },
+    "objects": [
+        {
+            "created": "2013-11-09T15:14:48.957604",
+            "modified": "2013-11-09T15:14:48.957565",
+            "name": "national",
+            "pokemon": [
+                {
+                    "name": "rattata",
+                    "resource_uri": "api/v1/pokemon/19/"
+                },
+                {
+                    "name": "charmander",
+                    "resource_uri": "api/v1/pokemon/4/"
+                },
+                ...etc
+            ]
+        }
+    ]
+}
+    </code></pre>
+        <p>
+            <strong>Tip:</strong> You can’t use Node.js without extra setup, so
+            create an HTML file linking your JavaScript and run it in a browser.
+            Include Axios via CDN.
+        </p>
+        <h3>Step Two: Display the Data</h3>
+        <p>
+            Display each Pokémon’s name on a separate line in the browser using
+            DOM manipulation. Use a <code>for</code> loop to iterate through the
+            Pokémon array and create elements (e.g., <code>p</code> or
+            <code>h1</code>) for each name.
+        </p>
+        <ul>
+            <li>
+                <strong>Note:</strong> The response data is nested. Access the
+                Pokémon array at <code>response.data.objects[0].pokemon</code>.
+            </li>
+            <li>
+                <strong>Example:</strong> Create a <code>p</code> element for
+                each name (e.g., “rattata”, “charmander”) and append it to a
+                container div.
+            </li>
+        </ul>
+        <h3>Hints</h3>
+        <ul>
+            <li>
+                Use the Network tab (F12 on Windows, Command + Option + I on
+                Mac) to inspect the data returned from the HTTP request. Check
+                the “Response” tab to understand the JSON structure.
+            </li>
+            <li>
+                Log <code>response.data</code> to the console to explore the
+                nested objects before coding the loop.
+            </li>
+            <li>
+                Start with a simple HTML file and a <code>div</code> to hold the
+                Pokémon names.
+            </li>
+        </ul>
+        <h3>Starter Code</h3>
+        <p>
+            Use this HTML to begin, and create <code>index.js</code> for your
+            logic:
+        </p>
+        <pre><code class="language-html">
+&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Pokémon List&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Container for Pokémon names --&gt;
+        &lt;div id="pokemon-list"&gt;&lt;/div&gt;
+        &lt;!-- Include Axios for API requests --&gt;
+        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"&gt;&lt;/script&gt;
+        &lt;script src="index.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    
+        
+        <a href="https://marcopete5.github.io/level-2/assignments/pokemon-list">CLICK FOR DEMO</a>
+
+
+        <div class="exercise">
+            <p>
+                <strong>Mastery Task (Start in 10 min):</strong> In vanilla
+                JavaScript, create an <code>index.js</code> file to: <p>1) Fetch
+                Pokémon data from
+                <code>https://api.vschool.io/pokemon</code> using
+                <code>axios.get</code>.</p> <p> 2) Display each Pokémon’s name on a
+                separate line in the <code>#pokemon-list</code> div using a<code>for</code>
+                loop and DOM manipulation.,</p><p> Use the Network tab (F12 on Windows,
+                Command + Option + I on Mac) to inspect the response data. Test
+                your app in the browser to ensure names (e.g., “rattata”,
+                “charmander”) appear.</p>
+            </p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    </body>
+</html>
