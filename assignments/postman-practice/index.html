@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Postman - Assignment</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dracula.min.css"
+            rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+            rel="stylesheet" />
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 35px;
+                line-height: 1.7;
+                background-color: #fff8e7;
+                color: #333;
+            }
+            h1,
+            h2,
+            h3 {
+                color: #2e7d32;
+            }
+            h1 {
+                font-size: 2.3em;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 1.9em;
+                margin-top: 45px;
+                border-bottom: 3px solid #2e7d32;
+                padding-bottom: 10px;
+            }
+            h3 {
+                font-size: 1.5em;
+                margin-top: 30px;
+                color: #1b5e20;
+            }
+            pre {
+                background-color: #4a5568;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #718096;
+                overflow-x: auto;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            code {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 15px;
+                line-height: 1.5;
+                color: #2c3c51; /* Lighter text color for readability */
+            }
+            pre > code {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 15px;
+                line-height: 1.5;
+                color: #e2e8f0; /* Lighter text color for readability */
+            }
+            p {
+                margin-bottom: 20px;
+            }
+            ul {
+                margin-bottom: 20px;
+                padding-left: 30px;
+            }
+            .exercise {
+                background-color: #fef9e7;
+                padding: 15px;
+                border-left: 6px solid #ffb300;
+                border-radius: 6px;
+                margin-bottom: 25px;
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Postman Assignment: Exploring APIs</h1>
+        <p>
+            In this assignment, you’ll use Postman to practice HTTP requests
+            with the
+            <a href="https://swapi.dev/documentation" target="_blank"
+                >Star Wars API (SWAPI)</a
+            >
+            and the V School API
+            (<code>https://api.vschool.io/[your_name]/todo</code>). Complete the
+            tasks below to master GET, POST, PUT, and DELETE requests.
+        </p>
+
+        <h2>Assignment: Postman Practice</h2>
+        <p>
+            Follow these tasks to explore APIs and test your skills with
+            Postman. Use your own name in the V School API URL (e.g.,
+            <code>fred</code> for
+            <code>https://api.vschool.io/fred/todo</code>).
+        </p>
+
+        <h3>Tasks</h3>
+        <ul>
+            <li>
+                <strong>Task 1: GET Planets (SWAPI)</strong>
+                <ul>
+                    <li>
+                        Use Postman to send a GET request to
+                        <code>https://swapi.dev/api/planets/</code> to retrieve
+                        a list of planets.
+                    </li>
+                    <li>Note one planet’s name from the response.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Task 2: GET Person (SWAPI)</strong>
+                <ul>
+                    <li>
+                        Send a GET request to
+                        <code>https://swapi.dev/api/people/1/</code> to retrieve
+                        a single person object.
+                    </li>
+                    <li>Note the person’s name from the response.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Task 3: POST Todos (V School API)</strong>
+                <ul>
+                    <li>
+                        Send three POST requests to
+                        <code>https://api.vschool.io/[your_name]/todo</code> to
+                        create three new todo objects. Use this JSON template:
+                    </li>
+                    <pre><code class="language-json">
+{
+    "title": "This is required",
+    "description": "This is optional",
+    "price": 0,
+    "imgUrl": "http://path-to-url.jpg",
+    "completed": false
+}
+                </code></pre>
+                    <li>
+                        Set Body to <code>raw</code> and
+                        <code>JSON (application/json)</code>. Vary the
+                        <code>title</code> for each todo.
+                    </li>
+                    <li>
+                        Send a GET request to the same URL to confirm your todos
+                        are listed.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>Task 4: GET Single Todo (V School API)</strong>
+                <ul>
+                    <li>
+                        From the GET response in Task 3, find a todo’s
+                        <code>_id</code>.
+                    </li>
+                    <li>
+                        Send a GET request to
+                        <code
+                            >https://api.vschool.io/[your_name]/todo/[_id]</code
+                        >
+                        to retrieve that todo.
+                    </li>
+                    <li>Confirm the todo’s <code>title</code>.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Task 5: DELETE Todo (V School API)</strong>
+                <ul>
+                    <li>
+                        Using the same <code>_id</code> from Task 4, send a
+                        DELETE request to
+                        <code
+                            >https://api.vschool.io/[your_name]/todo/[_id]</code
+                        >.
+                    </li>
+                    <li>
+                        Verify the response includes
+                        <code>{"msg": "Successfully deleted record"}</code>.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>Task 6: PUT Todo (V School API)</strong>
+                <ul>
+                    <li>
+                        From the GET in Task 3, select another todo’s
+                        <code>_id</code>.
+                    </li>
+                    <li>
+                        Send a PUT request to
+                        <code
+                            >https://api.vschool.io/[your_name]/todo/[_id]</code
+                        >
+                        with a JSON body updating at least one field (e.g.,
+                        <code>{"completed": true}</code>).
+                    </li>
+                    <li>
+                        Set Body to <code>raw</code> and
+                        <code>JSON (application/json)</code>. Ensure valid JSON.
+                    </li>
+                    <li>Confirm the updated todo in the response.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Tips</h3>
+        <ul>
+            <li>
+                <strong>Validate JSON:</strong> Use
+                <a href="http://jsonlint.com" target="_blank">JSONLint</a> to
+                check your POST and PUT JSON bodies.
+            </li>
+            <li>
+                <strong>Check Responses:</strong> If a request fails, inspect
+                the response for error messages (e.g., invalid JSON).
+            </li>
+            <li>
+                <strong>Save Requests:</strong> Save your Postman requests for
+                easy reuse.
+            </li>
+        </ul>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    </body>
+</html>
