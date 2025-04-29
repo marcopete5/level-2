@@ -79,6 +79,45 @@
                 color: #2e7d32;
                 text-decoration: underline;
             }
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                margin: 20px 0;
+                width: 100%;
+            }
+            .dropdown-button {
+                background-color: #ffffff00;
+                color: #1a5e20;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-weight: 600;
+                font-size: 40px;
+                cursor: pointer;
+                font-family: 'Quicksand', sans-serif;
+            }
+            .dropdown-button:hover {
+                text-decoration: underline;
+                color: #34853b
+            }
+            .dropdown-content {
+                display: none;
+                background-color: #ffffff;
+                border: 2px solid #ffb300;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+                z-index: 1000;
+            }
+            .dropdown-content.show {
+                display: block;
+            }
+            .dropdown-content iframe {
+                width: 100%;
+                height: 500px;
+                border: 1px solid #546e7a;
+                border-radius: 5px;
+            }
         </style>
     </head>
     <body>
@@ -192,8 +231,12 @@
     </code></pre>
     
         
-        <a href="https://marcopete5.github.io/level-2/assignments/pokemon-list/solution" target="_blank">CLICK FOR DEMO</a>
-
+        <div class="dropdown">
+            <button class="dropdown-button" onclick="toggleDemo()">CLICK FOR DEMO</button>
+            <div class="dropdown-content" id="demoFrame">
+                <iframe src="https://marcopete5.github.io/level-2/assignments/pokemon-list/solution" title="Pokémon List Demo"></iframe>
+            </div>
+        </div>
 
         <div class="exercise">
             <p>
@@ -210,6 +253,12 @@
             </p>
         </div>
 
+        <script>
+            function toggleDemo() {
+                const demoFrame = document.getElementById("demoFrame");
+                demoFrame.classList.toggle("show");
+            }
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
