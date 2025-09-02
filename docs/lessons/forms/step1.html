@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Forms Part 1</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Forms Part 1</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will:</p>
+                <ul class="custom-list">
+                    <li>Be able to create a basic functioning HTML form</li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cdPe9PAz?pl=pYp4bpNUM"
+                    title="Forms Part 1 Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on creating a basic HTML form"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Tags</h3>
+                <p>
+                    The HTML <code>&lt;form&gt;</code> element defines a form
+                    that is used to collect user input:
+                </p>
+                <pre><code class="language-html">
+&lt;form&gt;&lt;!-- input tags and variations of input tags --&gt;&lt;/form&gt;
+</code></pre>
+                <p><code>&lt;form&gt;</code> wraps all your inputs.</p>
+                <p>A simple form in HTML would look like:</p>
+                <pre><code class="language-html">
+&lt;form&gt;
+    First Name: &lt;input/&gt;&lt;/form&gt;
+</code></pre>
+                <p>And look like this in the browser:</p>
+                <p>First Name: ___</p>
+                <p>
+                    It is wise to give each of your forms a
+                    <code>name</code> attribute.
+                </p>
+                <pre><code class="language-html">
+&lt;form name="user-info"&gt;
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Attributes</h3>
+                <p>
+                    There's many different kinds of input fields, and most of
+                    them still use the <code>&lt;input/&gt;</code> tag, but can
+                    be used by giving <code>&lt;input/&gt;</code> different
+                    <strong>attributes</strong>.
+                </p>
+                <p>The big one is <code>type</code></p>
+                <p>
+                    <code>type</code> defaults to <code>text</code>. So our
+                    "First Name" input box is already
+                    <code>&lt;input type="text"/&gt;</code>
+                </p>
+                <p>
+                    There are many other types, and we'll talk about most of
+                    them in Part 2. You should be excited for that.
+                </p>
+                <p>
+                    The different types gives the input boxes cool tools to help
+                    your user give the type of input.
+                </p>
+                <p>For example:</p>
+                <p>
+                    Number restricts the inputs to numbers, and give you up and
+                    down arrows to increment or decrement it.
+                </p>
+                <p>Number: ___</p>
+                <p>
+                    Number also has more attributes to help you control how the
+                    input box behaves.
+                </p>
+                <p>
+                    For <code>type="number"</code> the common ones are: min,
+                    max, step
+                </p>
+                <p>
+                    Min and max are exactly what the sound like. They restrict
+                    the minimum and the maximum value of the input box.
+                </p>
+                <p>
+                    Step controls how much the up and down arrow move our
+                    number. Play around with this input box
+                    <code>Number: &lt;input step="10" type="number"/&gt;</code>:
+                </p>
+                <p>Number: ___</p>
+                <p>Your step can also be decimals.</p>
+                <p>
+                    Here is a list of just some of the other attributes you can
+                    give your input box:
+                </p>
+                <ul class="custom-list">
+                    <li>
+                        <code>name</code> - Important for naming and using your
+                        input boxes. Similar to <code>id</code>
+                    </li>
+                    <li>
+                        <code>value</code> - Value gives your input and initial
+                        value
+                    </li>
+                    <li>
+                        <code>placeholder</code> - Placeholder gives your user
+                        an example or hint of what belongs in an input box
+                    </li>
+                    <li>
+                        <code>required</code> - From will not submit if you have
+                        this attribute in an empty input box
+                    </li>
+                </ul>
+                <p>
+                    Many of these attributes are using by your browser to help
+                    with autofill. Especially the <code>name</code> attribute.
+                    If you say <code>name="firstname"</code>, Chrome can
+                    autofill that for your user.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Using JavaScript to get values from your form</h3>
+                <p>
+                    Because JavaScript is JavaScript and HTML is HTML there are
+                    many different ways to get the value from an input box.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>By id</h3>
+                <p>The strategies that we will go over now are:</p>
+                <ul class="custom-list">
+                    <li>With the <code>id</code> attribute of the input box</li>
+                    <li>
+                        With the <code>name</code> attribute of the form, and
+                        the <code>name</code> attribute of the input box
+                    </li>
+                </ul>
+                <p>
+                    We know that we can select anything in our HTML (more
+                    accurately the DOM) with the <code>id</code>:
+                </p>
+                <pre><code class="language-html">
+&lt;div id="first-name"&gt;Georgette&lt;/div&gt;
+</code></pre>
+                <pre><code class="language-jsx">
+document.getElementById("first-name")
+</code></pre>
+                <p>
+                    Once we've selected that element, we can look at it's
+                    attributes. Using the above example:
+                </p>
+                <pre><code class="language-jsx">
+document.getElementById("first-name").innerHTML //=> Georgette
+</code></pre>
+                <p>
+                    We can do this same sort of thing with <code>.value</code>.
+                    We are going to select the input box by it's id and then get
+                    the value from it.
+                </p>
+                <pre><code class="language-html">
+&lt;input id="first-name"/&gt;
+</code></pre>
+                <pre><code class="language-jsx">
+document.getElementById("first-name").value
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>By name</h3>
+                <p>
+                    Any form that we've named becomes part of the document. So
+                    we can select this form:
+                </p>
+                <pre><code class="language-html">
+&lt;form name="info"&gt;&lt;input name="age"/&gt;&lt;/form&gt;
+</code></pre>
+                <p>as easily as:</p>
+                <pre><code class="language-jsx">
+document.info
+</code></pre>
+                <p>and any input in that form as easily as:</p>
+                <pre><code class="language-jsx">
+document.info.age
+</code></pre>
+                <p>and it's value like so:</p>
+                <pre><code class="language-jsx">
+document.info.age.value
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Example</h3>
+                <p>
+                    Follow along as we create a little mad lib game. If you
+                    haven't played mad libs before, we will have the user pick a
+                    noun and a verb and put those into a potentially silly
+                    sentence.
+                </p>
+                <p>
+                    First, our HTML form. It will have an input for a noun, a
+                    verb, and an adjective.
+                </p>
+                <pre><code class="language-html">
+&lt;form name="words"&gt;&lt;input name="noun" placeholder="noun"/&gt;&lt;input name="adverb" placeholder="adverbe"/&gt;&lt;input name="verb" placeholder="verb"/&gt;&lt;/form&gt;
+</code></pre>
+                <p>
+                    We would love to be able to grab the values from each of
+                    those input boxes and then print our silly sentence. Let's
+                    <code>alert()</code> it now, for simplicity.
+                </p>
+                <p>It would be nice if we could just:</p>
+                <pre><code class="language-jsx">
+var noun = document.words.noun.value
+var adverb = document.words.adverb.value
+var verb = document.words.verb.value
+
+alert("The " + noun + " did " + adverb + " " + verb + " in it's home")
+</code></pre>
+                <p>
+                    But, if you try this out, the alert happens right away and
+                    all these variables are empty strings. This is because we
+                    haven't given our user any time to type in their response.
+                </p>
+                <p>
+                    The appropriate user experience should be: they type their
+                    response, and then click a button.
+                </p>
+                <p>
+                    For that, we'll add a button to our HTML and some event
+                    listener stuff.
+                </p>
+                <pre><code class="language-html">
+&lt;form name="words"&gt;&lt;input name="noun" placeholder="noun"/&gt;&lt;input name="adverb" placeholder="adverb"/&gt;&lt;input name="verb" placeholder="verb"/&gt;&lt;button&gt;Submit&lt;/button&gt;&lt;/form&gt;
+</code></pre>
+                <pre><code class="language-jsx">
+document.words.addEventListener("submit", function(e){
+  e.preventDefault()
+
+  var noun = document.words.noun.value
+  var adverb = document.words.adverb.value
+  var verb = document.words.verb.value
+
+  alert("The " + noun + " did" + adverb + " " + verb + " in it's home")
+})
+</code></pre>
+                <p>
+                    Concerning the button, the submit event, the event object,
+                    and <code>event.preventDefault()</code>, a very brief
+                    explanation:
+                </p>
+                <p>
+                    A button in a form defaults to that forms submit button. Web
+                    developers use to <code>submit</code> forms and refresh the
+                    page by default. This is archaic and dumb, and now we
+                    overwrite that functionality with
+                    <code>event.preventDefault()</code> using the event object
+                    itself.
+                </p>
+                <p>
+                    The submit stuff it nice for the user, because they can
+                    submit a form with the <code>Enter</code> key.
+                </p>
+                <p>
+                    There is tons of other cool stuff you can do with forms.
+                    Learn about more in Part 2!
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
