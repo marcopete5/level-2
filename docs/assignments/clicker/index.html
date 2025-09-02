@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Click Tracker</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                user-select: none;
+            }
+
+            .container {
+                background: rgba(255, 255, 255, 0.95);
+                padding: 3rem;
+                border-radius: 20px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                max-width: 500px;
+                width: 90%;
+                backdrop-filter: blur(10px);
+            }
+
+            h1 {
+                color: #333;
+                margin-bottom: 2rem;
+                font-size: 2.5rem;
+                font-weight: 700;
+            }
+
+            .stats {
+                display: flex;
+                justify-content: space-around;
+                margin: 2rem 0;
+                gap: 1rem;
+            }
+
+            .stat-box {
+                background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+                color: white;
+                padding: 1.5rem;
+                border-radius: 15px;
+                flex: 1;
+                box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+            }
+
+            .timer-box {
+                background: linear-gradient(135deg, #4ecdc4, #7bdbd6);
+                box-shadow: 0 10px 20px rgba(78, 205, 196, 0.3);
+            }
+
+            .stat-number {
+                font-size: 3rem;
+                font-weight: 900;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
+
+            .stat-label {
+                font-size: 1rem;
+                opacity: 0.9;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .instructions {
+                background: #f8f9fa;
+                padding: 1.5rem;
+                border-radius: 10px;
+                margin: 2rem 0;
+                border-left: 4px solid #667eea;
+            }
+
+            .status {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin: 1rem 0;
+                padding: 1rem;
+                border-radius: 10px;
+                transition: all 0.3s ease;
+            }
+
+            .active {
+                background: linear-gradient(135deg, #51cf66, #69db7c);
+                color: white;
+                animation: pulse 2s infinite;
+            }
+
+            .ended {
+                background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+                color: white;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+
+            .reset-btn {
+                background: linear-gradient(135deg, #845ec2, #b39cd0);
+                color: white;
+                border: none;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 1rem;
+            }
+
+            .reset-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px rgba(132, 94, 194, 0.4);
+            }
+
+            .click-animation {
+                position: absolute;
+                pointer-events: none;
+                color: #ff6b6b;
+                font-weight: bold;
+                font-size: 1.5rem;
+                animation: clickPop 0.6s ease-out forwards;
+            }
+
+            @keyframes clickPop {
+                0% {
+                    opacity: 1;
+                    transform: scale(0.5) translateY(0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(1.5) translateY(-50px);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🖱️ Click Tracker</h1>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="stat-number" id="clickCount">0</span>
+                    <span class="stat-label">Total Clicks</span>
+                </div>
+                <div class="stat-box timer-box">
+                    <span class="stat-number" id="timer">20</span>
+                    <span class="stat-label">Seconds Left</span>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <strong>How to Play:</strong> Click anywhere on the page to
+                increase your score! You have 20 seconds to get as many clicks
+                as possible.
+            </div>
+
+            <div class="status active" id="status">
+                🎯 Click anywhere to start counting!
+            </div>
+
+            <button class="reset-btn" onclick="resetGame()">
+                🔄 Reset Game
+            </button>
+        </div>
+
+        <script>
+            // In-memory storage (for this environment)
+            // To use localStorage in your own environment, uncomment the localStorage lines
+            // and comment out the in-memory variables
+
+            let clickCount = 0; // In-memory storage
+            let timeLeft = 20;
+            let gameActive = true;
+            let gameStarted = false;
+            let countdownInterval;
+
+            // For localStorage implementation (use in your own environment):
+            // let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+
+            const clickCountElement = document.getElementById('clickCount');
+            const timerElement = document.getElementById('timer');
+            const statusElement = document.getElementById('status');
+
+            // Initialize display
+            function updateDisplay() {
+                clickCountElement.textContent = clickCount;
+                timerElement.textContent = timeLeft;
+            }
+
+            // Start the countdown timer
+            function startTimer() {
+                if (gameStarted) return;
+                gameStarted = true;
+
+                statusElement.textContent = '🔥 Game Started! Click fast!';
+                statusElement.className = 'status active';
+
+                countdownInterval = setInterval(() => {
+                    timeLeft--;
+                    timerElement.textContent = timeLeft;
+
+                    if (timeLeft <= 0) {
+                        endGame();
+                    }
+                }, 1000);
+            }
+
+            // End the game
+            function endGame() {
+                gameActive = false;
+                clearInterval(countdownInterval);
+                statusElement.textContent = `🏁 Time's up! Final score: ${clickCount} clicks`;
+                statusElement.className = 'status ended';
+            }
+
+            // Reset the game
+            function resetGame() {
+                clickCount = 0;
+                timeLeft = 20;
+                gameActive = true;
+                gameStarted = false;
+
+                clearInterval(countdownInterval);
+
+                statusElement.textContent =
+                    '🎯 Click anywhere to start counting!';
+                statusElement.className = 'status active';
+
+                updateDisplay();
+
+                // For localStorage implementation:
+                // localStorage.setItem('clickCount', '0');
+            }
+
+            // Create click animation
+            function createClickAnimation(x, y) {
+                const animation = document.createElement('div');
+                animation.className = 'click-animation';
+                animation.textContent = '+1';
+                animation.style.left = x + 'px';
+                animation.style.top = y + 'px';
+
+                document.body.appendChild(animation);
+
+                setTimeout(() => {
+                    document.body.removeChild(animation);
+                }, 600);
+            }
+
+            // Handle clicks
+            document.addEventListener('click', (e) => {
+                if (!gameActive) return;
+
+                // Start timer on first click
+                if (!gameStarted) {
+                    startTimer();
+                }
+
+                clickCount++;
+                updateDisplay();
+
+                // Create click animation at cursor position
+                createClickAnimation(e.clientX, e.clientY);
+
+                // For localStorage implementation:
+                // localStorage.setItem('clickCount', clickCount.toString());
+            });
+
+            // Initialize on page load
+            updateDisplay();
+
+            // For localStorage implementation, load saved data:
+            // clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+            // updateDisplay();
+        </script>
+    </body>
+</html>

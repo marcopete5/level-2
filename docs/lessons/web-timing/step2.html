@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>setTimeout & setInterval</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">setTimeout & setInterval</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        implement the two kinds of higher order time-based
+                        functions, <code>setInterval</code> and
+                        <code>setTimeout</code>.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>setTimeout and setInterval</h3>
+                <p>
+                    <code>setInterval</code> and <code>setTimeout</code> are two
+                    of the higher order functions in Javascript. Higher order
+                    functions take a function as one of their arguments like we
+                    see below:
+                </p>
+                <pre><code class="language-jsx">
+setTimeout(function(){});
+</code></pre>
+                <p>
+                    <code>setInterval</code> and <code>setTimeout</code> provide
+                    a way for you to tell your program to run a function or
+                    evaluate an expression after a specified amount of time has
+                    passed. While the first argument is setting what should
+                    happen, the second argument is for setting the time.
+                </p>
+                <pre><code class="language-jsx">
+// setTimeout(arg1, arg2)
+
+setTimeout(function(){}, 1000)
+</code></pre>
+                <p>
+                    The time argument is set in an amount of milli-seconds,
+                    meaning 1000 = 1 second. The <code>setTimeout</code> above
+                    will run that function after 1 second has passed. Let's see
+                    an example of this:
+                </p>
+                <pre><code class="language-jsx">
+setTimeout(function(){
+   console.log('hello!');
+}, 1000);
+
+// 1 second later
+'hello!'
+</code></pre>
+                <p>
+                    Set Timeout is great for having your program run a function
+                    once, but what if you needed your function to occur every 1
+                    second on a repeated basis? You would use the other method
+                    <code>setInterval()</code>.
+                </p>
+                <pre><code class="language-jsx">
+setInterval(function(){
+   console.log('hello');
+}, 1000)
+
+// 1 second
+'hello!'
+// 2 seconds
+'hello!'
+</code></pre>
+                <p>
+                    Now that you have your function running on a specified
+                    interval, how do you then tell your program to stop that
+                    interval? For this, you will need to first adjust your
+                    original setInterval call and store it in a variable:
+                </p>
+                <pre><code class="language-jsx">
+var intervalID = setInterval(function(){
+   console.log('hello!')
+}, 1000)
+</code></pre>
+                <p>
+                    The variable you assign to setInterval will store the ID for
+                    that interval. You can think about the ID being like the off
+                    switch for the interval or timeout you set. When you need to
+                    have an interval or timeout stopped, you call the
+                    <code>clearInterval(intervalID)</code> or
+                    <code>clearTimeout(timeoutID)</code> and pass in the ID of
+                    the one you need stopped. Here is a <em>sudo</em> example of
+                    an interval running for 2 seconds, and then it is cleared
+                    with <code>clearInterval</code>.
+                </p>
+                <pre><code class="language-jsx">
+var intervalID = setInterval(function(){
+   console.log('hello!')
+}, 1000);
+
+// 1 second
+'hello!'
+
+// 2 seconds
+'hello!'
+
+clearInterval(intervalID)
+</code></pre>
+                <p>
+                    Now with those basics let's write a function that outputs
+                    some text to the console, and then pass that into
+                    setInterval to run on a reoccurring basis.
+                </p>
+                <pre><code class="language-jsx">
+function sayHello(){
+   console.log("Hello!");
+}
+
+var intervalID = setInterval(sayHello, 1000);
+</code></pre>
+                <p>
+                    This would do the exact same thing as our setInterval from
+                    before, but we just wrote the function before calling set
+                    interval and then passed the function into it.
+                </p>
+                <aside>
+                    <p>
+                        Remember, you would not want to use the ( ) after
+                        putting sayHello as the first argument (ex: sayHello(
+                        )). Using the ( ) calls a function, and that would tell
+                        your program to run that function immediately rather
+                        than on the interval you are setting.
+                    </p>
+                </aside>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Practice</h3>
+                <p>
+                    Now let's use setInterval and setTimeout together to have a
+                    function run every second for 5 seconds, and then have it
+                    cleared.
+                </p>
+                <pre><code class="language-jsx">
+function sayHello(){
+   console.log('hello!');
+}
+
+function stopSayingHello(){
+   clearInterval(intervalID)
+}
+
+var intervalID = setInterval(sayHello, 1000);
+
+setTimeout(stopSayingHello,  6000)
+</code></pre>
+                <aside>
+                    <p>
+                        setTimeout can also be set to a variable if you need to
+                        have the setTimeout stop before it executes the function
+                        you gave it. Ex: var timeoutID = setTimeout(arg1, arg2).
+                        If you did this, you would use the
+                        clearTimeout(timeoutID) method instead of
+                        clearInterval(setIntervalID)
+                    </p>
+                </aside>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Even more practice</h3>
+                <p>
+                    Now that we have a handle on the basics, let's see a
+                    practical use of this to make a clock using Javascripts's
+                    Date constructor.
+                </p>
+                <pre><code class="language-jsx">
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;h1 id="time-display"&gt;&lt;/h1&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        var display = document.getElementById('time-display');
+
+        function getTime(){
+            var now = new Date();
+            var hour = now.getHours();
+            var min = now.getMinutes();
+            var sec = now.getSeconds();
+
+            display.textContent = `${hour}:${min}:${sec}`}
+
+        setInterval(getTime, 1000)
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+                <p>
+                    If you are following along, you'll notice that when the
+                    seconds, minutes, or hours are less than 10, the time looks
+                    like this: 8:5:2
+                </p>
+                <p>
+                    To fix this, we just need to add a little more logic to our
+                    function to tell it to add a '0' before the number if it's
+                    less than 10.
+                </p>
+                <pre><code class="language-jsx">
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;h1 id="time-display"&gt;&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+
+        var display = document.getElementById('time-display');
+
+        function getTime(){
+            var now = new Date();
+            var hour = now.getHours();
+            var min = now.getMinutes();
+            var sec = now.getSeconds();
+            if(hour &lt; 10){
+                hour = `0${hour}`;
+            }
+            if(min &lt; 10){
+                min = `0${min}`;
+            }
+            if(sec &lt; 10){
+                sec = `0${sec}`;
+            }
+
+            display.textContent = `${hour}:${min}:${sec}`;
+        }
+
+        setInterval(getTime, 1000);
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+                <p>
+                    More on setInterval and setTimeout can be found
+                    <a
+                        href="https://www.w3schools.com/jsref/met_win_setinterval.asp"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

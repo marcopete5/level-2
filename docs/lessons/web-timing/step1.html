@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Web Storage</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Web Storage</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        explain the different types of data storage mechanisms
+                        that are common in web development
+                    </li>
+                    <li>
+                        use <code>localStorage</code> and
+                        <code>sessionStorage</code> for setting and retrieving
+                        data and knowing the difference between the two.
+                    </li>
+                </ul>
+                <aside>
+                    <p>
+                        💡 This Scrimba video has some missing slides. These
+                        slides show the "application" tab in the browser's dev
+                        tools. It won't be a blocker for you! Follow along in
+                        your browser or visit the bottom of this document if you
+                        need a visual.
+                    </p>
+                </aside>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cqRZeKAQ?pl=pYp4bpNUM"
+                    title="Web Storage Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on using localStorage and sessionStorage"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+                <p>
+                    In just about any <em>useful</em> application you'll make,
+                    you'll need a way to persist (keep) data. Otherwise, every
+                    time you refresh the page, close the browser, etc. you will
+                    lose everything you put into the application. Which
+                    obviously makes for a pretty terrible application...
+                </p>
+                <p>
+                    There are a number of options you have when it comes to
+                    persisting data:
+                </p>
+                <ul class="custom-list">
+                    <li>
+                        <strong>Cookies</strong>: Cookies are stored in your
+                        browser, and are typically meant to store some kind of
+                        information about any of your HTTP requests. They are
+                        sent in the headers of every single HTTP request your
+                        browser makes. They are also very limited in size (4
+                        KB!). One thing that can be useful about cookies that
+                        you don't get with localStorage is the ability to set an
+                        expiration on the cookie, so it simply "dies" on the
+                        specified expiration date/time.
+                    </li>
+                    <li>
+                        You won’t use these at V School, but may be quizzed
+                        about them in an assessment
+                    </li>
+                    <li>
+                        <strong>Database</strong>: This is a very robust option,
+                        in that it can definitely store any information you need
+                        it to store. The downside here is that it will require a
+                        lengthy database and server setup process. You'll likely
+                        need a database to do any kind of real web application
+                        development, but for small and simple data storage
+                        tasks, it may be overkill
+                    </li>
+                    <li>
+                        <strong>Local Storage</strong>: Your browser is able to
+                        actually store basic key: value pairs with data in them
+                        to your hard drive. This storage, called local storage
+                        because it is only stored locally on your machine, can
+                        hold basically as much data as you want to put into it,
+                        and it will not go away unless you specifically clear it
+                        out manually. Oftentimes this is good for things like
+                        saving a user's customized settings, for example.
+                    </li>
+                    <li>
+                        <strong>Session Storage</strong>: Pretty much identical
+                        to Local Storage, except that it only persists while the
+                        browser session is active. If you close the browser or
+                        the tab you're saving things to Session Storage on, it
+                        will clear out and your data will be removed. This is
+                        nice because it won't take up hard drive space, as long
+                        as you're not saving any information you need to persist
+                        between sessions. An example of how this might be useful
+                        is if the user has more than one window of your
+                        application open and they need to have data shared
+                        between the windows.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    How to use Web Storage (localStorage and sessionStorage)
+                </h3>
+                <p>
+                    <em
+                        >Note: We'll be referring to Local Storage only from
+                        here on out, but if you want to use Session Storage
+                        instead, just replace any instances of
+                        <code>localStorage</code> with
+                        <code>sessionStorage</code>.</em
+                    >
+                </p>
+                <p>
+                    If you think of Local Storage simply as a key: value paired
+                    object, it should be easy to grasp.
+                    <code>localStorage</code> is built into JavaScript, and
+                    doesn't necessarily need any other dependencies for it to
+                    work.
+                </p>
+                <p>
+                    There are two ways to add, access, and remove data from
+                    localStorage and sessionStorage.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    1. Using the built-in methods <code>setItem</code>,
+                    <code>getItem</code>, and <code>removeItem</code>
+                </h3>
+                <pre><code class="language-jsx">
+// Save something to web storage:
+localStorage.setItem("keyName", "value");
+
+// Get something from web storage that was previously saved:
+var myValue = localStorage.getItem("keyName");
+
+// Remove an key/value pair from localStorage:
+localStorage.removeItem("keyName");
+
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    2. Treating <code>localStorage</code> and
+                    <code>sessionStorage</code> like objects
+                </h3>
+                <pre><code class="language-jsx">
+// Save something to web storage:
+localStorage.keyName = "value";
+
+// Get something from web storage that was previously saved:
+var myValue = localStorage.keyName;
+
+// Remove an key/value pair from localStorage:
+delete localStorage.keyName;
+
+</code></pre>
+                <p>
+                    It's important to keep in mind that web storage only stores
+                    strings of data. So if you need to store or retrieve more
+                    complex data types, you can use
+                    <code>JSON.stringify()</code> to turn complex data into a
+                    string before saving it to web storage or
+                    <code>JSON.parse()</code> to turn something back into a
+                    complex data type before trying to display or manipulate it.
+                </p>
+                <pre><code class="language-jsx">
+var obj = {
+    name: "Billy",
+    age: 45,
+    cars: [
+        {
+            year: 2002,
+            make: "Toyota",
+            model: "Camry"
+        },
+        {
+            year: 2018,
+            make: "Tesla",
+            model: "Roadster"
+        }
+    ]
+}
+
+// To save this object to web storage:
+localStorage.user = JSON.stringify(obj);
+
+// To retrieve this object from web storage:
+var user = JSON.parse(localStorage.user);
+
+</code></pre>
+                <p>
+                    One final thing to note: you'll oftentimes see
+                    <code>window.localStorage</code> while searching around on
+                    the web. Just know that <code>localStorage</code> is
+                    basically set up like a shortcut for saying
+                    <code>window.localStorage</code>, so unless you set your own
+                    variable called <code>localStorage</code> (probably not a
+                    good idea anyway), you're fine just using
+                    <code>localStorage</code>. Same goes with
+                    <code>sessionStorage</code> vs.
+                    <code>window.sessionStorage</code>. Here's a
+                    <a
+                        href="http://stackoverflow.com/questions/12660088/is-there-any-difference-between-window-localstorage-and-localstorage"
+                        target="_blank"
+                        rel="noopener"
+                        >stackoverflow.com post</a
+                    >
+                    for reference.
+                </p>
+                <p>
+                    And that's it! You're all set with everything you need in
+                    order to start using web storage. This can be a great
+                    solution to use while you're testing front-end applications
+                    before having the chance to build up a database for storing
+                    data.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Images missing from Scrimba</h3>
+                <img
+                    src="1.png"
+                    alt="Screenshot of browser dev tools application tab showing localStorage"
+                    class="image-embed" />
+                <img
+                    src="2.png"
+                    alt="Screenshot of browser dev tools application tab showing sessionStorage"
+                    class="image-embed" />
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
