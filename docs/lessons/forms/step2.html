@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Forms Part 2</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Forms Part 2</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        Implement the different
+                        <code>&lt;input&gt;</code> element types such as
+                        <code>email</code>, <code>checkbox</code>,
+                        <code>radio</code>, <code>date</code>,
+                        <code>color</code>, etc. into a functioning HTML form.
+                    </li>
+                    <li>
+                        Manipulate the values of checkboxes and radio inputs
+                        from within a form.
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cWQ36buL?pl=pYp4bpNUM"
+                    title="Forms Part 2 Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on advanced HTML input types and checkbox/radio manipulation"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+                <p>
+                    Part 2 is the fun part. We get to explore all the cushy
+                    things our browser has built for us, and all we have to do
+                    is simply implement them.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Input types</h3>
+                <p>
+                    Let start with the different input types. The first two are
+                    old news.
+                </p>
+                <ul class="custom-list">
+                    <li>text</li>
+                    <li>number</li>
+                    <li>checkbox</li>
+                    <li>radio</li>
+                    <li>tel</li>
+                    <li>email</li>
+                    <li>date</li>
+                    <li>search</li>
+                    <li>color</li>
+                </ul>
+                <p>
+                    Some of these will appear to do nothing, but there's some
+                    handy things they do for us. For example, different key
+                    boards will pop up on your users phone for
+                    <code>type="email"</code> and for <code>type="tel"</code>.
+                </p>
+                <p>
+                    Not only that, but these attributes could be useful for form
+                    validation later on down the road.
+                </p>
+                <p>
+                    <code>type="search"</code> may seem like it doesn't do
+                    anything, but remember, a browser may choose to do a number
+                    of cool things to any input type if it wished. Like maybe
+                    adding a little magnifying glass, or an <code>x</code> to
+                    clear a search input field.
+                </p>
+                <p>
+                    The rest of these types have pretty big and cool features.
+                </p>
+                <p>Date gives the user a calendar to pick a date from:</p>
+                <p>
+                    Color give the user a sweet color picker to choose a color
+                    from:
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Radio and Checkbox</h3>
+                <p>
+                    Radio Buttons (circles) only allow ther user to select one
+                    of the options.
+                </p>
+                <p>
+                    Checkboxes (squares) mean the user can pick as many of the
+                    options as they want.
+                </p>
+                <pre><code class="language-html">
+&lt;form&gt;&lt;p&gt;I like:&lt;/p&gt;&lt;br&gt;&lt;label&gt;&lt;input type="checkbox"/&gt;Cats&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type="checkbox"/&gt;Dogs&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type="checkbox"/&gt;Unicorns&lt;/label&gt;&lt;br&gt;
+    But my favorite is:
+    &lt;br&gt;
+    Dogs &lt;input type="radio" name="favorite"/&gt;
+    Cats &lt;input type="radio" name="favorite"/&gt;
+    Unicorns &lt;input type="radio" name="favorite"/&gt;&lt;/form&gt;
+</code></pre>
+                <p>
+                    The <code>name</code> and <code>value</code> attribute are
+                    especially important with radio buttons and check boxes.
+                </p>
+                <p>
+                    All buttons and boxes that are in the same grouping will be
+                    given the same <code>name</code>.
+                </p>
+                <p>
+                    The value of each input box will be the desired
+                    <code>.value</code> for radio buttons. Usually just what the
+                    user is selecting:
+                </p>
+                <pre><code class="language-html">
+&lt;form name="animals"&gt;
+    I like:
+    &lt;br&gt;
+    Cats &lt;input value="cats" name="likes" type="checkbox"/&gt;
+    Dogs &lt;input value="dogs" name="likes" type="checkbox"/&gt;
+    Unicorns &lt;input value="unicorns" name="likes" type="checkbox"/&gt;&lt;br&gt;
+    But my favorite is:
+    &lt;br&gt;
+    Dogs &lt;input value="cats" type="radio" name="favorite"/&gt;
+    Cats &lt;input value="dogs" type="radio" name="favorite"/&gt;
+    Unicorns &lt;input value="unicorns" type="radio" name="favorite"/&gt;&lt;button&gt;submit&lt;/button&gt;&lt;/form&gt;
+</code></pre>
+                <p>
+                    To get the value of the radio button the user selected, you
+                    can use the <code>name</code> attribute and the DOM gets a
+                    new property to the form!:
+                </p>
+                <pre><code class="language-jsx">
+document.animals.favorite.value //=>  "cats"
+</code></pre>
+                <p>
+                    To get the checkboxes that the user selected? That's it's
+                    own beast.
+                </p>
+                <pre><code class="language-html">
+Cats &lt;input value="cats" name="likes" type="checkbox"/&gt;
+Dogs &lt;input value="dogs" name="likes" type="checkbox"/&gt;
+</code></pre>
+                <p>
+                    What would <code>document.animals.likes.value</code> look
+                    like?
+                </p>
+                <p>
+                    It's not just going to be a string, because it can be
+                    multiple options that are selected. It's actually undefined.
+                </p>
+                <p>
+                    There are a few methods you can use to get which check boxes
+                    are check.
+                </p>
+                <p>
+                    If you select the input box, either by name or id, you can
+                    looked at it's <code>.checked</code> property.
+                </p>
+                <p>
+                    In this way, you could see wether or not a checkbox was
+                    checked.
+                </p>
+                <p>
+                    You could also get at the list of checkboxes, loop through
+                    them, and make another array of just the values of all the
+                    checked ones.
+                </p>
+                <p>
+                    Special note: <code>document.animals.likes</code> is kind of
+                    an array, but it's more accuratly a "node list".
+                </p>
+                <pre><code class="language-jsx">
+document.animals.addEventListener("submit", function(e){
+  e.preventDefault()
+  //assign our animals that are liked to a variable
+  var animals = document.animals.likes
+  //create a new array that we can fill with the values (as strings) of our checkboxes
+  var checkedAnimals = []
+  //loop through each checkbox
+  for (var i = 0; i < animals.likes.length; i++){
+    //check to see if the checkbox is checked
+    if(animals[i].checked){
+      //add the values to our new array
+      checkedAnimals.push(animals[i].value)
+    }
+  }
+  console.log(checkedAnimals)
+})
+</code></pre>
+                <p>
+                    Things got heavy there at the end, but for the most part,
+                    working with forms is great. Start practicing!
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>An easier way to get array of values from checkboxes</h3>
+                <p>
+                    Fortunately, there's a slightly easier alternative we can
+                    use to get the list of checked items using
+                    <code>document.querySelectorAll</code>:
+                </p>
+                <pre><code class="language-jsx">
+document.animals.addEventListener("submit", function(e){
+    e.preventDefault()
+    var checkedAnimals = [];
+    var checkedBoxes = document.querySelectorAll("input[name=likes]:checked");
+    for (var i = 0; i < checkedBoxes.length; i++) {
+        checkedAnimals.push(checkedBoxes[i].value);
+    }
+    console.log(checkedAnimals)
+});
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

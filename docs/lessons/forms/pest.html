@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mario Pest Control</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="assignment-header">
+            <header class="slide-header">
+                <h1 id="assignment-header">Mario Pest Control</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <div class="section">
+                <p>
+                    Princess Peach has a huge infestation of Goombas, Bob-ombs,
+                    and Cheep-cheeps, and has commissioned Mario to take care of
+                    her pest problem. Mario did the job, but he is having
+                    trouble keep track of how many he has caught and has asked
+                    you to build him a website that keeps track of how many
+                    baddies he caught for Princess Peach so he can send her a
+                    bill.
+                </p>
+                <h3>Pricing:</h3>
+                <ul class="custom-list">
+                    <li>Goombas: 5 Coins</li>
+                    <li>Bob-ombs: 7 Coins</li>
+                    <li>Cheep-cheeps: 11 Coins</li>
+                </ul>
+                <h3>Baddies Caught:</h3>
+                <p>
+                    The number of baddies caught will be entered into their
+                    input fields. Each baddies type will have their own input
+                    field.
+                </p>
+                <h3>Total Price</h3>
+                <p>
+                    This will be <em>dynamically</em> depending on how many
+                    baddies were caught.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Project Requirements</h3>
+                <p>The website must contain the following:</p>
+                <ul class="custom-list">
+                    <li>
+                        A list displaying each baddie by type. Each list item
+                        must:
+                    </li>
+                    <li>Have baddie image</li>
+                    <li>Have baddie name</li>
+                    <li>Show price of that baddie</li>
+                    <li>
+                        Have an input box to enter the total caught of that type
+                    </li>
+                    <li>
+                        A total price at the bottom that adds sums the total
+                        cost of baddies caught
+                    </li>
+                    <li>
+                        <em
+                            >(must use JavaScript for this math - no hard coded
+                            values)</em
+                        >
+                    </li>
+                    <li>A footer showing:</li>
+                    <li>Mario's email address</li>
+                    <li>Mario's company website URL</li>
+                    <li>Mario's physical address</li>
+                    <li>
+                        A large title at the top of the page entitled "Mario
+                        Pest Control"
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <h3>
+                <a
+                    href="https://marcopete5.github.io/level-2/assignments/mario/index.html"
+                    target="_blank"
+                    rel="noopener"
+                    >DEMO OF COMPLETED ASSIGNMENT</a
+                >
+            </h3>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Task Rubric</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Level 1: Emerging</th>
+                            <th>Level 2: Developing</th>
+                            <th>Level 3: Proficient</th>
+                            <th>Level 4: Mastery</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Functionality</td>
+                            <td>
+                                Major flaws in the calculation of total price.
+                                Subtotals not present.
+                            </td>
+                            <td>
+                                Subtotals are present but total calculation is
+                                glitchy, such as concatenating the subtotals
+                                instead of adding
+                            </td>
+                            <td>
+                                Subtotals and totals are calculated and
+                                displayed correctly
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Styling</td>
+                            <td>
+                                Very little CSS used. Missing, or unevenly
+                                placed images. Unprofessional or awkward looking
+                                UI
+                            </td>
+                            <td>
+                                CSS is poorly organized and formatted. Most
+                                information is displayed correctly but in a
+                                glitchy/awkward fashion
+                            </td>
+                            <td>
+                                All relevant information is displayed correctly
+                                but with only minor UI issues. CSS contains only
+                                minor organization issues
+                            </td>
+                            <td>
+                                Professional layout, responsive at different
+                                screen sizes. Images, price information and form
+                                inputs are displayed effectively. CSS is highly
+                                organized and class names are well named
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Code Quality</td>
+                            <td>
+                                Formatting is inconsistent and code is repeated
+                                or disorganized and difficult to follow. Syntax
+                                errors are present.
+                            </td>
+                            <td>
+                                Syntax and formatting is correct and consistent
+                                but certain code conventions aren’t followed,
+                                variable names are confusing, and code is
+                                challenging to read
+                            </td>
+                            <td>
+                                Minor issues with code organization and variable
+                                naming but is generally easy to read and follow.
+                            </td>
+                            <td>
+                                Code is DRY, variable names are sensible, and it
+                                is broken up into discreet, reusable pieces.
+                                Modules are used to separate concerns
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Extra Credit</h3>
+                <p>
+                    Build Mario Pest Control website to be responsive, meaning
+                    it looks great when shrunk down to the screen size of a
+                    smart phone.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Submitting Assignments</h3>
+                <p>
+                    Please remember to regularly submit your assignments to
+                    GitHub!
+                </p>
+                <p>Using Git Command Line:</p>
+                <ol class="custom-list">
+                    <li>Open Terminal and navigate to your project folder.</li>
+                    <li>
+                        Add Changes:
+                        <code
+                            >git add
+                            &lt;relative/path/to/assignment/folder&gt;</code
+                        >
+                    </li>
+                    <li>
+                        Commit Changes:
+                        <code
+                            >git commit -m "submitting assignment
+                            &lt;name&gt;"</code
+                        >
+                    </li>
+                    <li>Push to GitHub: <code>git push origin main</code></li>
+                </ol>
+                <p>Using VSCode's Source Control:</p>
+                <ol class="custom-list">
+                    <li>Open VSCode and click on the Source Control tab.</li>
+                    <li>
+                        Stage Changes: Click the "+" icon next to each file.
+                    </li>
+                    <li>
+                        Commit Changes: Enter a commit message and click Commit.
+                    </li>
+                    <li>Push to GitHub: Click the Sync Changes button.</li>
+                </ol>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
