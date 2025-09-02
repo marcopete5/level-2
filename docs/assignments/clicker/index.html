@@ -187,14 +187,14 @@
             // To use localStorage in your own environment, uncomment the localStorage lines
             // and comment out the in-memory variables
 
-            let clickCount = 0; // In-memory storage
+            // let clickCount = 0; // In-memory storage
             let timeLeft = 20;
             let gameActive = true;
             let gameStarted = false;
             let countdownInterval;
 
             // For localStorage implementation (use in your own environment):
-            // let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+            let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
 
             const clickCountElement = document.getElementById('clickCount');
             const timerElement = document.getElementById('timer');
@@ -248,7 +248,7 @@
                 updateDisplay();
 
                 // For localStorage implementation:
-                // localStorage.setItem('clickCount', '0');
+                localStorage.setItem('clickCount', '0');
             }
 
             // Create click animation
@@ -282,15 +282,15 @@
                 createClickAnimation(e.clientX, e.clientY);
 
                 // For localStorage implementation:
-                // localStorage.setItem('clickCount', clickCount.toString());
+                localStorage.setItem('clickCount', clickCount.toString());
             });
 
             // Initialize on page load
             updateDisplay();
 
             // For localStorage implementation, load saved data:
-            // clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
-            // updateDisplay();
+            clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+            updateDisplay();
         </script>
     </body>
 </html>
