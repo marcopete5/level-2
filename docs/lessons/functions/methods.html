@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Multiple Methods Practice</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="assignment-header">
+            <header class="slide-header">
+                <h1 id="assignment-header">Multiple Methods Practice</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <p>
+                    You should use multiple array methods to solve these
+                    problems. Don't use <code>for</code> loops!
+                </p>
+                <p>
+                    Using the provided <code>peopleArray</code> (bottom of this
+                    article), write a function that:
+                </p>
+                <ol class="custom-list">
+                    <li>Returns a list of everyone older than 18, which is</li>
+                    <li>sorted alphabetically by last name, and where</li>
+                    <li>
+                        each name and age is embedded in a string that looks
+                        like an HTML <code>&lt;li&gt;</code> element.
+                    </li>
+                </ol>
+                <h3>Example</h3>
+                <pre><code class="language-jsx">
+function sortedOfAge(arr){
+   // Your code here
+}
+
+console.log(sortedOfAge(peopleArray));
+
+/*
+Output:
+[
+    "&lt;li&gt;Kyle Mooney is 27&lt;/li&gt;",
+    "&lt;li&gt;Sarah Palin is 47&lt;/li&gt;",
+    "&lt;li&gt;Rick Sanchez is 78&lt;/li&gt;",
+    "&lt;li&gt;Morty Smith is 29&lt;/li&gt;",
+    "&lt;li&gt;Lev Tolstoy is 82&lt;/li&gt;"
+]
+*/
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Extra Credit</h3>
+                <ul class="custom-list">
+                    <li>
+                        Create another array of one or more individuals and add
+                        it to the original array.
+                    </li>
+                    <li>
+                        Create a function that filters out all people who's last
+                        names end with "y" or "a" and save those people in
+                        another array.
+                    </li>
+                    <li>Remove the second individual from the array.</li>
+                    <li>Return the array in reverse order.</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Provided Array</h3>
+                <pre><code class="language-jsx">
+var peopleArray = [
+    {
+        firstName: "Sarah",
+        lastName: "Palin",
+        age: 47
+    },
+    {
+        firstName: "Frank",
+        lastName: "Zappa",
+        age: 12
+    },
+    {
+        firstName: "Rick",
+        lastName: "Sanchez",
+        age: 78
+    },
+    {
+        firstName: "Morty",
+        lastName: "Smith",
+        age: 29
+    },
+    {
+        firstName: "Kyle",
+        lastName: "Mooney",
+        age: 27
+    },
+    {
+        firstName: "Pasha",
+        lastName: "Datsyuk",
+        age: 13
+    },
+    {
+        firstName: "Lev",
+        lastName: "Tolstoy",
+        age: 82
+    }
+]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Some & Every</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Some & Every</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        explain the difference between <code>some()</code> and
+                        <code>every()</code>
+                    </li>
+                    <li>
+                        implement <code>some()</code> and
+                        <code>every()</code> on an array of arbitrary values
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/c278m9T4?pl=pYp4bpNUM"
+                    title="Some and Every Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on JavaScript some and every methods"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    Understanding JavaScript Array Methods: .some() and .every()
+                </h3>
+                <h4>1. some() Method:</h4>
+                <h5>Introduction:</h5>
+                <p>
+                    The <code>.some()</code> method in JavaScript checks if at
+                    least one element in the array satisfies a provided testing
+                    function. It returns <code>true</code> if at least one
+                    element passes the test, otherwise <code>false</code>.
+                </p>
+                <h5>Syntax:</h5>
+                <pre><code class="language-jsx">
+let result = array.some(callback(element[, index[, array]]) {
+  // return true if element meets condition, false otherwise
+}[, thisArg]);
+</code></pre>
+                <ul class="custom-list">
+                    <li><code>array</code>: The array you want to check.</li>
+                    <li>
+                        <code>callback</code>: Function to test each element of
+                        the array. It takes in three arguments:
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>element</code>: The current element being
+                        processed in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>index</code> (Optional): The index of the current
+                        element being processed.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>array</code> (Optional): The array that
+                        <code>.some()</code> is being called upon.
+                    </li>
+                    <li>
+                        <code>thisArg</code> (Optional): Value to use as
+                        <code>this</code> when executing the callback function.
+                    </li>
+                </ul>
+                <h5>Example Usage:</h5>
+                <pre><code class="language-jsx">
+// Original array
+let numbers = [1, 2, 3, 4, 5];
+
+// Using .some() to check if any number is even
+let isAnyEven = numbers.some(function(num) {
+  return num % 2 === 0;
+});
+
+console.log(isAnyEven); // Output: true (since 2 is even)
+</code></pre>
+                <h5>Key Points:</h5>
+                <ul class="custom-list">
+                    <li>
+                        <code>.some()</code> returns <code>true</code> if at
+                        least one element in the array satisfies the condition;
+                        otherwise, it returns <code>false</code>.
+                    </li>
+                    <li>
+                        It stops iterating once it finds a satisfying element.
+                    </li>
+                    <li>It does not mutate the original array.</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h4>2. every() Method:</h4>
+                <h5>Introduction:</h5>
+                <p>
+                    The <code>.every()</code> method in JavaScript checks if all
+                    elements in the array satisfy a provided testing function.
+                    It returns <code>true</code> if all elements pass the test,
+                    otherwise <code>false</code>.
+                </p>
+                <h5>Syntax:</h5>
+                <pre><code class="language-jsx">
+let result = array.every(callback(element[, index[, array]]) {
+  // return true if element meets condition, false otherwise
+}[, thisArg]);
+</code></pre>
+                <ul class="custom-list">
+                    <li><code>array</code>: The array you want to check.</li>
+                    <li>
+                        <code>callback</code>: Function to test each element of
+                        the array. It takes in three arguments:
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>element</code>: The current element being
+                        processed in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>index</code> (Optional): The index of the current
+                        element being processed.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>array</code> (Optional): The array that
+                        <code>.every()</code> is being called upon.
+                    </li>
+                    <li>
+                        <code>thisArg</code> (Optional): Value to use as
+                        <code>this</code> when executing the callback function.
+                    </li>
+                </ul>
+                <h5>Example Usage:</h5>
+                <pre><code class="language-jsx">
+// Original array
+let numbers = [2, 4, 6, 8, 10];
+
+// Using .every() to check if all numbers are even
+let areAllEven = numbers.every(function(num) {
+  return num % 2 === 0;
+});
+
+console.log(areAllEven); // Output: true (since all numbers are even)
+</code></pre>
+                <h5>Key Points:</h5>
+                <ul class="custom-list">
+                    <li>
+                        <code>.every()</code> returns <code>true</code> if all
+                        elements in the array satisfy the condition; otherwise,
+                        it returns <code>false</code>.
+                    </li>
+                    <li>
+                        It stops iterating and returns <code>false</code> as
+                        soon as it encounters a non-satisfying element.
+                    </li>
+                    <li>It does not mutate the original array.</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h4>Conclusion:</h4>
+                <p>
+                    The <code>.some()</code> and <code>.every()</code> methods
+                    in JavaScript are valuable tools for checking conditions
+                    against array elements. They provide efficient ways to
+                    determine if certain conditions are met by at least one or
+                    all elements in the array, respectively. Understanding and
+                    utilizing these methods can streamline data validation and
+                    decision-making processes in your JavaScript applications.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Supplementary Content</h3>
+                <p>
+                    <a
+                        href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-some-method-to-check-that-any-elements-in-an-array-meet-a-criteria"
+                        target="_blank"
+                        rel="noopener"
+                        >freeCodeCamp.org</a
+                    >
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

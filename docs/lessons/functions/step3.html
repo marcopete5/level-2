@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Filter</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Filter</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will:</p>
+                <ul class="custom-list">
+                    <li>
+                        Be able to implement <code>.filter()</code> on an array
+                        of arbitrary values.
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cJ4DaRUW?pl=pYp4bpNUM"
+                    title="Filter Method Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on the JavaScript .filter() method"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Understanding JavaScript Array Method: .filter()</h3>
+                <h4>Introduction:</h4>
+                <p>
+                    In JavaScript, the <code>.filter()</code> method is used to
+                    create a new array with all elements that pass a certain
+                    condition specified by a callback function. It iterates
+                    through each element in the array and includes only those
+                    elements for which the callback function returns true.
+                </p>
+                <h4>Syntax:</h4>
+                <pre><code class="language-jsx">
+let newArray = array.filter(callback(element[, index[, array]]) {
+  // return true to keep the element, false otherwise
+}[, thisArg]);
+</code></pre>
+                <ul class="custom-list">
+                    <li>
+                        <code>array</code>: The original array you want to
+                        filter.
+                    </li>
+                    <li>
+                        <code>callback</code>: Function to test each element of
+                        the array. It takes in three arguments:
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>element</code>: The current element being
+                        processed in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>index</code> (Optional): The index of the current
+                        element being processed.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>array</code> (Optional): The array that
+                        <code>.filter()</code> is being called upon.
+                    </li>
+                    <li>
+                        <code>thisArg</code> (Optional): Value to use as
+                        <code>this</code> when executing the callback function.
+                    </li>
+                </ul>
+                <h4>Example Usage:</h4>
+                <pre><code class="language-jsx">
+// Original array
+let numbers = [1, 2, 3, 4, 5];
+
+// Using .filter() to get only even numbers
+let evenNumbers = numbers.filter(function(num) {
+  return num % 2 === 0;
+});
+
+console.log(evenNumbers); // Output: [2, 4]
+</code></pre>
+                <p>In this example:</p>
+                <ul class="custom-list">
+                    <li>We have an array of numbers.</li>
+                    <li>
+                        We use the <code>.filter()</code> method to iterate over
+                        each element.
+                    </li>
+                    <li>
+                        For each element, we check if it is even (divisible by
+                        2) using the modulo operator (<code>%</code>).
+                    </li>
+                    <li>
+                        The <code>.filter()</code> method returns a new array
+                        containing only the elements that pass the condition.
+                    </li>
+                </ul>
+                <h4>Key Points:</h4>
+                <ul class="custom-list">
+                    <li>
+                        <code>.filter()</code> does not modify the original
+                        array; it creates and returns a new array.
+                    </li>
+                    <li>
+                        It is commonly used for selecting elements from an array
+                        based on a specific condition.
+                    </li>
+                    <li>
+                        The callback function passed to
+                        <code>.filter()</code> should return a boolean value
+                        (<code>true</code> to keep the element,
+                        <code>false</code> to discard it).
+                    </li>
+                </ul>
+                <h4>Conclusion:</h4>
+                <p>
+                    The <code>.filter()</code> method in JavaScript provides a
+                    convenient way to create a new array containing elements
+                    that satisfy a given condition. It is useful for data
+                    filtering tasks where you need to extract or exclude
+                    elements based on specific criteria, allowing for cleaner
+                    and more efficient code.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Supplementary Content</h3>
+                <p>
+                    <a
+                        href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-filter-method-to-extract-data-from-an-array"
+                        target="_blank"
+                        rel="noopener"
+                        >freeCodeCamp.org</a
+                    >
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

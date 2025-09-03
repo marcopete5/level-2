@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Filter Exercises</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="assignment-header">
+            <header class="slide-header">
+                <h1 id="assignment-header">Filter Exercises</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <p>
+                    Use the built-in array method <code>.filter()</code> to
+                    solve all of these problems
+                </p>
+                <p>
+                    Feel free to copy and paste the function and tests in this
+                    assignment.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    1) Given an array of numbers, return a new array that has
+                    only the numbers that are 5 or greater.
+                </h3>
+                <pre><code class="language-jsx">
+function fiveAndGreaterOnly(arr) {
+  // your code here
+}
+// test
+console.log(fiveAndGreaterOnly([3, 6, 8, 2])); /// [6, 8]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    2) Given an array of numbers, return a new array that only
+                    includes the even numbers.
+                </h3>
+                <pre><code class="language-jsx">
+function evensOnly(arr) {
+  // your code here
+}
+// test
+console.log(evensOnly([3, 6, 8, 2])); /// [6, 8, 2]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    3) Given an array of strings, return a new array that only
+                    includes those that are 5 characters or fewer in length
+                </h3>
+                <pre><code class="language-jsx">
+function fiveCharactersOrFewerOnly(arr) {
+  // your code here
+}
+// test
+console.log(fiveCharactersOrFewerOnly(["dog", "wolf", "by", "family", "eaten", "camping"])); // ["by", "dog", "wolf", "eaten"]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    4) Given an array of people objects, return a new array that
+                    has filtered out all those who don't belong to the club.
+                </h3>
+                <pre><code class="language-jsx">
+function peopleWhoBelongToTheIlluminati(arr){
+  // your code here
+}
+// test
+console.log(peopleWhoBelongToTheIlluminati([
+    { name: "Angelina Jolie", member: true },
+    { name: "Eric Jones", member: false },
+    { name: "Paris Hilton", member: true },
+    { name: "Kayne West", member: false },
+    { name: "Bob Ziroll", member: true }
+]));
+// =>
+//[ { name: 'Angelina Jolie', member: true },
+//  { name: 'Paris Hilton', member: true },
+//  { name: 'Bob Ziroll', member: true } ]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    5) Make a filtered list of all the people who are old enough
+                    to see <em>The Matrix</em> (older than 18)
+                </h3>
+                <pre><code class="language-jsx">
+function ofAge(arr){
+  // your code here
+}
+// test
+console.log(ofAge([
+    { name: "Angelina Jolie", age: 80 },
+    { name: "Eric Jones", age: 2 },
+    { name: "Paris Hilton", age: 5 },
+    { name: "Kayne West", age: 16 },
+    { name: "Bob Ziroll", age: 100 }
+]));
+// =>
+//[ { name: 'Angelina Jolie', age: 80 },
+//  { name: 'Bob Ziroll', age: 100 } ]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

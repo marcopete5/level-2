@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Map Exercises</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="assignment-header">
+            <header class="slide-header">
+                <h1 id="assignment-header">Map Exercises</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <aside>
+                    <p>
+                        💡 Feel free to copy and paste the function and tests in
+                        this assignment.
+                    </p>
+                </aside>
+                <h3>
+                    1) Make an array of numbers that are doubles of the first
+                    array
+                </h3>
+                <pre><code class="language-jsx">
+function doubleNumbers(arr){
+  // your code here
+}
+
+console.log(doubleNumbers([2, 5, 100])); // [4, 10, 200]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>2) Take an array of numbers and make them strings</h3>
+                <pre><code class="language-jsx">
+function stringItUp(arr){
+  // your code here
+}
+
+console.log(stringItUp([2, 5, 100])); // ["2", "5", "100"]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    3) Capitalize the first letter of each name and make the
+                    rest of the characters lowercase
+                </h3>
+                <pre><code class="language-jsx">
+function capitalizeNames(arr){
+  // your code here
+}
+
+console.log(capitalizeNames(["john", "JACOB", "jinGleHeimer", "schmidt"])); 
+
+// Output:
+// ["John", "Jacob", "Jingleheimer", "Schmidt"]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>4) Make an array of strings of the names</h3>
+                <pre><code class="language-jsx">
+function namesOnly(arr){
+  // your code here
+}
+
+console.log(namesOnly([
+    {
+        name: "Angelina Jolie",
+        age: 80
+    },
+    {
+        name: "Eric Jones",
+        age: 2
+    },
+    {
+        name: "Paris Hilton",
+        age: 5
+    },
+    {
+        name: "Kayne West",
+        age: 16
+    },
+    {
+        name: "Bob Ziroll",
+        age: 100
+    }
+]));
+// ["Angelina Jolie", "Eric Jones", "Paris Hilton", "Kayne West", "Bob Ziroll"]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    5) Make an array of strings of the names saying whether or
+                    not they can go to The Matrix
+                </h3>
+                <pre><code class="language-jsx">
+function makeStrings(arr){
+  // your code here
+}
+
+console.log(makeStrings([
+    {
+        name: "Angelina Jolie",
+        age: 80
+    },
+    {
+        name: "Eric Jones",
+        age: 2
+    },
+    {
+        name: "Paris Hilton",
+        age: 5
+    },
+    {
+        name: "Kayne West",
+        age: 16
+    },
+    {
+        name: "Bob Ziroll",
+        age: 100
+    }
+]));
+// ["Angelina Jolie can go to The Matrix",
+// "Eric Jones is under age!!",
+// "Paris Hilton is under age!!",
+// "Kayne West is under age!!",
+// "Bob Ziroll can go to The Matrix"]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    6) Make an array of the names in <code>h1</code>s, and the
+                    ages in <code>h2</code>s
+                </h3>
+                <pre><code class="language-jsx">
+function readyToPutInTheDOM(arr){
+  // your code here
+}
+console.log(readyToPutInTheDOM([
+    {
+        name: "Angelina Jolie",
+        age: 80
+    },
+    {
+        name: "Eric Jones",
+        age: 2
+    },
+    {
+        name: "Paris Hilton",
+        age: 5
+    },
+    {
+        name: "Kayne West",
+        age: 16
+    },
+    {
+        name: "Bob Ziroll",
+        age: 100
+    }
+]));
+// ["&lt;h1&gt;Angelina Jolie&lt;/h1&gt;&lt;h2&gt;80&lt;/h2&gt;",
+// "&lt;h1&gt;Eric Jones&lt;/h1&gt;&lt;h2&gt;2&lt;/h2&gt;",
+// "&lt;h1&gt;Paris Hilton&lt;/h1&gt;&lt;h2&gt;5&lt;/h2&gt;",
+// "&lt;h1&gt;Kayne West&lt;/h1&gt;&lt;h2&gt;16&lt;/h2&gt;",
+// "&lt;h1&gt;Bob Ziroll&lt;/h1&gt;&lt;h2&gt;100&lt;/h2&gt;"]
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Task Rubric</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Level 1: Emerging</th>
+                            <th>Level 2: Developing</th>
+                            <th>Level 3: Proficient</th>
+                            <th>Level 4: Mastery</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Problem Solving</td>
+                            <td>
+                                Missing solutions to some problems. Some
+                                solutions produce wrong output or only work for
+                                special cases. Solutions don’t use
+                                <code>.map()</code>
+                            </td>
+                            <td>
+                                All problems have solutions but some produce
+                                wrong output. Some solutions are correct, but
+                                are convoluted or difficult to follow.
+                            </td>
+                            <td>
+                                Solutions are correct for all problems except
+                                for a couple special edge cases. Minor
+                                inaccuracies with ability to explain solution
+                            </td>
+                            <td>
+                                All solutions are correct and can explain each
+                                solution succinctly and accurately
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Code Quality</td>
+                            <td>
+                                Formatting is inconsistent and code is repeated
+                                or disorganized and difficult to follow. Syntax
+                                errors are present.
+                            </td>
+                            <td>
+                                Syntax and formatting is correct and consistent
+                                but certain code conventions aren’t followed,
+                                variable names are confusing, and code is
+                                challenging to read
+                            </td>
+                            <td>
+                                Minor issues with code organization and variable
+                                naming but is generally easy to read and follow.
+                            </td>
+                            <td>
+                                Solutions are elegantly written that prioritize
+                                readability.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Submitting Assignments</h3>
+                <p>
+                    Please remember to regularly submit your assignments to
+                    GitHub!
+                </p>
+                <p>Using Git Command Line:</p>
+                <ol class="custom-list">
+                    <li>Open Terminal and navigate to your project folder.</li>
+                    <li>
+                        Add Changes:
+                        <code
+                            >git add
+                            &lt;relative/path/to/assignment/folder&gt;</code
+                        >
+                    </li>
+                    <li>
+                        Commit Changes:
+                        <code
+                            >git commit -m "submitting assignment
+                            &lt;name&gt;"</code
+                        >
+                    </li>
+                    <li>Push to GitHub: <code>git push origin main</code></li>
+                </ol>
+                <p>Using VSCode's Source Control:</p>
+                <ol class="custom-list">
+                    <li>Open VSCode and click on the Source Control tab.</li>
+                    <li>
+                        Stage Changes: Click the "+" icon next to each file.
+                    </li>
+                    <li>
+                        Commit Changes: Enter a commit message and click Commit.
+                    </li>
+                    <li>Push to GitHub: Click the Sync Changes button.</li>
+                </ol>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

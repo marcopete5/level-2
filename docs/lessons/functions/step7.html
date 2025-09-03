@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reduce</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Reduce</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        set up <code>reduce()</code>, including which parameters
+                        are required and optional.
+                    </li>
+                    <li>initialize the starting value</li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cPg8wMfD?pl=pYp4bpNUM"
+                    title="Reduce Method Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on the JavaScript .reduce() method"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    Understanding JavaScript's .reduce() Method: A Comprehensive
+                    Guide
+                </h3>
+                <p>
+                    The <code>.reduce()</code> method in JavaScript is a
+                    powerful tool for processing and transforming arrays. It
+                    allows you to iteratively reduce an array to a single value,
+                    such as a sum, average, or any other computation. This
+                    method is especially useful when you need to perform complex
+                    operations on array elements and accumulate the results.
+                </p>
+                <h4>Syntax:</h4>
+                <pre><code class="language-jsx">
+array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue)
+</code></pre>
+                <ul class="custom-list">
+                    <li>
+                        <code>callback</code>: A function that is executed on
+                        each element of the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>accumulator</code>: The accumulated result of the
+                        callback's previous executions.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>currentValue</code>: The current element being
+                        processed in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>currentIndex</code> (optional): The index of the
+                        current element being processed.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>array</code> (optional): The array on which the
+                        <code>reduce()</code> method was called.
+                    </li>
+                    <li>
+                        <code>initialValue</code> (optional): An initial value
+                        for the <code>accumulator</code>. If provided, the
+                        <code>reduce()</code> method starts with this value;
+                        otherwise, the first element of the array becomes the
+                        initial value.
+                    </li>
+                </ul>
+                <h4>Basic Example: Sum of Array Elements</h4>
+                <pre><code class="language-jsx">
+const numbers = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(sum); // Output: 15
+</code></pre>
+                <p>
+                    In this example, the <code>.reduce()</code> method iterates
+                    over each element in the <code>numbers</code> array,
+                    accumulating the sum of elements. The
+                    <code>0</code> provided as the second argument is the
+                    initial value for the <code>accumulator</code>.
+                </p>
+                <h4>Key Concepts:</h4>
+                <ul class="custom-list">
+                    <li><strong>Accumulator:</strong></li>
+                    <li style="margin-left: 1.5em">
+                        The <code>accumulator</code> is a variable that holds
+                        the intermediate result during the iteration process.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        It carries the result from one iteration to the next.
+                    </li>
+                    <li><strong>Callback Function:</strong></li>
+                    <li style="margin-left: 1.5em">
+                        The <code>callback</code> function is executed for each
+                        element in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        It takes four parameters (<code>accumulator</code>,
+                        <code>currentValue</code>, <code>currentIndex</code>,
+                        and <code>array</code>) but often only
+                        <code>accumulator</code> and
+                        <code>currentValue</code> are used.
+                    </li>
+                    <li><strong>Initial Value:</strong></li>
+                    <li style="margin-left: 1.5em">
+                        The <code>initialValue</code> is optional but can be
+                        crucial for certain operations.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        If not provided, the first element of the array becomes
+                        the initial <code>accumulator</code> value.
+                    </li>
+                    <li><strong>Return Value:</strong></li>
+                    <li style="margin-left: 1.5em">
+                        The final result is the value of the
+                        <code>accumulator</code> after the last iteration.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        It represents the cumulative result of applying the
+                        callback to each element.
+                    </li>
+                </ul>
+                <h4>Advanced Examples:</h4>
+                <h5>Finding Maximum Value:</h5>
+                <pre><code class="language-jsx">
+const numbers = [10, 5, 8, 20, 3];
+
+const max = numbers.reduce((maxValue, currentValue) => {
+  return Math.max(maxValue, currentValue);
+});
+
+console.log(max); // Output: 20
+</code></pre>
+                <h5>Flattening Arrays:</h5>
+                <pre><code class="language-jsx">
+const nestedArray = [[1, 2], [3, 4], [5, 6]];
+
+const flattenedArray = nestedArray.reduce((accumulator, currentValue) => {
+  return accumulator.concat(currentValue);
+}, []);
+
+console.log(flattenedArray); // Output: [1, 2, 3, 4, 5, 6]
+</code></pre>
+                <aside>
+                    <p>
+                        💡 Critical thinking: See if you can figure out what
+                        other methods you could mimic using
+                        <code>reduce()</code>. For example, how would you use it
+                        to filter out the odd numbers in an array, leaving just
+                        the even ones?
+                    </p>
+                </aside>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Supplementary Content</h3>
+                <p>
+                    <a
+                        href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-reduce-method-to-analyze-data"
+                        target="_blank"
+                        rel="noopener"
+                        >freeCodeCamp.org</a
+                    >
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

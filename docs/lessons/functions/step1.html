@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Introduction to Higher Order Functions</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">
+                    Introduction to Higher Order Functions
+                </h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        explain the concept of a higher order function as well
+                        as demonstrate examples of one.
+                    </li>
+                    <li>
+                        identify common higher order functions such as
+                        <code>.map()</code> or <code>.filter()</code>
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cmkKZKT6?pl=pYp4bpNUM"
+                    title="Introduction to Higher Order Functions Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on higher order functions"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+                <p>A higher order function either:</p>
+                <ul class="custom-list">
+                    <li>takes one or more functions as an argument</li>
+                    <li>or</li>
+                    <li>outputs a function</li>
+                </ul>
+                <p>
+                    Functions in JavaScript are just values, so they can be
+                    easily passed into and returned by functions.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>The Bare Bones</h3>
+                <p>Higher Order Functions are typically methods.</p>
+                <p>
+                    <em>Methods</em> - Methods are functions that are part of a
+                    bigger object. They can only be used when attached to an
+                    array, string, object, etc...
+                </p>
+                <p>EX: item.function() or Array.map()</p>
+                <p>
+                    <em>Functions</em> = Functions are written to perform
+                    specific tasks but can be called whenever, they do not need
+                    to be attached to anything.
+                </p>
+                <p>
+                    E.g.: <code>function()</code> or <code>setInterval()</code>
+                </p>
+                <p>The bare bones of a Higher Order Function is this:</p>
+                <p>
+                    <code>item.function(function(){})</code> if it is a method
+                </p>
+                <p>or</p>
+                <p>
+                    <code>function(function(){})</code> if it is just a regular
+                    function
+                </p>
+                <p>
+                    Notice that the argument that a Higher Order Function takes
+                    is always another function. If you wanted to you could save
+                    that function to a variable beforehand and then just pass in
+                    that variable. That would look like this:
+                </p>
+                <pre><code class="language-jsx">
+var myFunc = function(){};
+
+function(myFunc);
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Common Higher Order Functions</h3>
+                <h4
+                    style="
+                        font-size: 1.5em;
+                        margin-top: 1.5em;
+                        margin-bottom: 0.5em;
+                        color: #1a2a44;
+                    ">
+                    Methods
+                </h4>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .map()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>
+                            Returns a new array with a change made to every item
+                            from the original array
+                        </li>
+                        <li>
+                            Whatever you return from the inner function is
+                            inserted into the same index as the original array
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .filter()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>
+                            Returns a new array that only includes some of the
+                            items from the original array
+                        </li>
+                        <li>
+                            If inner function returns <code>true</code> (or
+                            something "truthy"), that item is included in the
+                            new array. If it returns <code>false</code> (or
+                            something "falsey"), it doesn't include it in the
+                            new array.
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .reduce()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>
+                            Returns any kind of value you want (number, string,
+                            boolean, array, etc.)
+                        </li>
+                        <li>
+                            Inner function used to combine the values from the
+                            original array into a single value of some kind.
+                            E.g.: adding all the values together from an array
+                            of numbers.
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .sort()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>
+                            Modifies/mutates the original array by re-ordering
+                            the items therein.
+                        </li>
+                        <li>
+                            Inner function compares 2 items and determines how
+                            they should be reordered.
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .forEach()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>
+                            Returns <code>undefined</code> (don't expect to
+                            receive anything in return)
+                        </li>
+                        <li>
+                            Runs the inner function once for every item in the
+                            original array
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .find()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>Returns one of the items from the array</li>
+                        <li>
+                            If inner function returns <code>true</code>, the
+                            <code>.find()</code> finishes and returns that
+                            current value in the original array. If it returns
+                            <code>false</code>, it continues to search through
+                            the array until it returns <code>true</code>. If it
+                            never returns <code>true</code> (no items match the
+                            condition), it returns <code>undefined</code>
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .findIndex()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>
+                            Same as <code>.find()</code> but instead of
+                            returning the item in the array, it returns the
+                            index where it found the matching item
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .some()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>
+                            Returns either <code>true</code> or
+                            <code>false</code>
+                        </li>
+                        <li>
+                            If inner function returns <code>true</code>, the
+                            <code>.some()</code> immediately returns
+                            <code>true</code> (because at least one of the items
+                            matches your condition). If the inner function
+                            returns <code>false</code> for every item in the
+                            array, the <code>.some()</code> returns
+                            <code>false</code> (no items matches your condition)
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <h5
+                        style="
+                            font-size: 1.2em;
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            color: #00aeef;
+                        ">
+                        .every()
+                    </h5>
+                    <ul class="custom-list" style="margin-left: 1.5em">
+                        <li>Returns <code>true</code> or <code>false</code></li>
+                        <li>
+                            Opposite of <code>.some()</code>, in that if the
+                            inner function ever returns <code>false</code> for
+                            any item, <code>.every()</code> immediately returns
+                            <code>false</code> (because NOT every item matched
+                            the condition). If the inner function returns
+                            <code>true</code> for every item in the array, the
+                            <code>.every()</code> returns <code>true</code>
+                        </li>
+                    </ul>
+                </div>
+                <h4
+                    style="
+                        font-size: 1.5em;
+                        margin-top: 1.5em;
+                        margin-bottom: 0.5em;
+                        color: #1a2a44;
+                    ">
+                    Functions
+                </h4>
+                <ul class="custom-list">
+                    <li><code>setInterval()</code></li>
+                    <li><code>setTimeout()</code></li>
+                    <li><code>clearInterval()</code></li>
+                </ul>
+                <p>
+                    In this write up we are only going to be looking at the
+                    Methods. If you want to learn more or review your knowledge
+                    regarding <code>setInterval</code>, <code>setTimeout</code>,
+                    or <code>clearInterval</code>, you can do so here:
+                </p>
+                <ul class="custom-list">
+                    <li>
+                        <a
+                            href="https://www.w3schools.com/jsref/met_win_setinterval.asp"
+                            target="_blank"
+                            rel="noopener"
+                            >setInterval</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.w3schools.com/jsref/met_win_settimeout.asp"
+                            target="_blank"
+                            rel="noopener"
+                            >setTimeout</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.w3schools.com/jsref/met_win_clearinterval.asp"
+                            target="_blank"
+                            rel="noopener"
+                            >clearInterval</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Examples</h3>
+                <p>Let's begin with one of the more popular Methods.</p>
+                <p>
+                    <strong>.map()</strong> - Runs a for loop on an array and
+                    returns a new array with the changes indicated.
+                </p>
+                <pre><code class="language-jsx">
+var arr = [1,2,3,4];
+
+arr.map(function(item){
+    return item + 1;
+})
+
+// => [2,3,4,5]
+</code></pre>
+                <p>Let's compare this to a normal for loop</p>
+                <pre><code class="language-jsx">
+var arr = [1,2,3,4];
+
+for ( var i = 0; i < arr.length; i++){
+   arr[i] += 1;
+}
+
+// => [2,3,4,5]
+</code></pre>
+                <p>
+                    They do virtually the exact same thing. One important thing
+                    to take note of is that rather than writing
+                    <code>arr[i]</code> to access each item in the array, we use
+                    <code>item</code>. The word <code>item</code> is not a saved
+                    word. Best practice is to name <code>item</code> the
+                    singular version of whatever your array holds, for example:
+                </p>
+                <pre><code class="language-jsx">
+var dogs = ['lab', 'poodle', 'shih-tzu'];
+
+dogs.map(function(dog){
+    return dog + 's are quite fancy';
+})
+
+// => ['labs are quite fancy', 'poodles are quite fancy', 'shit-tzus are quite fancy']
+</code></pre>
+                <p>
+                    So if you had an array called <code>numbers</code> then the
+                    item would be <code>number</code> or if you had an array
+                    called <code>names</code> then the item would be
+                    <code>name</code>.
+                </p>
+                <p>
+                    <strong>.filter()</strong> - Runs a loop on an array and
+                    returns a new array with only the items that meet the given
+                    condition.
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [12,4,56,27];
+
+numbers.filter(function(number){
+    return number >= 25;
+})
+
+// => [56, 27]
+</code></pre>
+                <p>
+                    Basically, whatever you return inside the callback function
+                    is the condition that it will check for each item in the
+                    array. In the example above it went through each number in
+                    the <code>numbers</code> array and checked if it was greater
+                    than 25. If it was greater then it pushed it into the new
+                    array, if it was not, it did not include it in the new
+                    array.
+                </p>
+                <p>
+                    Let's look at an example of this in the old way of writing
+                    for loops
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [12,4,56,27];
+var newArr = [];
+
+for (var i = 0; i < numbers.length; i++){
+    if (numbers[i] >= 25){
+        newArr.push(numbers[i]);
+    }
+}
+
+// newArr => [56,27]
+</code></pre>
+                <p>
+                    Comparing the two we see how much simpler and more concise
+                    the <code>.filter</code> is compared to the old way.
+                    Hopefully this demonstrates how useful Higher Order
+                    Functions can be!
+                </p>
+                <p>
+                    <strong>.reduce()</strong> - Returns the sum of an array of
+                    numbers
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [1,2,3,4,5];
+
+numbers.reduce(function(a,b){
+    return a + b
+})
+
+// => 15
+</code></pre>
+                <p>
+                    <strong>.sort()</strong> - Modifies original array sorted
+                    either alphabetically or of numbers (low to high) or (high
+                    to low)
+                </p>
+                <pre><code class="language-jsx">
+var scores = [12,98,34,85];
+
+scores.sort(function(a,b){
+    return a - b
+})
+
+// => [12,34,85,98]
+</code></pre>
+                <p>or if you want to sort it from High to Low</p>
+                <pre><code class="language-jsx">
+var scores = [12,98,34,85];
+
+scores.sort(function(a,b){
+    return b - a
+})
+
+// => [98,85,34,12]
+</code></pre>
+                <p>or if you want to sort words alphabetically</p>
+                <pre><code class="language-jsx">
+var words = ['bat', 'pineapple', 'drugs', 'zebra', 'ghost'];
+
+words.sort()
+
+// => ['bat', 'drugs', 'ghost', 'pineapple', 'zebra']
+</code></pre>
+                <p>
+                    Notice the last one didn't take a function as an argument,
+                    you don't need it if you are alphabetizing words, only if
+                    you are ordering numbers.
+                </p>
+                <p>
+                    <strong>.forEach()</strong> - Runs a loop on an array but
+                    does not create a new array. (basically the same as .map()
+                    but no new array is created)
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [1,2,3,4]
+
+numbers.forEach(function(number){
+    return number * 2
+})
+
+// => [1,2,3,4]
+</code></pre>
+                <p>
+                    Notice that no changes occurred. If we wanted to do the
+                    above code and have actual changes occur then we would have
+                    to do the following.
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [1,2,3,4]
+
+numbers.forEach(function(number, i){
+    return numbers[i] = number * 2
+})
+
+// => [2,4,6,8]
+</code></pre>
+                <p>
+                    There are some important things that happened here that we
+                    need to address.
+                </p>
+                <ul class="custom-list">
+                    <li>
+                        We added <code>i</code> as the second parameter. Anytime
+                        a second parameter is given to <code>.map</code>,
+                        <code>.filter</code>, or <code>.forEach</code>, it
+                        becomes the index of that array.
+                    </li>
+                    <li>
+                        Take note of the <code>s</code> at the end of
+                        <code>numbers</code> in the return statement. We are
+                        grabbing the index of the original array and we are not
+                        using the <code>number</code> parameter that we created
+                        in the callback function.
+                    </li>
+                    <li>
+                        <code>numbers[i] = number * 2</code>
+                        <strong>correct</strong>
+                    </li>
+                    <li>
+                        <code>number[i] = number * 2</code>
+                        <strong>incorrect</strong>
+                    </li>
+                </ul>
+                <p>
+                    So what is the point of having forEach() if it doesn't save
+                    anything? Well it could be used for testing purposes if you
+                    wanted to see what happened without actually making any
+                    changes. Or it could be used to to run a function on each
+                    item. However, 9 times out of ten you will use
+                    <code>.map</code> over <code>.forEach</code>.
+                </p>
+                <p>
+                    <strong>.find()</strong> - Returns the value of the first
+                    item in the array that meets the given condition.
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [12,30,5,62,18,53]
+
+numbers.find(function(number){
+    return number > 50
+})
+
+// => 62
+</code></pre>
+                <p>
+                    Remember this only returns the FIRST item that meets the
+                    given condition
+                </p>
+                <p>
+                    <strong>.findIndex()</strong> - Returns the index of the
+                    first item in the array that meets the given
+                    condition.(exact same as .find() but it gets the index
+                    instead of the actual item)
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [12,30,5,62,18,53]
+
+numbers.findIndex(function(number){
+    return number > 50
+})
+
+// => 3
+</code></pre>
+                <p>
+                    <strong>.some()</strong> - Checks if ANY items in an array
+                    meet a given condition and return True or False.
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [12,30,5,62,18,53]
+
+numbers.some(function(number){
+    return number > 50
+})
+
+// => true
+</code></pre>
+                <p>or</p>
+                <pre><code class="language-jsx">
+var numbers = [1,5,19,49,23]
+
+numbers.some(function(number){
+    return number > 50
+})
+
+// => false
+</code></pre>
+                <p>
+                    <strong>.every()</strong> - Checks if ALL items in an array
+                    meet a given condition and returns True or False.
+                </p>
+                <pre><code class="language-jsx">
+var numbers = [12,30,5,62,18,53]
+
+numbers.every(function(number){
+    return number > 50
+})
+
+// => false
+</code></pre>
+                <p>or</p>
+                <pre><code class="language-jsx">
+var numbers = [1,5,19,49,23]
+
+numbers.every(function(number){
+    return number < 50
+})
+
+// => true
+</code></pre>
+                <p>
+                    These are not all of the available Higher Order Functions,
+                    but these are the most common. I encourage you to
+                    familiarize yourself with these because they will be
+                    EXTREMELY useful throughout your coding career.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Supplementary Content</h3>
+                <p>
+                    <a
+                        href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/#functional-programming"
+                        target="_blank"
+                        rel="noopener"
+                        >freeCodeCamp.org</a
+                    >
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

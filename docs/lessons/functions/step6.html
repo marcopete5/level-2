@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sort</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Sort</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>use <code>sort()</code> to sort an array of numbers</li>
+                    <li>
+                        determine if <code>sort()</code> mutates the original
+                        array
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cbWa3dTk?pl=pYp4bpNUM"
+                    title="Sort Method Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on the JavaScript .sort() method"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Understanding JavaScript Array Method: .sort()</h3>
+                <h4>Introduction:</h4>
+                <p>
+                    The <code>.sort()</code> method in JavaScript is used to
+                    sort the elements of an array in place and return the sorted
+                    array. By default, the elements are sorted as strings based
+                    on their Unicode code points. However, you can provide a
+                    compare function to specify a custom sorting order.
+                </p>
+                <h4>Syntax:</h4>
+                <pre><code class="language-jsx">
+array.sort([compareFunction]);
+</code></pre>
+                <ul class="custom-list">
+                    <li><code>array</code>: The array you want to sort.</li>
+                    <li>
+                        <code>compareFunction</code> (Optional): Function that
+                        defines the sort order. It takes two parameters:
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>a</code>: The first element for comparison.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>b</code>: The second element for comparison.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        The <code>compareFunction</code> should return a
+                        negative value if <code>a</code> should come before
+                        <code>b</code>, a positive value if
+                        <code>a</code> should come after <code>b</code>, or zero
+                        if they are equal.
+                    </li>
+                </ul>
+                <h4>Example Usage:</h4>
+                <pre><code class="language-jsx">
+// Original array
+let fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
+
+// Using .sort() to sort the array alphabetically
+fruits.sort();
+
+console.log(fruits); // Output: ['Apple', 'Banana', 'Mango', 'Orange']
+</code></pre>
+                <h4>Key Points:</h4>
+                <ul class="custom-list">
+                    <li>
+                        <code>.sort()</code> sorts the elements of an array in
+                        place and returns the sorted array.
+                    </li>
+                    <li>
+                        By default, it sorts elements as strings based on their
+                        Unicode code points.
+                    </li>
+                    <li>
+                        You can provide a compare function to define a custom
+                        sorting order.
+                    </li>
+                    <li>
+                        If a compare function is not provided, elements are
+                        sorted as strings by default.
+                    </li>
+                </ul>
+                <h4>Example with Compare Function:</h4>
+                <pre><code class="language-jsx">
+// Original array
+let numbers = [3, 1, 5, 2, 4];
+
+// Using .sort() with a compare function to sort numbers in ascending order
+numbers.sort(function(a, b) {
+  return a - b;
+});
+
+console.log(numbers); // Output: [1, 2, 3, 4, 5]
+</code></pre>
+                <p>
+                    In this example, the compare function subtracts
+                    <code>b</code> from <code>a</code>. If the result is
+                    negative, <code>a</code> comes before <code>b</code>, so it
+                    sorts in ascending order.
+                </p>
+                <h4>Conclusion:</h4>
+                <p>
+                    The <code>.sort()</code> method in JavaScript provides a
+                    convenient way to sort the elements of an array. Whether
+                    sorting alphabetically, numerically, or by any custom
+                    criteria, <code>.sort()</code> allows you to organize your
+                    array elements efficiently. Understanding how to use
+                    <code>.sort()</code> effectively can enhance the readability
+                    and functionality of your JavaScript code.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Supplementary Content</h3>
+                <p>
+                    <a
+                        href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/sort-an-array-alphabetically-using-the-sort-method"
+                        target="_blank"
+                        rel="noopener"
+                        >freeCodeCamp.org</a
+                    >
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

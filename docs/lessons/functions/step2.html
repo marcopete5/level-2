@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Map</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Map</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        implement <code>.map()</code> on an array of arbitrary
+                        values.
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/c8gdwBuB?pl=pYp4bpNUM"
+                    title="Map Method Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on the JavaScript .map() method"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Understanding JavaScript Array Method: .map()</h3>
+                <h4>Introduction:</h4>
+                <p>
+                    The <code>.map()</code> function allows you to iterate over
+                    each item in an array and apply a function to it, creating a
+                    <strong>new</strong> array with the results of calling the
+                    function on each element.
+                </p>
+                <h4>Syntax:</h4>
+                <pre><code class="language-jsx">
+let newArray = array.map(callback(currentValue[, index[, array]]) {
+  // return element for newArray, after executing something
+}[, thisArg]);
+</code></pre>
+                <ul class="custom-list">
+                    <li>
+                        <code>array</code>: The original array you want to map
+                        over.
+                    </li>
+                    <li>
+                        <code>callback</code>: Function to execute for each
+                        element. It takes in three arguments:
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>currentValue</code>: The current element being
+                        processed in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>index</code> (Optional): The index of the current
+                        element being processed.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>array</code> (Optional): The array that
+                        <code>.map()</code> is being called upon.
+                    </li>
+                    <li>
+                        <code>thisArg</code> (Optional): Value to use as
+                        <code>this</code> when executing the callback function.
+                    </li>
+                </ul>
+                <h4>Example Usage:</h4>
+                <pre><code class="language-jsx">
+// Original array
+let numbers = [1, 2, 3, 4, 5];
+
+// Using .map() to double each number
+let doubledNumbers = numbers.map(function(num) {
+  return num * 2;
+});
+
+console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
+</code></pre>
+                <p>In this example:</p>
+                <ul class="custom-list">
+                    <li>We have an array of numbers.</li>
+                    <li>
+                        We use the <code>.map()</code> method to iterate over
+                        each element.
+                    </li>
+                    <li>
+                        For each element, we multiply it by 2 and return the
+                        result.
+                    </li>
+                    <li>
+                        The <code>.map()</code> method returns a new array with
+                        the transformed elements.
+                    </li>
+                </ul>
+                <h4>Key Points:</h4>
+                <ul class="custom-list">
+                    <li>
+                        <code>.map()</code> does not modify the original array;
+                        it creates and returns a new array.
+                    </li>
+                    <li>
+                        It is commonly used for transforming data in an array,
+                        such as doubling numbers, formatting strings, or
+                        extracting specific properties from objects.
+                    </li>
+                    <li>
+                        The callback function passed to <code>.map()</code> can
+                        be defined separately or as an inline function.
+                    </li>
+                </ul>
+                <h4>Conclusion:</h4>
+                <p>
+                    The <code>.map()</code> method in JavaScript provides a
+                    convenient way to transform the elements of an array without
+                    mutating the original array, allowing for cleaner and more
+                    readable code when dealing with data manipulation tasks.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Supplementary Content</h3>
+                <p>
+                    <a
+                        href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-map-method-to-extract-data-from-an-array"
+                        target="_blank"
+                        rel="noopener"
+                        >freeCodeCamp.org</a
+                    >
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

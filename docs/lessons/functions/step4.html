@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>forEach, find, & findIndex</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">forEach, find, & findIndex</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        explain the difference between <code>forEach()</code>,
+                        <code>find()</code>, and <code>findIndex()</code>
+                    </li>
+                    <li>implement them on an array of arbitrary values</li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cQ9QLKT8?pl=pYp4bpNUM"
+                    title="forEach, find, & findIndex Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on JavaScript forEach, find, and findIndex methods"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    Understanding JavaScript Array Methods: .forEach(), .find(),
+                    .findIndex()
+                </h3>
+                <h4>1. forEach() Method:</h4>
+                <h5>Introduction:</h5>
+                <p>
+                    The <code>.forEach()</code> method in JavaScript is used to
+                    execute a provided function once for each array element. It
+                    iterates through the array and applies the provided function
+                    to each element without creating a new array.
+                </p>
+                <h5>Syntax:</h5>
+                <pre><code class="language-jsx">
+array.forEach(callback(currentValue[, index[, array]]) {
+  // execute something for each element
+}[, thisArg]);
+</code></pre>
+                <ul class="custom-list">
+                    <li>
+                        <code>array</code>: The array you want to iterate over.
+                    </li>
+                    <li>
+                        <code>callback</code>: Function to execute for each
+                        element. It takes in three arguments:
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>currentValue</code>: The current element being
+                        processed in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>index</code> (Optional): The index of the current
+                        element being processed.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>array</code> (Optional): The array that
+                        <code>.forEach()</code> is being called upon.
+                    </li>
+                    <li>
+                        <code>thisArg</code> (Optional): Value to use as
+                        <code>this</code> when executing the callback function.
+                    </li>
+                </ul>
+                <h5>Example Usage:</h5>
+                <pre><code class="language-jsx">
+// Original array
+let fruits = ['apple', 'banana', 'cherry'];
+
+// Using .forEach() to log each element
+fruits.forEach(function(fruit) {
+  console.log(fruit);
+});
+
+// Output:
+// apple
+// banana
+// cherry
+</code></pre>
+                <h5>Key Points:</h5>
+                <ul class="custom-list">
+                    <li>
+                        <code>.forEach()</code> does not return anything
+                        (returns <code>undefined</code>).
+                    </li>
+                    <li>
+                        It is used for executing a function on each element of
+                        an array.
+                    </li>
+                    <li>It does not mutate the original array.</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h4>2. find() Method:</h4>
+                <h5>Introduction:</h5>
+                <p>
+                    The <code>.find()</code> method is used to return the first
+                    element in an array that satisfies a provided testing
+                    function. It searches through the array and returns the
+                    value of the first element that meets the condition
+                    specified in the callback function.
+                </p>
+                <h5>Syntax:</h5>
+                <pre><code class="language-jsx">
+let result = array.find(callback(element[, index[, array]]) {
+  // return true if element meets condition, false otherwise
+}[, thisArg]);
+</code></pre>
+                <ul class="custom-list">
+                    <li><code>array</code>: The array you want to search.</li>
+                    <li>
+                        <code>callback</code>: Function to test each element of
+                        the array. It takes in three arguments:
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>element</code>: The current element being
+                        processed in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>index</code> (Optional): The index of the current
+                        element being processed.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>array</code> (Optional): The array that
+                        <code>.find()</code> is being called upon.
+                    </li>
+                    <li>
+                        <code>thisArg</code> (Optional): Value to use as
+                        <code>this</code> when executing the callback function.
+                    </li>
+                </ul>
+                <h5>Example Usage:</h5>
+                <pre><code class="language-jsx">
+// Original array
+let numbers = [1, 2, 3, 4, 5];
+
+// Using .find() to find the first even number
+let evenNumber = numbers.find(function(num) {
+  return num % 2 === 0;
+});
+
+console.log(evenNumber); // Output: 2
+</code></pre>
+                <h5>Key Points:</h5>
+                <ul class="custom-list">
+                    <li>
+                        <code>.find()</code> returns the value of the first
+                        element in the array that satisfies the provided testing
+                        function.
+                    </li>
+                    <li>
+                        It returns <code>undefined</code> if no element
+                        satisfies the condition.
+                    </li>
+                    <li>It does not mutate the original array.</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h4>3. findIndex() Method:</h4>
+                <h5>Introduction:</h5>
+                <p>
+                    The <code>.findIndex()</code> method is similar to
+                    <code>.find()</code>, but it returns the index of the first
+                    element in an array that satisfies a provided testing
+                    function.
+                </p>
+                <h5>Syntax:</h5>
+                <pre><code class="language-jsx">
+let index = array.findIndex(callback(element[, index[, array]]) {
+  // return true if element meets condition, false otherwise
+}[, thisArg]);
+</code></pre>
+                <ul class="custom-list">
+                    <li><code>array</code>: The array you want to search.</li>
+                    <li>
+                        <code>callback</code>: Function to test each element of
+                        the array. It takes in three arguments:
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>element</code>: The current element being
+                        processed in the array.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>index</code> (Optional): The index of the current
+                        element being processed.
+                    </li>
+                    <li style="margin-left: 1.5em">
+                        <code>array</code> (Optional): The array that
+                        <code>.findIndex()</code> is being called upon.
+                    </li>
+                    <li>
+                        <code>thisArg</code> (Optional): Value to use as
+                        <code>this</code> when executing the callback function.
+                    </li>
+                </ul>
+                <h5>Example Usage:</h5>
+                <pre><code class="language-jsx">
+// Original array
+let numbers = [1, 2, 3, 4, 5];
+
+// Using .findIndex() to find the index of the first even number
+let evenNumberIndex = numbers.findIndex(function(num) {
+  return num % 2 === 0;
+});
+
+console.log(evenNumberIndex); // Output: 1 (index of 2)
+</code></pre>
+                <h5>Key Points:</h5>
+                <ul class="custom-list">
+                    <li>
+                        <code>.findIndex()</code> returns the index of the first
+                        element in the array that satisfies the provided testing
+                        function.
+                    </li>
+                    <li>
+                        It returns <code>1</code> if no element satisfies the
+                        condition.
+                    </li>
+                    <li>It does not mutate the original array.</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
