@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS Transitions</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">CSS Transitions</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will:</p>
+                <ul class="custom-list">
+                    <li>
+                        Be able to identify the CSS attributes that allow for
+                        smooth transition effects
+                    </li>
+                    <li>
+                        Be able to implement a simple transition on an HTML
+                        element using CSS
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cLrGQ2CQ?pl=pYp4bpNUM"
+                    title="CSS Transitions Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on CSS transitions"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+                <img
+                    src="https://coursework.vschool.io/content/images/size/w2000/2016/08/transition_example2.png"
+                    alt="Transition Example"
+                    style="max-width: 100%; height: auto" />
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <p>
+                    CSS Transitions are an excellent way to add some smoothing
+                    effects to your web page. While it's nice that we can change
+                    styles based on an element's state (with the pseudo
+                    selectors <code>:hover</code>, <code>:active</code>, etc.),
+                    it can sometimes be a bit jarring when the effect happens
+                    <em>immediately</em> upon hovering, or clicking, etc.
+                </p>
+                <p>
+                    Enter CSS Transitions. Transitions allow us to slow down the
+                    time it takes to transition from one style to another. We
+                    can specify how long the transition should take, which
+                    properties should be affected by the slower transition, and
+                    what kind of transition timing style it should take.
+                </p>
+                <h3>Example</h3>
+                <p>We'll just be working with a simple box in our HTML:</p>
+                <pre>
+<code class="language-html">
+&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+</code>
+            </pre>
+                <p>
+                    And add some basic styling to the box and change a few
+                    things when we're hovering on the box:
+                </p>
+                <pre>
+<code class="language-css">
+.box {
+    width: 300px;
+    height: 300px;
+    background-color: aquamarine;
+    margin: auto;
+    border: 1px solid #333;
+    box-shadow: 10px 10px 5px 0 #999;
+    border-radius: 10%;
+}
+
+.box:hover {
+    box-shadow: none;
+    border-radius: 0;
+    background-color: cyan;
+}
+</code>
+            </pre>
+                <p>
+                    With this box, the <code>:hover</code> state is triggered
+                    the instant the mouse hovers on the box, and instantaneously
+                    applies the new hover styles:
+                </p>
+                <img
+                    src="https://coursework.vschool.io/content/images/2016/08/hover-no-transition.gif"
+                    alt="Hover No Transition"
+                    style="max-width: 100%; height: auto" />
+                <p>
+                    But we want the transition from the regular state to the
+                    hover state to be a bit more fluid and smooth. Time for
+                    transitions!
+                </p>
+                <h3>Transition options</h3>
+                <p>
+                    CSS 3 gives us a number of properties that help us create
+                    transition effects between an element's state. The four
+                    transition properties are:
+                </p>
+                <ul class="custom-list">
+                    <li><code>transition-property</code></li>
+                    <li><code>transition-duration</code></li>
+                    <li><code>transition-timing-function</code></li>
+                    <li><code>transition-delay</code></li>
+                </ul>
+                <h4><code>transition-property</code></h4>
+                <p>
+                    The CSS property called
+                    <code>transition-property</code> allows us to pick and
+                    choose which of the CSS properties we want to transition
+                    smoothly. In the above example, we could decide to
+                    transition the background shadow to disappear slowly over
+                    perhaps 2 seconds, but make the color change immediately
+                    upon hovering.
+                </p>
+                <p>
+                    With <code>transition-property</code>, we simply write the
+                    name of each CSS property we want to transition with commas
+                    in between each name:
+                </p>
+                <pre>
+<code class="language-css">
+.box {
+    ...
+    transition-property: box-shadow, border-radius, background-color;
+}
+</code>
+            </pre>
+                <p>
+                    However, in this instance we're simply re-writing
+                    <em>all</em> of the properties we added on our
+                    <code>:hover</code> class. For these instances, CSS provides
+                    the <code>transition-property: all</code> option.
+                </p>
+                <p>
+                    If you're following along, you may notice that nothing seems
+                    to have changed! That's because we also need, by necessity,
+                    to include the <code>transition-duration</code> property,
+                    otherwise it will still transition instantly.
+                </p>
+                <h4><code>transition-duration</code></h4>
+                <p>
+                    This property simply tells the transition how long it should
+                    take to complete. This is what makes the magic work:
+                </p>
+                <pre>
+<code class="language-css">
+.box {
+    ...
+    transition-property: all;
+    transition-duration: 1s;
+}
+</code>
+            </pre>
+                <p>
+                    Now we have a working transition! There are a few other
+                    options given to us that are worth mentioning before
+                    finishing up
+                </p>
+                <h4><code>transition-timing-function</code></h4>
+                <p>
+                    The <code>transition-timing-function</code> is a way to
+                    change the style of the transition from one state to the
+                    next. They're all pretty similar and mostly exist to add a
+                    small touch of design to the animated transitions. The best
+                    way to see the difference between all the options is to
+                    check out
+                    <a
+                        href="http://css3.bradshawenterprises.com/transitions/#differentTiming"
+                        target="_blank"
+                        rel="noopener"
+                        >this site's example</a
+                    >
+                </p>
+                <p>
+                    We'll add
+                    <code>transition-timing-function: ease-in-out</code> to our
+                    CSS:
+                </p>
+                <pre>
+<code class="language-css">
+.box {
+    ...
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+}
+</code>
+            </pre>
+                <p>On to the last transition property</p>
+                <h4><code>transition-delay</code></h4>
+                <p>
+                    This one simply tells the CSS how long to wait before even
+                    beginning the transition. This one is pretty
+                    straightforward, as you would simply add
+                    <code>transition-delay: 0.1s</code> to your CSS if you
+                    wanted it to wait for a tenth of a second before ever
+                    executing the transition.
+                </p>
+                <p>
+                    If you're going to use this property, we'd recommend keeping
+                    the delay pretty short. Otherwise it can make your site seem
+                    slower than it really is.
+                </p>
+                <h4>Shortcut <code>transition</code> property</h4>
+                <p>
+                    Like many other properties in CSS, there is a shortcut that
+                    allows us to define the <code>transition-property</code>,
+                    <code>transition-duration</code>,
+                    <code>transition-timing-function</code>, and
+                    <code>transition-delay</code> properties all together. It's
+                    called simply <code>transition</code>, and goes in this
+                    order:
+                </p>
+                <pre>
+<code class="language-css">
+transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay];
+</code>
+            </pre>
+                <p>
+                    The square brackets <code>[]</code> simply indicate that
+                    they are all optional; you don't actually type in square
+                    brackets. It is <em>very</em> common to see something like
+                    the following in a site's CSS:
+                </p>
+                <pre>
+<code class="language-css">
+transition: all 0.5s ease-in-out;
+</code>
+            </pre>
+                <p>
+                    That's a TON easier than writing out each one individually!
+                    You can still put your separate
+                    <code>transition-property</code>s in there instead of
+                    <code>all</code> and it will still work.
+                </p>
+                <h4>Cross-browser compatibility</h4>
+                <p>
+                    CSS <code>transition</code> properties are still not used
+                    the exact same between different browsers. For this, there
+                    are the typical "vendor prefixes" that you should use when
+                    you decide to use a transition in your CSS:
+                </p>
+                <pre>
+<code class="language-css">
+-webkit-transition: all 1s ease-in-out;
+-moz-transition: all 0.5s ease-in-out;
+-o-transition: all 0.5s ease-in-out;
+transition: all 0.5s ease-in-out;
+</code>
+            </pre>
+                <h4>Conclusion</h4>
+                <p>Here's the final code:</p>
+                <pre>
+<code class="language-css">
+.box {
+    width: 300px;
+    height: 300px;
+    background-color: aquamarine;
+    margin: auto;
+    border: 1px solid #333;
+    box-shadow: 10px 10px 5px 0 #999;
+    border-radius: 10%;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.box:hover {
+    box-shadow: none;
+    border-radius: 0;
+    background-color: cyan;
+}
+</code>
+            </pre>
+                <p>And the final result:</p>
+                <img
+                    src="1.png"
+                    alt="Final Transition Result"
+                    style="max-width: 100%; height: auto" />
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
