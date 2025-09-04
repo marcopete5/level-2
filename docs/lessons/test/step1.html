@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Error Handling</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Error Handling</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>correctly implement the syntax of try/catch blocks</li>
+                    <li>
+                        define the error-catching keywords and explain what they
+                        mean: <code>try</code>, <code>catch</code>,
+                        <code>finally</code>, <code>throw</code>
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/crmy4Du8?pl=pYp4bpNUM"
+                    title="Error Handling Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on JavaScript error handling"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <p>
+                    When running JavaScript errors can occur. These can be made
+                    by mistakes in programming, unexpected values in input and
+                    other errors. To handle these errors the JavaScript
+                    programming language has these tools.
+                </p>
+                <p>
+                    The <code>try</code> keyword allows us to test blocks of
+                    code
+                </p>
+                <pre><code class="language-jsx">
+try {
+  //your code
+}
+</code></pre>
+                <p>
+                    The code within the <code>try</code> will run normally
+                    unless an error is thrown.
+                </p>
+                <p>
+                    The <code>catch</code> keyword lets you handle an error that
+                    is thrown in the <code>try</code> block.
+                </p>
+                <pre><code class="language-jsx">
+try {
+  //your code
+} catch(err) {
+  console.log(err);
+  //handle error
+}
+
+</code></pre>
+                <p>Examples of some errors</p>
+                <p><strong>SyntaxError</strong></p>
+                <pre><code class="language-jsx">
+var foo = "bar";
+
+</code></pre>
+                <p><strong>ReferenceError</strong></p>
+                <pre><code class="language-jsx">
+var x = 1;
+console.log(y);
+
+</code></pre>
+                <p>
+                    If you would like a full list of errors checkout
+                    <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors"
+                        target="_blank"
+                        rel="noopener"
+                        >MDN's list of errors</a
+                    >.
+                </p>
+                <p>
+                    But if the built-in errors don't describe the error you have
+                    in your program you can make a custom error with the
+                    <code>throw</code> keyword.
+                </p>
+                <pre><code class="language-jsx">
+throw "This is my custom error";
+
+</code></pre>
+                <p>
+                    The <code>finally</code> keyword allows you to run code
+                    after your <code>try</code> and <code>catch</code> whether
+                    an error occurs or if the code just runs fine.
+                </p>
+                <pre><code class="language-jsx">
+try {
+  //your code
+} catch(err) {
+  console.log(err);
+  //handle error
+} finally {
+  //code the runs after no matter what
+}
+
+</code></pre>
+                <p>
+                    This all comes together to make better code that codes that
+                    can now handle errors.
+                </p>
+                <p>Check out the example below and try running it yourself:</p>
+                <pre><code class="language-jsx">
+var input = "";
+
+try {
+  if(input == "") {
+    throw "Input can not be empty";
+  } else if(input.length > 5) {
+    throw "Input is to big";
+  } else {
+    console.log("You code runs fine!");
+  }
+} catch(err) {
+  console.log(err);
+} finally {
+  console.log("Runs no matter what");
+  console.log("And the input was " + input);
+}
+
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

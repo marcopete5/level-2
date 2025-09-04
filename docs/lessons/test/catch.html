@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Catch Me If You Can</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="assignment-header">
+            <header class="slide-header">
+                <h1 id="assignment-header">Catch Me If You Can</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    1a) Write a function that returns the sum of two numbers.
+                    Throw an error if either argument is not of the data type
+                    <code>number</code>:
+                </h3>
+                <pre>
+<code class="language-jsx">
+function sum(x, y){
+  //check data types first and throw error
+  return x + y;
+}
+</code>
+            </pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    1b) Call the <code>sum</code> function inside a
+                    <code>try</code> block using <code>"1"</code> and
+                    <code>"2"</code> as arguments. Use
+                    <code>console.log</code> within a <code>catch</code> block
+                    to inform the user of the error.
+                </h3>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    2a) Given a user object, write a function called
+                    <code>login</code> that takes a <code>username</code> and
+                    <code>password</code> as parameters. Throw an error if
+                    either of them don't match. Otherwise, log to the console a
+                    message saying <code>"login successful!"</code>
+                </h3>
+                <pre>
+<code class="language-jsx">
+var user = {username: "sam", password: "123abc"};
+function login(username, password){
+  //check credentials
+}
+</code>
+            </pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    2b) Call the <code>login</code> function within a
+                    <code>try</code> block. In one instance use the correct
+                    credentials, and in another use incorrect ones. Make sure
+                    you see the appropriate message!
+                </h3>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

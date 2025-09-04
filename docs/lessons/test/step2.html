@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Unit Testing</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Unit Testing</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        explain what unit testing is and be able to explain the
+                        benefits of TDD
+                    </li>
+                    <li>
+                        describe the difference between a test runner and an
+                        assertion library
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/c676BzHG?pl=pYp4bpNUM"
+                    title="Unit Testing Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on JavaScript unit testing"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <p>
+                    This section is to help you learn quickly the what, why, and
+                    how of Unit testing.
+                </p>
+                <h3>What is unit testing?</h3>
+                <p>
+                    Unit testing is the practice of breaking your program into
+                    smaller pieces and inspect each piece with tests.
+                </p>
+                <p>
+                    Tests run when changes are made to the code in your
+                    projects. The more often you run your tests the better. This
+                    helps you catch problems sooner and write better code.
+                </p>
+                <h3>Why should we be unit testing our code?</h3>
+                <p>
+                    When new developers hear of unit testing their first
+                    thoughts are why? Doesn't this add more work and more code?
+                    In reality, by making a test for each piece of application
+                    we improve a number of things.
+                </p>
+                <ul class="custom-list">
+                    <li>
+                        Makes your code easier to understand by forcing you to
+                        write out the expected output of your program.
+                    </li>
+                    <li>
+                        Makes it easy to add new features. Normally when we add
+                        new code we have to go through the application and make
+                        sure it still works as it did before. Now we can simply
+                        run are tests and have proof that it works as it did
+                        before.
+                    </li>
+                    <li>
+                        Protects your code against other developers. By writing
+                        out the way your program should behave if other
+                        developers change your code they will see immediately
+                        see when they break the application.
+                    </li>
+                </ul>
+                <h3>How?</h3>
+                <p>
+                    Many frameworks and tools exist to help developers easily
+                    write and run unit tests. The frameworks we will be using to
+                    write unit tests are Mocha and Chai.
+                </p>
+                <p>
+                    Mocha website:
+                    <a
+                        href="https://mochajs.org/"
+                        target="_blank"
+                        rel="noopener"
+                        >https://mochajs.org/</a
+                    >
+                </p>
+                <p>
+                    Chai:
+                    <a href="http://chaijs.com/" target="_blank" rel="noopener"
+                        >http://chaijs.com/</a
+                    >
+                </p>
+                <h4>Mocha</h4>
+                <p>
+                    Mocha is a test runner. It's sole job is to look for (or be
+                    told where to find) unit tests you've written, and to
+                    execute them. It also displays in a nice, easy format to
+                    show you how your unit tests faired - how many passed, how
+                    many and which ones failed.
+                </p>
+                <h4>Chai</h4>
+                <p>
+                    Chai is an assertion library. Chai's libraries allow you to
+                    choose exactly how your unit tests should read to a
+                    developer. There are three libraries you get to choose from:
+                    <strong>assert</strong>, <strong>expect</strong>, and
+                    <strong>should</strong>.
+                </p>
+                <p>
+                    All of these libraries essentially do the same thing, just
+                    with slightly different syntaxes. For simplicity, we're
+                    going to use the <strong>assert</strong> library, but you
+                    should definitely check out how tests are written in the
+                    <strong>expect</strong> and
+                    <strong>should</strong> libraries. (It's pretty nice,
+                    because they read like English).
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
