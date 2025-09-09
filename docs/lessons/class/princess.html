@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Princess is in Another Castle — Assignment</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">The Princess is in Another Castle</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <div class="section" id="hero" aria-labelledby="hero-heading">
+                <h3
+                    id="hero-heading"
+                    class="sr-only"
+                    style="position: absolute; left: -9999px">
+                    Illustration
+                </h3>
+                <p style="text-align: center">
+                    <img
+                        class="image-embed"
+                        src="https://coursework.vschool.io/content/images/size/w2000/2015/07/mariocastle.jpg"
+                        alt="Mario castle illustration" />
+                </p>
+            </div>
+
+            <div
+                class="section"
+                id="requirements"
+                aria-labelledby="requirements-heading">
+                <h3 id="requirements-heading">Requirements:</h3>
+
+                <ul>
+                    <li>
+                        Create a class for a player that has the following
+                        properties:
+                    </li>
+                    <li><code>name</code> of type <code>String</code></li>
+                    <li><code>totalCoins</code> of type <code>Number</code></li>
+                    <li>
+                        <code>status</code> of type <code>String</code> (options
+                        are <code>Powered Up</code>,
+                        <code>Big</code>,<code>Small</code>, and
+                        <code>Dead</code>)
+                    </li>
+                    <li>
+                        <code>hasStar</code> of type <code>Boolean</code> (Is a
+                        star active?)
+                    </li>
+                    <li>
+                        <code>setName</code> of type <code>function</code> - Has
+                        a parameter called <code>namePicked</code> where you
+                        pass in "Mario" or "Luigi". Sets <code>name</code> to
+                        "Mario" or "Luigi".
+                    </li>
+                    <li>
+                        <code>gotHit</code> of type <code>function</code> - this
+                        is called whenever the player is hit by an enemy.
+                        <code>gotHit()</code> will set the
+                        <code>status</code> property accordingly. (Statuses go
+                        from "Powered Up" to "Big" to "Small" to "Dead".)
+                    </li>
+                    <li>
+                        <code>gotPowerup</code> of type <code>function</code> -
+                        called when a powerup is received and sets the status
+                        accordingly. (Statuses go from "Small" to "Big" to
+                        "Powered Up". If you are Powered Up and it hits this
+                        function, you get a star)
+                    </li>
+                    <li>
+                        <code>addCoin</code> of <code>function</code> - adds a
+                        coin to totalCoins
+                    </li>
+                    <li>
+                        <code>print</code> of type <code>function</code> -
+                        prints to the console the name, totalCoins, status, and
+                        star properties. Make sure you make this look nice such
+                        as:
+                        <ul>
+                            <li>Name: Luigi,</li>
+                            <li>Status: Small, etc, etc</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p>Use that class to create the object.</p>
+
+                <p>
+                    Create a
+                    <a
+                        href="http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range"
+                        target="_blank"
+                        rel="noopener"
+                        >random range function</a
+                    >
+                    that returns either 0, 1, or 2.
+                </p>
+
+                <p>
+                    If the value is 0 call the <code>gotHit()</code> function on
+                    the object. If the value is 1 call the
+                    <code>gotPowerup()</code> function on the object. If the
+                    value is 2 call the <code>addCoin()</code> function
+                </p>
+
+                <p>Then call the print method on the object.</p>
+
+                <p>
+                    Now put the random range function inside a
+                    <code>setInterval</code> function that ends after the player
+                    is dead
+                </p>
+
+                <p>The end product will look something like this:</p>
+
+                <p>
+                    <img
+                        class="image-embed"
+                        src="https://coursework.vschool.io/content/images/2018/05/princess.gif"
+                        alt="Animated example of the end product" />
+                </p>
+            </div>
+
+            <div class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now (JS/JSX); autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+    </body>
+</html>

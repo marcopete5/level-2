@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Classes — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+            .image-embed-inline {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                border: 1px solid #e5e7eb;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">Classes</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>explain the core principles of prototypical inheritance</li>
+                <li>
+                    explain the difference between class syntax and constructor
+                    function syntax
+                </li>
+                <li>implement methods on a class</li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/czNW27ur?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/czNW27ur?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div
+                class="section"
+                id="hero-image"
+                aria-labelledby="hero-image-heading">
+                <h3
+                    id="hero-image-heading"
+                    class="sr-only"
+                    style="position: absolute; left: -9999px">
+                    Illustration
+                </h3>
+                <p>
+                    <img
+                        class="image-embed-inline"
+                        src="https://coursework.vschool.io/content/images/size/w2000/2017/08/blueprint-1.jpg"
+                        alt="Blueprint illustration"
+                        style="max-width: 100%; height: auto" />
+                </p>
+            </div>
+
+            <div
+                class="section"
+                id="what-is-class"
+                aria-labelledby="what-is-class-heading">
+                <h3 id="what-is-class-heading">
+                    <strong>What is a JavaScript &quot;Class&quot;?</strong>
+                </h3>
+                <p>
+                    The <code>class</code> keyword was introduced in ES6, and is
+                    just syntactical sugar over the constructor function &amp;
+                    prototype paradigm we’re used to working with in ES5. While
+                    the new <code>class</code> syntax doesn't fundamentally
+                    change how JavaScript works under the hood (JavaScript
+                    remains a prototype-based language instead of an
+                    object-oriented language), it offers a cleaner syntax for
+                    creating objects and dealing with prototypal inheritance.
+                </p>
+                <p>
+                    Before continuing with this post, it would help to have a
+                    grasp on JavaScript's prototype and prototypal-inheritance
+                    system. If those concepts are a little hazy, check out the
+                    post of
+                    <a
+                        href="https://coursework.vschool.io/prototypes/"
+                        target="_blank"
+                        rel="noopener"
+                        >Prototypes and Prototypal Inheritance</a
+                    >.
+                </p>
+                <hr />
+            </div>
+
+            <div
+                class="section"
+                id="how-to-use-class"
+                aria-labelledby="how-to-use-class-heading">
+                <h3 id="how-to-use-class-heading">
+                    <strong>How do I use <code>class</code>?</strong>
+                </h3>
+                <p>We are familiar with using constructor functions in ES5:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+function Vehicle(make, model) {
+    this.make = make;
+    this.model = model;
+}
+
+Vehicle.prototype.drive = function () {
+    console.log("vroom");
+};
+      </code></pre>
+
+                <p>We can achieve this same thing using ES6 classes:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+class Vehicle {
+    constructor(make, model) {
+        this.make = make;
+        this.model = model;
+    }
+
+    drive() {
+        console.log("vroom");
+    }
+}
+      </code></pre>
+
+                <p>
+                    You could use this class to build an object the same way as
+                    before:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+const myCar = new Vehicle("Hyundai", "Entourage");
+      </code></pre>
+
+                <p>This new syntax is great for a few reasons.</p>
+                <ul>
+                    <li>
+                        It's similar to the syntax in other object-oriented
+                        languages.
+                    </li>
+                    <li>
+                        It helps us keep a separation between our methods and
+                        our object properties.
+                    </li>
+                    <li>It's cleaner.</li>
+                </ul>
+
+                <h4>
+                    <strong>Inheritance using <code>extends</code></strong>
+                </h4>
+                <p>
+                    &quot;Vehicle&quot; describes lots of different forms of
+                    transportation. If we needed to make a few other classes
+                    that were more specific than just &quot;Vehicle&quot; (such
+                    as &quot;Car&quot; or &quot;Motorcycle&quot;), we
+                    <em>could</em> create a new class that redefines all the
+                    same properties from &quot;Vehicle&quot; again:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+class MotorCycle {
+    constructor (make, model, hasSideCar){
+        this.make = make;
+        this.model = model;
+        this.hasSideCar = hasSideCar;
+    }
+
+    drive() {
+        console.log("vroom");
+    }
+}
+      </code></pre>
+
+                <p>There's a few issues with this code though:</p>
+                <ol>
+                    <li>
+                        It repeats all the same constructor process as we had in
+                        the <code>Vehicle</code> class.
+                    </li>
+                    <li>
+                        It repeats the <code>drive()</code> method. If we wanted
+                        to change the <code>drive</code> method for all vehicles
+                        (including motorcycles), we'd need to change it in
+                        multiple places.
+                    </li>
+                    <li>
+                        It has no connection with the
+                        <code>Vehicle</code> class. If we add methods to
+                        <code>Vehicle</code> they won't be accessible to
+                        <code>Motorcycle</code>.
+                    </li>
+                </ol>
+
+                <p>
+                    Enter inheritance using <code>extends</code>! The general
+                    syntax is
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+class Child extends Parent {...
+      </code></pre>
+
+                <p>
+                    This essentially sets up a prototype chain between the
+                    <code>Child</code> constructor and the
+                    <code>Parent</code> constructor. There's a bit more to keep
+                    track of, but to start, this is what we're looking at:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+// There is a problem with this code! See below.
+class MotorCycle extends Vehicle {
+    constructor (hasSideCar){
+        this.hasSideCar = hasSideCar;
+    }
+}
+      </code></pre>
+
+                <p>
+                    If we tried to use this MotorCycle constructor, we would get
+                    <code>ReferenceError: this is not defined</code>. Any class
+                    that <code>extends</code> another class needs to call a
+                    built-in <code>super()</code> function. The
+                    <code>super()</code> function calls the parent class's
+                    <code>constructor</code> method and adds all the properties
+                    to the child class's <code>this</code>, and then takes
+                    what's being built and continues building it in the child
+                    class. When we call <code>super()</code>, we need to pass
+                    all the properties the parent class's constructor method
+                    expects to it.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+class MotorCycle extends Vehicle {
+
+    // Motorcycles need to have make, model, and hasSideCar properties, so we pass them into the constructor
+    constructor(make, model, hasSideCar) {
+
+        // We call the Vehicle's constructor method and pass the make and model, since that's what a Vehicle expects
+        super(make, model);
+
+        // We add an additional property to the object we're creating.
+        this.hasSideCar = hasSideCar;
+
+        // We don't need to define drive() again because it's already part of the parent class.
+        // The motorcycle object will look to the Vehicle prototype for the drive() method if it
+        // ever needs it.
+    }
+}
+      </code></pre>
+
+                <p>
+                    We pass all three properties into the constructor method,
+                    then call <code>.super()</code>, passing the two properties
+                    that the parent class's constructor needs.
+                </p>
+                <p>
+                    You might be thinking to yourself, &quot;Maaaaaaan, I don't
+                    want to have to remember which order all my properties are
+                    in.&quot;
+                </p>
+                <p>
+                    If you pass your properties in as an object, you don't!
+                    Let's re-write everything we have using this technique:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+class Vehicle {
+  constructor(args) {
+    this.make = args.make;
+    this.model = args.model;
+  }
+
+  drive(){
+    console.log("vroom");
+  }
+}
+
+class MotorCycle extends Vehicle {
+  constructor (args){
+    super(args);
+    this.hasSideCar = args.hasSideCar;
+  }
+}
+
+var motorCycle = new MotorCycle({make:"Honda", model:"Shadow", hasSideCar:false});
+
+console.log(motorCycle.hasSideCar);  // false
+console.log(motorCycle.make);        // Honda
+console.log(motorCycle.model)        // Shadow
+motorCycle.drive()                   // vroom
+      </code></pre>
+
+                <p>One last improvement using ES6 destructuring:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+class Vehicle {
+  constructor({make, model}) {
+    this.make = make;
+    this.model = model;
+  }
+
+  drive(){
+    console.log("vroom");
+  }
+}
+      </code></pre>
+
+                <hr />
+            </div>
+
+            <div
+                class="section"
+                id="conclusion"
+                aria-labelledby="conclusion-heading">
+                <h3 id="conclusion-heading"><strong>Conclusion</strong></h3>
+                <p>
+                    JavaScript's <code>class</code> keyword can be both a
+                    blessing and a curse. Its simplified (and familiar, for
+                    those used to OOP) syntax makes setting up prototype chains
+                    with object instantiation a much more pleasant experience.
+                    On the other hand, it does obfuscate the underlying
+                    principles of prototypal inheritance and could make certain
+                    principles in JavaScript more difficult to understand.
+                </p>
+                <p>
+                    That being said, you'll continue to use the
+                    <code>class</code> keyword constantly while learning to
+                    develop React applications, so spend some time familiarizing
+                    yourself with this awesome, fun new syntax!
+                </p>
+            </div>
+
+            <div class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+    </body>
+</html>
