@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ES6 Review Part 1</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">ES6 Review Part 1</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will:</p>
+                <ul class="custom-list">
+                    <li>understand the difference between let and const</li>
+                    <li>be able to properly concatenate strings</li>
+                    <li>
+                        be able to use the rest operator and spread operator
+                    </li>
+                </ul>
+                <iframe
+                    id="lessonFrame"
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/c9PDzWTy?pl=pYp4bpNUM"
+                    title="ES6 Review Part 1 Tutorial"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Video tutorial on ES6 rest and spread operators"></iframe>
+                <button
+                    onclick="window.open(document.getElementById('lessonFrame').src, '_blank')">
+                    Open in Browser
+                </button>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Rest Operator</h3>
+                <p>
+                    Often times we want all our arguments to be an array of
+                    arguments. We don't know how many arguments will be passed
+                    into our function, but we want them to be an array in our
+                    function. We do that using the
+                    <strong>rest</strong> operator.
+                    <code>...whatWeWillNameOurArray</code>
+                </p>
+                <pre><code class="language-jsx">
+function addNumbers(...numbers) {
+  // numbers is now an array that we can use .reduce() on
+  return numbers.reduce((sum, number) => {
+    return sum + number;
+  }, 0);
+}
+
+console.log(addNumbers(1, 2, 3, 4, 5, 6, 7, 8));
+</code></pre>
+                <h3>Spread Operator</h3>
+                <p>
+                    In this example, we will have two arrays that we want to be
+                    joined into one. Before, we would have had to use
+                    <code>.concat()</code>.
+                </p>
+                <pre><code class="language-jsx">
+const defaultColors = ['red', 'green'];
+const userFavoriteColors = ['orange', 'yellow'];
+
+defaultColors.concat(userFavoriteColors);
+</code></pre>
+                <p>Now we can do this.</p>
+                <pre><code class="language-jsx">
+[ ...defaultColors, ...userFavoriteColors ];
+</code></pre>
+                <p>
+                    The ES6 way is much easier to read and identify quickly what
+                    is being done.
+                </p>
+                <p>Not only that, but now we can add more that two arrays.</p>
+                <pre><code class="language-jsx">
+[ ...defaultColors, ...userFavoriteColors, ...fallColors ];
+</code></pre>
+                <p>We aren't done yet! We can also just add values!</p>
+                <pre><code class="language-jsx">
+[ "blue", "green", ...defaultColors, ...userFavoriteColors, ...fallColors ];
+</code></pre>
+                <p>
+                    Let's write a shopping list validator that always includes
+                    milk. We will check for milk, and add it to our array if
+                    it's not there.
+                </p>
+                <pre><code class="language-jsx">
+function validateShoppingList(...items) {
+  if (items.indexOf('milk') < 0) {
+    return [ 'milk', ...items ];
+  }
+
+  return items;
+}
+
+validateShoppingList('oranges', 'bread', 'eggs');
+</code></pre>
+                <h3>Practical example of Rest and Spread.</h3>
+                <p>
+                    Let's assume we have a library with a depreciated method. We
+                    would like users of our library to use a better method, but
+                    don't what to break the code of people still using the old
+                    method.
+                </p>
+                <pre><code class="language-jsx">
+const MathLibrary = {
+  calculateProduct(...rest) {
+    console.log('Please use the multiply method instead');
+    return this.multiply(...rest);
+  },
+  multiply(a, b) {
+    return a * b;
+   }
+};
+</code></pre>
+                <p>
+                    We just pass on all of the arguments straight into the call
+                    of the new method. The arguments do get turned into an
+                    array, but then "spread" out and dumped into the new method
+                    and individual parameters.
+                </p>
+                <p>Try to make the following function more ES6xy:</p>
+                <pre><code class="language-jsx">
+function product(a, b, c, d, e) {
+  const numbers = [a,b,c,d,e];
+
+  return numbers.reduce(function(acc, number) {
+    return acc * number;
+  }, 1)
+}
+</code></pre>
+                <p>
+                    Do this one too. Use at least <strong>both</strong> the
+                    <strong>rest and spread</strong> operators:
+                </p>
+                <pre><code class="language-jsx">
+function unshift(array, a, b, c, d, e) {
+  return [a, b, c, d, e].concat(array);
+}
+</code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <footer class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
