@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ES6 Review Part 2 — Lesson</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+        <style>
+            /* Ensure high contrast and accessible focus */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">ES6 Review Part 2</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>write arrow functions</li>
+                <li>
+                    implement the spread and rest operators in different
+                    scenarios (function parameters, combining arrays, etc)
+                </li>
+                <li>use default function parameters</li>
+                <li>de-structure arrays and objects</li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cnZWmdUv?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/cnZWmdUv?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div
+                class="section"
+                id="section-1"
+                aria-labelledby="section-1-heading">
+                <h3 id="section-1-heading">Content</h3>
+                <p>
+                    There are times we want to write a function with a default
+                    argument. For example, you have a function that returns the
+                    square inches of a piece of wood. Most of our boards are an
+                    inch think, but occasionally they are more. Thickness in
+                    this function would default to <code>1</code>. To write this
+                    function in a way that sets thickness to <code>1</code>, we
+                    used to need to say:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+function calculateSquareInches(width, length, thickness){
+    if (thickness === undefined){
+        thickness = 1;
+    }
+    return width * length * thickness;
+}
+            </code></pre>
+            </div>
+
+            <div
+                class="section"
+                id="section-2"
+                aria-labelledby="section-2-heading">
+                <h3 id="section-2-heading">More Examples</h3>
+                <p>
+                    In this example, we have an entire <code>if</code> block to
+                    see if a value for thickness was passed through and to
+                    assign it to it's default if it wasn't.
+                </p>
+
+                <p>But now we can write:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+function calculateSquareInches(width, length, thickness = 1){
+    return width * length * thickness;
+}
+            </code></pre>
+
+                <p>
+                    It only assigns thickness to 1 if a third parameter wasn't
+                    passed through. Be sure to write all defaults as the last
+                    arguments when defining your functions.
+                </p>
+            </div>
+
+            <div class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </div>
+        </main>
+
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-css.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    </body>
+</html>

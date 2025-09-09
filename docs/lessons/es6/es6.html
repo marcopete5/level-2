@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ES6 Practice — Assignment</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">ES6 Practice</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <div
+                class="section"
+                id="section-let-const"
+                aria-labelledby="let-const-heading">
+                <h3 id="let-const-heading">LET and CONST</h3>
+
+                <p>
+                    Replace all the <code>var</code>s with <code>let</code> and
+                    <code>const</code>. Alter the code however necessary to make
+                    sure this continues to work (so the pet's name
+                    <strong>isn't</strong> <code>"John"</code>, but instead
+                    <code>"spot"</code> is returned). You only need to delete
+                    <code>var</code> and insert <code>let</code> and
+                    <code>const</code>
+                </p>
+
+                <p>
+                    John is the pet owner, and his name should be stored
+                    differently than the other names.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+var name = "John"
+var age = 101
+
+function runForLoop(pets) {
+    var petObjects = []
+    for (var i = 0; i &lt; pets.length; i++) {
+        var pet = { type: pets[i] }
+        var name;
+        if (pets[i] === "cat") {
+            name = "fluffy"
+        } else {
+            name = "spot"
+        }
+        console.log("pet name: ", name)
+        pet.name = name
+        petObjects.push(pet)
+    }
+    console.log("man name: ", name)
+    return petObjects
+}
+
+runForLoop(["cat", "dog"])
+      </code></pre>
+            </div>
+
+            <div
+                class="section"
+                id="section-arrow-fns"
+                aria-labelledby="arrow-fns-heading">
+                <h3 id="arrow-fns-heading">
+                    <strong>ES6 Arrow Functions</strong>
+                </h3>
+
+                <h4><strong>Task 1</strong></h4>
+                <p>
+                    Re-write this <code>.map()</code> using an arrow function:
+                </p>
+                <p>
+                    Be aware that if JavaScript sees a <code>{</code> directly
+                    after the <code>=&gt;</code> it will think it's starting a
+                    function, and not starting an object, so the
+                    <code>:</code> will be an unexpected symbol.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+const carrots = ["bright orange", "ripe", "rotten"]
+
+function mapVegetables(arr) {
+    return arr.map(function(carrot) {
+        return { type: "carrot", name: carrot }
+    })
+}
+      </code></pre>
+
+                <h4><strong>Task 2</strong></h4>
+                <p>
+                    Re-write this <code>.filter()</code> ’s callback function
+                    using an arrow function:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+const people = [
+    {
+        name: "Princess Peach",
+        friendly: false
+    },
+    {
+        name: "Luigi",
+        friendly: true
+    },
+    {
+        name: "Mario",
+        friendly: true
+    },
+    {
+        name: "Bowser",
+        friendly: false
+    }
+]
+
+function filterForFriendly(arr) {
+    return arr.filter(function(person) {
+        return person.friendly
+    })
+}
+      </code></pre>
+
+                <h4><strong>Task 3</strong></h4>
+                <p>Re-write the following functions to be arrow functions:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+function doMathSum(a, b) {
+    return a + b
+}
+
+var produceProduct = function(a, b) {
+    return a * b
+}
+Hi
+      </code></pre>
+
+                <h4><strong>Task 4</strong></h4>
+                <p>
+                    Write a <code>printString</code> function that takes
+                    <code>firstName</code>, <code>lastName</code>, and
+                    <code>age</code> as parameters and returns a string like the
+                    following:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+Hi Kat Stark, how does it feel to be 40?
+      </code></pre>
+
+                <p>
+                    <code>firstName</code> should default to <code>"Jane"</code>
+                </p>
+                <p>
+                    <code>lastName</code> should default to <code>"Doe"</code>
+                </p>
+                <p><code>age</code> should default to <code>100</code></p>
+
+                <h4><strong>Extra Credit</strong></h4>
+                <p>Use template literals to build the string</p>
+
+                <h4><strong>Task 5</strong></h4>
+                <p>
+                    Use the shorthand syntax to make the following filter take
+                    up one line. Copy and paste the array to test it.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+const animals = [
+   {
+       type: "dog",
+       name: "theodore"
+   },
+   {
+       type: "cat",
+       name: "whiskers"
+   },
+   {
+       type: "pig",
+       name: "piglette"
+   },
+   {
+       type: "dog",
+       name: "sparky"
+   }
+];
+
+function filterForDogs(arr) {
+    return arr.filter(animal =&gt; {
+        if (animal.type === "dog") {
+            return true
+        } else {
+            return false
+        }
+    })
+}
+      </code></pre>
+            </div>
+
+            <div
+                class="section"
+                id="section-template-literals"
+                aria-labelledby="template-literals-heading">
+                <h3 id="template-literals-heading">
+                    <strong>Template Literals</strong>
+                </h3>
+
+                <p>
+                    Using template literals, write a function that takes
+                    <code>location</code> and <code>name</code> parameters and
+                    outputs a message formatted like this:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+Hi Janice!
+
+Welcome to Hawaii.
+
+I hope you enjoy your stay. Please ask the president of Hawaii if you need anything.
+      </code></pre>
+
+                <p>
+                    These are designed for making our strings easier to read and
+                    write.
+                </p>
+            </div>
+
+            <div
+                class="section"
+                id="section-templating"
+                aria-labelledby="templating-heading">
+                <h3 id="templating-heading">Templating</h3>
+
+                <p>
+                    This special syntax is called template literals, string
+                    templates, and other similar things.
+                </p>
+
+                <p>
+                    They utilize the "back tick." This symbol -&gt; `. It's just
+                    left of the "1" on your keyboard. We put our entire string
+                    inside two back ticks, and we use a dollar sign and curly
+                    brackets to insert JavaScript variables and expressions
+                    into.
+                </p>
+
+                <p>We used to concatenate strings like so:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+let name = "Jacob";
+let age = 20;
+console.log("hello, my name is " + name + " and I am " + age + " years old.");
+      </code></pre>
+
+                <p>but now we can use the following syntax:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+console.log(`hello, my name is ${name} and I am ${age} years old.`);
+      </code></pre>
+
+                <p>
+                    This is easier to read and write, we can easily identify
+                    where the JavaScript variables are, and it takes up less
+                    room. All those quotes and "+"s in the old way are way to
+                    easy to mess up. Start using the ES6 way!
+                </p>
+
+                <p>
+                    You can also insert JavaScript expressions into the curly
+                    brackets.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+console.log(`hello, my name is ${name}. Next year, I will be ${age + 1} years old`);
+      </code></pre>
+            </div>
+
+            <div class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- (Optional) Common components you’re using now;
+       autoloader will fetch others (markup/html, css, javascript, jsx, bash, json, etc.) -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-css.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markup.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+    </body>
+</html>
