@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSON — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+            .image-embed-inline {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                border: 1px solid #e5e7eb;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">JSON</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>describe what JSON stands for</li>
+                <li>write valid JSON objects using correct syntax</li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/ckPZryT9?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/ckPZryT9?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div class="section" id="intro" aria-labelledby="intro-heading">
+                <h3 id="intro-heading">Introduction</h3>
+                <p>JSON stands for JavaScript Object Notation.</p>
+            </div>
+
+            <div class="section" id="notes" aria-labelledby="notes-heading">
+                <h3 id="notes-heading">Notes</h3>
+
+                <p>
+                    JSON is a syntax for storing and exchanging data. It will be
+                    what we use for storing data in a data base, and using the
+                    data from other websites in our own applications.
+                </p>
+
+                <p>
+                    Because we are dealing with objects, you will see many
+                    key:value pairs.
+                </p>
+
+                <p>
+                    If we received some data from Instagram that we wanted for
+                    our site, the data might look like this.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+{
+    &quot;userName&quot;: &quot;johndoe&quot;,
+    &quot;images&quot;: [&quot;smile.img&quot;, &quot;frown.img&quot;]
+}
+      </code></pre>
+
+                <p>
+                    What are the keys and what are the values in this example?
+                </p>
+
+                <p>
+                    <code>userName</code
+                    >&nbsp;and&nbsp;<code>images</code>&nbsp;are the keys, and
+                    the stuff on the right side of the colon are the values.
+                    Notice&nbsp;<code>images</code>&nbsp;has an array as its
+                    value, just like JavaScript. The value could also be an
+                    object.
+                </p>
+
+                <p>
+                    It is very similar to regular JavaScript objects with a few
+                    exceptions. The keys always need quotation marks. The
+                    quotation marks always need to be double
+                    (<code>"</code>&nbsp;&lt;-- correct
+                    VS.&nbsp;<code>'</code>&nbsp;&lt;-- incorrect).
+                </p>
+
+                <p>
+                    Unlike a regular JavaScript object, the value will never be
+                    a method/function. It will only ever be an object, string,
+                    number, or array.
+                </p>
+
+                <p>
+                    JSON is an easy way for computers to look at data. To make
+                    it easier for us to look at, use a formatter. There are cool
+                    websites and chrome extensions that will do it for you.
+                </p>
+
+                <p>
+                    If you need to know if you've written JSON correctly, you
+                    can use&nbsp;<a
+                        href="http://jsonlint.com/#"
+                        target="_blank"
+                        rel="noopener"
+                        >this</a
+                    >.
+                </p>
+
+                <p>Practice writing more and more complicated JSON.</p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section HTTP, Lesson 003) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-HTTP-003"
+            data-lesson-title="JSON"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-HTTP-003"
+            data-lesson-title="JSON"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>

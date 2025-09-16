@@ -395,19 +395,21 @@ populatePeople(["Frank Peterson", "Suzy Degual", "Liza Jones"])
 //]
       </code></pre>
             </div>
-
-            <div class="slide-footer">
-                <p>
-                    Have feedback on this page? Submit it
-                    <a
-                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
-                        target="_blank"
-                        rel="noopener"
-                        >here</a
-                    >.
-                </p>
-            </div>
         </main>
+
+        <script>
+            document
+                .getElementById('myFeedbackBtn')
+                .addEventListener('click', () => {
+                    if (
+                        window.VSFeedback &&
+                        typeof window.VSFeedback.open === 'function'
+                    ) {
+                        window.VSFeedback.open();
+                    }
+                });
+        </script>
+        `
 
         <!-- Prism core -->
         <link
@@ -429,5 +431,20 @@ populatePeople(["Frank Peterson", "Suzy Degual", "Liza Jones"])
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markup.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L3-ES6-004"
+            data-lesson-title="Slopestyle"
+            data-course-id="Web-Development"></script>
+
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L-JSON-001"
+            data-lesson-title="Intro to JSON"
+            data-course-id="COURSE-ABC"
+            data-button-selector="#myFeedbackBtn"></script>
     </body>
 </html>

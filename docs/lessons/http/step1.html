@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTTP — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+            .image-embed-inline {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                border: 1px solid #e5e7eb;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">HTTP</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>describe what HTTP stands for and why it is important</li>
+                <li>explain what an IP address is</li>
+                <li>
+                    describe the core components involved in sending information
+                    across the internet using HTTP
+                </li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cGQdp8SE?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/cGQdp8SE?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div class="section" id="notes" aria-labelledby="notes-heading">
+                <h3 id="notes-heading">Notes</h3>
+
+                <p>
+                    In this article we will be going over the basics of HTTP,
+                    along with how information is passed around the web between
+                    web servers and web browsers. This is important because a
+                    program or website's ability to maintain information is due
+                    to it being able to request and save information through a
+                    server.
+                </p>
+            </div>
+
+            <div
+                class="section"
+                id="http-and-protocols"
+                aria-labelledby="http-and-protocols-heading">
+                <h3 id="http-and-protocols-heading">
+                    <strong>HTTP &amp; Protocols</strong>
+                </h3>
+
+                <p>
+                    HTTP stands for
+                    <strong>Hypertext Transfer Protocol</strong>. Protocols are
+                    rules, so HTTP is the set of rules used to govern how web
+                    browsers and web servers communicate and exchange
+                    information on the web.
+                </p>
+
+                <blockquote>
+                    <p>
+                        Whenever you make a request on the web, it always begins
+                        with&nbsp;http&nbsp;as that is the protocol being used
+                        to request the website you are visiting.
+                    </p>
+                </blockquote>
+            </div>
+
+            <div
+                class="section"
+                id="ip-address"
+                aria-labelledby="ip-address-heading">
+                <h3 id="ip-address-heading"><strong>IP Address</strong></h3>
+
+                <p>
+                    If HTTP defines the protocols for transferring data across
+                    the web, how does a web server know which computer to send
+                    information to once it receives a request?
+                </p>
+
+                <p>
+                    IP addresses are the unique identifier that each computer
+                    has. Since the IP address is specific and unique on each
+                    computer, servers sending data across the web know where to
+                    send information when a request comes in. This is how you
+                    are able to go to www.google.com, and google knows to send
+                    it's homepage to you on your specific system.
+                </p>
+
+                <blockquote>
+                    <p>
+                        An IP address is specified by 4 numbers separated by 3
+                        periods. The numbers can range from 0 - 255. Ex:
+                        192.5.48.102
+                    </p>
+                </blockquote>
+            </div>
+
+            <div
+                class="section"
+                id="servers-and-apis"
+                aria-labelledby="servers-and-apis-heading">
+                <h3 id="servers-and-apis-heading">
+                    <strong>Servers and APIs</strong>
+                </h3>
+
+                <h4><strong>Servers</strong></h4>
+                <p>
+                    When you are developing an application, you will frequently
+                    be interacting with servers to retrieve and save data. These
+                    servers would be referred to as
+                    <strong>remote servers</strong>, as they may be thousands of
+                    miles away or just in the other room.<strong
+                        >Local servers</strong
+                    >
+                    on the other hand refers to when you are running a server on
+                    your personal computer. When you are developing an
+                    application with a server, you will have to run that server
+                    locally on your system in order to get data from your
+                    database.
+                </p>
+
+                <p>
+                    Whenever you visit a website, you are making a request to a
+                    server (such as typing in amazon.com and pressing
+                    <code>enter</code>). That request is saying, "Hey server,
+                    I'd like to checkout some new boots on amazon.com, could you
+                    load their homepage for me please?". Alright so maybe it's
+                    not so informal, but this is the essence of what is
+                    happening.
+                </p>
+
+                <p>
+                    The server's job is to <em>listen</em> for requests (such as
+                    a request to visit amazon.com), and eventually send back the
+                    data for the user to view. With certain node modules,
+                    building a basic server is almost as easy as typing
+                    <code>server.listen()</code>.
+                </p>
+
+                <p>
+                    So ask yourself, "if it's the server's job to
+                    <em>listen</em> for requests and then send that information
+                    back once it has it, what code handles taking the request
+                    from the user and actually getting the appropriate data?"
+                </p>
+
+                <h4><strong>API</strong></h4>
+                <p>
+                    When a server receives a request (such as to load
+                    amazon.com's homepage to find some fancy new boots), there
+                    is code written in that server that handles the specific
+                    type of request. The code that handles all the different
+                    types of requests coming into the server is called an API
+                    (Application Programming Interface).
+                </p>
+
+                <p>
+                    Using the example of visiting amazon to buy boots, the
+                    server would receive the <em>request</em> to load the home
+                    page, and the API would then handle getting the data for
+                    that home page. The server would then send the information
+                    back to the user in the form of a <em>response</em>.
+                </p>
+
+                <p>
+                    This process is often referred to as the
+                    <code>request</code> - <code>response</code> cycle. A
+                    diagram of this is shown below:
+                </p>
+
+                <p>
+                    <img
+                        class="image-embed-inline"
+                        src="https://d186loudes4jlv.cloudfront.net/http/images/http_client_server.png"
+                        alt="Client-server request/response diagram"
+                        style="max-width: 100%; height: auto" />
+                </p>
+
+                <p>
+                    In this image, the request is coming from the client (your
+                    PC), and the response is going to the client from the web
+                    server. The initial <em>request</em> would be for the
+                    homepage, but when you click on 'boots', you are sending a
+                    request to now load the page that has all them fancy boots
+                    on it. This would follow the same <em>request</em> -
+                    <em>response</em> cycle to go get the data for boots, and
+                    send it back so you can view it on your system.
+                </p>
+
+                <p>
+                    When we make requests to a server, we will be receiving the
+                    response in the form of JSON data so that you can use it in
+                    your applications. We will go deeper into servers and APIs
+                    later in the course when you will learn how to build your
+                    own, but having a high level understanding of these terms
+                    will help you grasp concepts as we begin interacting with
+                    servers!
+                </p>
+            </div>
+
+            <div class="slide-footer">
+                <p>
+                    Have feedback on this page? Submit it
+                    <a
+                        href="https://forms.gle/n7Mig99LCGqvE6Kq8"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+    </body>
+</html>

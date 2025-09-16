@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSON's Deli — Assignment</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">JSON's Deli</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <div class="section" id="intro" aria-labelledby="intro-heading">
+                <h3 id="intro-heading">Introduction</h3>
+                <p>
+                    You're opening a new sandwich shop in Silicon Valley called
+                    JSON's Deli which is geared specifically towards
+                    programmers. You need to come up with a menu to display all
+                    of your items, and you decided you want to write it up in
+                    JSON format to delight your customer base.
+                </p>
+            </div>
+
+            <div
+                class="section"
+                id="requirements"
+                aria-labelledby="requirements-heading">
+                <h3 id="requirements-heading">Requirements:</h3>
+
+                <ul>
+                    <li>
+                        The JSON should be saved as a JSON file
+                        (<code>menu.json</code>) and should be an
+                        <strong>object</strong> (<code>{}</code>) representing
+                        the entirety of your menu.
+                    </li>
+                    <li>
+                        Your menu JSON should consist of multiple properties,
+                        each one an array, represent the array of options
+                        available for:
+                        <ul>
+                            <li>appetizers</li>
+                            <li>cold sandwiches</li>
+                            <li>hot sandwiches</li>
+                            <li>desserts</li>
+                            <li>drinks</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Each item in each array should be an object consisting
+                        of 3 properties:
+                        <ul>
+                            <li>name of the item/sandwich</li>
+                            <li>
+                                an array of strings representing the ingredients
+                            </li>
+                            <li>a string description.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        You must have at least 2 items (objects) on each submenu
+                        (appetizers, cold sands, hot sands, desserts, and
+                        drinks)
+                    </li>
+                </ul>
+
+                <p>
+                    While you're writing out your JSON, it might help to
+                    periodically paste your JSON into
+                    <a
+                        href="http://jsonlint.com/"
+                        target="_blank"
+                        rel="noopener"
+                        >JSONlint</a
+                    >
+                    to validate that the syntax is correct.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section HTTP, Lesson 004) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-HTTP-004"
+            data-lesson-title="JSON's Deli"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-HTTP-004"
+            data-lesson-title="JSON's Deli"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>
