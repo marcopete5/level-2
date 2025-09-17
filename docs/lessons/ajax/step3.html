@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS Promises Part 1 — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+            .image-embed-inline {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                border: 1px solid #e5e7eb;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">JS Promises Part 1</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>
+                    Students will be able to explain what a javascript promise
+                    is and why it is useful
+                </li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/c66JZVSm?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/c66JZVSm?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div class="section" id="notes" aria-labelledby="notes-heading">
+                <h3 id="notes-heading">Notes</h3>
+
+                <p>
+                    <img
+                        class="image-embed-inline"
+                        src="https://images.unsplash.com/photo-1439754389055-9f0855aa82c2?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ"
+                        alt="Unsplash image"
+                        style="max-width: 100%; height: auto" />
+                </p>
+
+                <h3><strong>Synchronous vs. Asynchronous</strong></h3>
+
+                <p>
+                    Imagine you're at the checkout of a grocery store that has
+                    only one lane with a single cashier, but also has a number
+                    of self-checkout kiosks.
+                </p>
+
+                <p>
+                    We're going to use these two options to illustrate the
+                    difference
+                    between&nbsp;<em>synchronous</em>&nbsp;and&nbsp;<em>asynchronous</em>&nbsp;code.
+                </p>
+
+                <p>
+                    Code that runs&nbsp;<em>synchronously</em>&nbsp;stops any
+                    other code from running, no matter how long it takes. This
+                    is like waiting in line for a real cashier. If the person in
+                    front of you has a lot of items, it doesn't matter if you
+                    just have one thing you want to buy, you're going to have to
+                    wait for the cashier to finish with the person in front of
+                    you before it's your turn.
+                </p>
+
+                <p>
+                    Code that runs&nbsp;<em>asynchronously</em>&nbsp;will begin
+                    its operations, but then won't block other code from
+                    running. This is like using the self-checkout kiosks
+                    (assuming there are multiple to choose from). Someone may
+                    begin checking out at one kiosk, but that doesn't stop you
+                    from using another kiosk. And even if you start your
+                    checkout process much later than someone else, that doesn't
+                    mean you'll necessarily finish after them.
+                </p>
+
+                <h3><strong>Synchronous code examples</strong></h3>
+
+                <p>
+                    The following are examples of synchronous code. Each
+                    statement will wait to complete before moving to the next
+                    line of code. This is called&nbsp;<strong
+                        >"blocking code"</strong
+                    >
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+// Example 1
+var firstName = &quot;Joe&quot;
+
+// Example 2
+function addExcitementToString(str) {
+    return str + &quot;!!1!&quot;
+}
+
+console.log(addExcitementToString(&quot;Hi&quot;))
+
+// Example 3 (recursive function)
+function factorial(n) {
+    if (n === 1) {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+
+console.log(factorial(5))
+      </code></pre>
+
+                <h3><strong>Asynchronous code examples</strong></h3>
+
+                <p>
+                    The following are examples of asynchronous code. Each
+                    statement will allow other (later) code to execute first if
+                    the statement will take a while to complete. This is
+                    called&nbsp;<strong>"non-blocking code"</strong>.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+// Example 1
+setTimeout(function() {
+    console.log(&quot;Inside the setTimeout&quot;)
+}, 500)
+
+console.log(&quot;Outside the setTimeout&quot;)
+
+// Example 2
+document.getElementById(&quot;thing&quot;).addEventListener(&quot;click&quot;, function() {
+    // Only runs WHEN the element is clicked
+    console.log(&quot;Clicked!&quot;)
+})
+
+// Example 3 (using a promise)
+fetch(&quot;https://some.url&quot;)
+    .then(response =&gt; response.json())
+    .then(response =&gt; {
+        console.log(response.data) // Runs SECOND
+    })
+console.log(&quot;Outside the fetch&#39;s GET request&quot;)  // Runs FIRST
+      </code></pre>
+
+                <p>
+                    In general, any code that may potentially take awhile to
+                    complete (waiting for an HTTP call to come back with a
+                    response, waiting for user input, etc.) should be written as
+                    non-blocking, asynchronous code. Otherwise, the users of
+                    your website may sit and wait for some background code to
+                    complete, which may make your website look broken.
+                </p>
+
+                <hr />
+
+                <h3><strong>Writing asynchronous code</strong></h3>
+
+                <p>
+                    There are multiple ways to write your code so that it is
+                    asynchronous. Fortunately, many pre-written libraries
+                    already have asynchronous methods built-in for you to use.
+                </p>
+
+                <p>The three main ways to write asynchronous code are:</p>
+                <ol>
+                    <li>Using callbacks</li>
+                    <li>Using promises</li>
+                    <li>
+                        Using&nbsp;<code>async/await</code>&nbsp;(ES2017, a.k.a.
+                        ES8)
+                    </li>
+                </ol>
+
+                <hr />
+
+                <h3><strong>Callbacks</strong></h3>
+
+                <p>
+                    Callback functions are functions you pass as a parameter to
+                    another function. The parent function can then execute the
+                    callback function whenever it determines is best, which
+                    oftentimes may be after some kind of delay. It's called a
+                    "callback function" because it will be called/executed
+                    sometime&nbsp;<em>in the future</em>.
+                </p>
+
+                <p>
+                    <img
+                        class="image-embed-inline"
+                        src="https://images.unsplash.com/photo-1515853191710-4db39aa5fe54?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ"
+                        alt="Unsplash image"
+                        style="max-width: 100%; height: auto" />
+                </p>
+
+                <p>
+                    Photo by&nbsp;<a
+                        href="https://unsplash.com/@franckinjapan?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"
+                        target="_blank"
+                        rel="noopener"
+                        >Franck V.</a
+                    >&nbsp;/&nbsp;<a
+                        href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"
+                        target="_blank"
+                        rel="noopener"
+                        >Unsplash</a
+                    >
+                </p>
+
+                <p>
+                    A standard example of callbacks is with the
+                    built-in&nbsp;<code>setTimeout</code>&nbsp;and&nbsp;<code>setInterval</code>&nbsp;functions.
+                    If you're feeling rusty on those, check out our post on
+                    those functions here:&nbsp;<a
+                        href="https://coursework.vschool.io/settimeout-setinterval/"
+                        target="_blank"
+                        rel="noopener"
+                        >setTimeout and setInterval</a
+                    >
+                </p>
+
+                <h3>
+                    <strong><code>setTimeout</code>&nbsp;uses callbacks</strong>
+                </h3>
+
+                <p>
+                    <code>setTimeout</code>&nbsp;is a perfect example of
+                    asynchronous code that uses a callback. If it were
+                    synchronous (blocking), it would potentially stall the
+                    execution of the rest of your code for a very long time,
+                    depending on how long you set your timeout to be.
+                </p>
+
+                <p>
+                    So instead what happens
+                    is&nbsp;<code>setTimeout</code>&nbsp;expects you to pass a
+                    callback function to it. This function tells the program
+                    what code to execute&nbsp;<em>after</em>&nbsp;the waiting
+                    period is over.
+                </p>
+
+                <p>
+                    Let's take another look at
+                    the&nbsp;<code>setTimeout</code>&nbsp;example from above:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+setTimeout(function() {
+    console.log(&quot;Inside the setTimeout&quot;)
+}, 500)
+
+console.log(&quot;Outside the setTimeout&quot;)
+      </code></pre>
+
+                <p>
+                    Because&nbsp;<code>setTimeout</code>&nbsp;is non-blocking,
+                    the second&nbsp;<code>console.log()</code>&nbsp;statement
+                    will execute&nbsp;<strong>first</strong>, even though it's
+                    written after the
+                    "first"&nbsp;<code>console.log()</code>&nbsp;statement
+                    inside the callback function passed
+                    to&nbsp;<code>setTimeout</code>.
+                </p>
+
+                <h3>
+                    <strong
+                        ><code>addEventListener</code>&nbsp;uses
+                        callbacks</strong
+                    >
+                </h3>
+
+                <p>
+                    Another illustrative example of callbacks is the callback
+                    function you must provide to
+                    the&nbsp;<code>.addEventListener()</code>&nbsp;method. The
+                    first parameter is the event type you're listening for (e.g.
+                    "click"), and the second parameter is a&nbsp;<em
+                        >callback function</em
+                    >&nbsp;you provide to tell the
+                    program&nbsp;<em>what</em>&nbsp;to
+                    do&nbsp;<em>when</em>&nbsp;that event occurs on that element
+                    (at some point in the future). Giving the programmer the
+                    ability to add a callback function here
+                    allows&nbsp;<code>addEventListener</code>&nbsp;the
+                    flexibility to be used not only to handle multiple events
+                    (which the first parameter is for) but also to do whatever
+                    they want in reaction to that event occuring.
+                </p>
+
+                <h3><strong>Custom Callbacks Example</strong></h3>
+
+                <p>
+                    Let's see how we could use callbacks in a function of our
+                    own creation!
+                </p>
+
+                <p>
+                    We'll use the&nbsp;<a
+                        href="https://swapi.co/"
+                        target="_blank"
+                        rel="noopener"
+                        >Star Wars API</a
+                    >&nbsp;to get information about Luke Skywalker. The problem
+                    is, we also want to get
+                    the&nbsp;<strong>name</strong>&nbsp;of Luke's homeworld,
+                    which comes back as the
+                    URL&nbsp;<code>&quot;https://swapi.co/api/planets/1/&quot;</code>&nbsp;when
+                    we make our API call to&nbsp;<code
+                        >swapi.co/api/people/1</code
+                    >
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+{
+	&quot;name&quot;: &quot;Luke Skywalker&quot;,
+    ...
+	&quot;homeworld&quot;: &quot;https://swapi.co/api/planets/1/&quot;,
+      </code></pre>
+
+                <p>
+                    So, it looks like we'll need to make a second API call to
+                    that URL in order to get more information about that planet,
+                    including its name.
+                </p>
+
+                <p>
+                    Using callbacks, we'd end up with something like the
+                    following (be sure to read all the comments):
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+// Helper function that will get data from a given URL parameter
+// and passes the data to a callback function so the programmer
+// can do whatever they want with that data
+function getData(url, callback) {
+    const xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+            const jsonData = xhr.responseText
+            const data = JSON.parse(jsonData)
+            return callback(data)
+        }
+    }
+
+    xhr.open(&quot;GET&quot;, url, true)
+    xhr.send()
+}
+
+// Use our helper function to get the Luke Skywalker resource from the API
+// Notice we need to nest a second `getData` inside the first one&#39;s callback function
+// because we didn&#39;t get all the data we needed from just the first URL call alone
+getData(&quot;https://swapi.co/api/people/1&quot;, function(lukeData) {
+    console.log(lukeData.homeworld) // logs &quot;https://swapi.co/api/planets/1&quot; instead of &quot;Tatooine&quot;
+    // Here we need to make the second call to the homeworld URL so we can get its name
+    getData(lukeData.homeworld, function(planetData) {
+        lukeData.homeworld = planetData.name // replace the URL with the actual name in the lukeData object
+        console.log(lukeData.homeworld) // now logs &quot;Tatooine&quot;! Yay!
+        // Now while we&#39;re inside this double-nested function we can do stuff with the data we got.
+    })
+})
+      </code></pre>
+
+                <h3><strong>Problem with callbacks</strong></h3>
+
+                <p>
+                    Implementing callbacks are a great tool for writing both
+                    non-blocking and reusable code. However, as a developer they
+                    can become a bit cumbersome. Check out&nbsp;<a
+                        href="http://callbackhell.com/"
+                        target="_blank"
+                        rel="noopener"
+                        >callback hell</a
+                    >&nbsp;for some reasoning and examples of this. And although
+                    our above Star Wars example isn't quite that bad, you can
+                    start to see how many levels of nested callbacks can be hard
+                    to follow as a developer.
+                </p>
+
+                <p>
+                    As a response to this issue, the concept of a "Promise" was
+                    introduced, and has eventually made its way into JavaScript
+                    as a permanent resident in ES2015 (a.k.a. ES6), so let's
+                    spend some time understanding promises.
+                </p>
+
+                <hr />
+
+                <h3><strong>Promises</strong></h3>
+
+                <p>
+                    Under the hood, promises are just a wrapper (sometimes
+                    referred to as "syntactic sugar") around callbacks. This
+                    means that they are&nbsp;<em>using</em>&nbsp;callbacks in
+                    their source code, but allow the developer to use a nicer
+                    syntax to avoid things like "callback hell."
+                </p>
+
+                <p>
+                    Think of a promise as an "I.O.U." When you make some kind of
+                    request to an API, the response may take quite awhile to
+                    come back. Even then, you don't know for sure if you'll
+                    receive a successful response, or if perhaps there is some
+                    kind of issue with the server that stops it from
+                    successfully returning a response.
+                </p>
+
+                <p>
+                    Since a call to a server
+                    can't&nbsp;<em>immediately</em>&nbsp;return a response, one
+                    solution is to return
+                    a&nbsp;<strong>promise</strong>&nbsp;instead. A promise is
+                    literally just a JavaScript object, and essentially says
+                    "I'm not the value you're looking for yet, but I will be
+                    soon!"
+                </p>
+
+                <p>A promise object can be in one of 3 states:</p>
+                <ul>
+                    <li>
+                        pending: this is the state of a promise immediately
+                        after it is created, and it stays in this state until it
+                        is
+                        either&nbsp;<strong>"resolved"</strong>&nbsp;or&nbsp;<strong>"rejected"</strong>.
+                    </li>
+                    <li>
+                        resolved (a.k.a. "fulfilled"): a promise becomes
+                        "resolved" when the operation completes successfully.
+                        Usually a resolved promise returns some kind of data
+                        along with it.
+                    </li>
+                    <li>
+                        rejected: a promise becomes "rejected" when the
+                        operation fails. Usually a rejected promise returns some
+                        kind of error along with it.
+                    </li>
+                </ul>
+
+                <p>
+                    Promise objects come built-in with a method
+                    called&nbsp;<code>.then()</code>, which (surpise!) takes a
+                    callback function as a parameter. The callback function you
+                    pass to&nbsp;<code>.then()</code>&nbsp;receives whatever
+                    data the promise resolved with, and will only run after the
+                    promise is completely resolved. This means you can do
+                    whatever you need to do with the data at this point.
+                </p>
+
+                <p>
+                    However, since we know that a promise could potentially be
+                    rejected as well, there's another built-in method
+                    called&nbsp;<code>.catch()</code>, which will run whenever a
+                    promise is rejected.
+                    The&nbsp;<code>.then()</code>&nbsp;and&nbsp;<code>.catch()</code>&nbsp;sections
+                    of a promise can be chained together, giving a promise more
+                    or less the look of
+                    a&nbsp;<code>try...catch</code>&nbsp;block of code. In fact,
+                    let's spend some time talking about promise chaining now.
+                </p>
+
+                <h3><strong>Promise chaining</strong></h3>
+
+                <p>
+                    A main benefit of promises is that they allow us to do away
+                    with the nested callback hell that can happen with callback
+                    functions. The way this is possible is because of something
+                    called "promise chaining."
+                </p>
+
+                <p>
+                    Promise chaining is the ability to perform asynchronous
+                    operations in an order as if they were synchronous. Did you
+                    notice in the above example that there are actually
+                    2&nbsp;<code>.then()</code>&nbsp;blocks? They are chained
+                    together in a promise chain.
+                </p>
+
+                <blockquote>
+                    <p>
+                        Note: The reason this is possible is
+                        because&nbsp;.then()&nbsp;actually returns another
+                        promise, and therefore makes it possible to add
+                        another&nbsp;.then()&nbsp;to the end.
+                    </p>
+                </blockquote>
+
+                <p>
+                    Here's the key to understanding promise
+                    chaining:&nbsp;<strong
+                        >whatever you&nbsp;<code>return</code>&nbsp;from
+                        one&nbsp;<code>.then()</code>&nbsp;block is what will be
+                        put into the next&nbsp;<code>.then()</code>&nbsp;block's
+                        callback function parameter.</strong
+                    >&nbsp;(It's okay if you have to read that a couple times
+                    for it to sink in.) Above, this wasn't quite as apparent
+                    because the example uses arrow functions, so let's take a
+                    look at the same code refactored using function
+                    declarations:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+fetch(&quot;https://some.url&quot;)
+    .then(function(responseFromFetch) =&gt; {
+
+        // By returning this value, it gets passed
+        // to the next .then() which calls it
+        // &quot;responseAfterJsonParse&quot;
+        return responseFromFetch.json())
+    })
+    .then(function(responseAfterJsonParse) =&gt; {
+        console.log(responseAfterJsonParse.data)
+    })
+      </code></pre>
+
+                <p>
+                    Or here's an even more contrived example that may drive the
+                    point home:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+fetch(&quot;https://some.url&quot;)
+    .then(function(resFromUrl) {
+        console.log(&quot;First .then block&quot;)
+        return &quot;Hi there!&quot;  // Return an arbitrary string for demonstration purposes
+    })
+    .then(function(valueFrom1stThenBlock) {
+        console.log(valueFrom1stThenBlock)  // Logs &quot;Hi there!&quot;
+        return &quot;Goodbye.&quot;
+    })
+    .then(function(valueFrom2ndThenBlock) {
+        console.log(valueFrom2ndThenBlock)  // Logs &quot;Goodbye.&quot;
+    })
+      </code></pre>
+
+                <p>
+                    Sometimes what you return from
+                    one&nbsp;<code>.then()</code>&nbsp;block may be a promise
+                    instead of a synchronous value. For example,
+                    the&nbsp;<code>.json()</code>&nbsp;method in this code:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+.then(response =&gt; response.json())
+      </code></pre>
+
+                <p>
+                    actually returns a promise instead of something immediate
+                    like a string or number. In these cases, the promise chain
+                    waits for that promise to resolve, and then passes the
+                    resolved&nbsp;<em>value</em>&nbsp;(which IS a regular data
+                    type like a string, number, boolean, object, etc.) along to
+                    the next&nbsp;<code>.then()</code>.
+                </p>
+
+                <h3><strong>Star Wars API refactor</strong></h3>
+
+                <p>
+                    Let's take our Star Wars example and refactor it to use
+                    promises! Again, make sure to read the comments in the code
+                    closely:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+// This helper function is naturally shorter because it uses the built-in `fetch`
+// function, which reduces the amount of code we have to write from scratch.
+
+// Another important thing to note about this function that can be tricky to grasp
+// is that it is returning the promise that fetch returns. Because `fetch` uses
+// promises, when you call `fetch` it returns a promise immediately. Our function
+// simply takes that promise and returns it, but not before chaining a .then()s on
+// to parse the actual JSON data first.
+function getData(url) {
+    return fetch(url)
+        .then(function(response) {
+            return response.json()
+        })
+}
+
+// Because our helper function returned the promise from fetch, we can use .then() to do stuff
+// instead of having to use nested callbacks. We can also chain together the promises to keep
+// them from nesting down into a &quot;pyramid of doom.&quot;
+getData(&quot;https://swapi.co/api/people/1&quot;)
+    .then(function(lukeData) {
+        console.log(lukeData.homeworld)  // Logs &quot;https://swapi.co/api/planets/1/&quot;
+
+        // We make another call to our function and return the promise forward for
+        // the next .then() in the chain
+        return getData(lukeData.homeworld)
+    })
+    .then(function(planetData) {
+        console.log(planetData.name)  // Logs &quot;Tatooine&quot;!
+    })
+      </code></pre>
+
+                <p>
+                    To see how amazing this is, let's see the same code without
+                    the comments and using arrow functions instead:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+function getData(url) {
+    return fetch(url)
+        .then(response =&gt; response.json()
+}
+
+getData(&quot;https://swapi.co/api/people/1&quot;)
+    .then(lukeData =&gt; {
+        console.log(lukeData.homeworld)
+        return getData(lukeData.homeworld)
+    })
+    .then(planetData =&gt; {
+        console.log(planetData.name)
+    })
+      </code></pre>
+
+                <p>
+                    If this is still confusing, that's okay. It often takes
+                    students multiple practices and readings for it to click.
+                    While you're working on that, let's chat about the most
+                    modern method of writing asynchronous
+                    code:&nbsp;<code>async/await</code>.
+                </p>
+
+                <h3>
+                    <strong><code>async/await</code></strong>
+                </h3>
+
+                <p>
+                    Just like promises are syntactic sugar around callbacks,
+                    async/await is syntactic sugar around promises! Which
+                    means...&nbsp;<code>async/await</code>&nbsp;is&nbsp;<em
+                        >really sweet</em
+                    >&nbsp;😉😘
+                </p>
+
+                <p>
+                    Async functions make use of an earlier-released JavaScript
+                    feature called&nbsp;<strong>generator functions</strong>. We
+                    won't go into the details of generators in this article, but
+                    it's enough to know that Async functions are just a little
+                    different than the functions you're used to.
+                </p>
+
+                <h3>
+                    <strong><code>async</code>&nbsp;keyword</strong>
+                </h3>
+
+                <p>
+                    The first difference in an async function is that is uses
+                    the&nbsp;<code>async</code>&nbsp;keyword right before the
+                    regular function definition. All of the below are async
+                    functions because of the use of
+                    the&nbsp;<code>async</code>&nbsp;keyword:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+async function myFunc1() {
+    // async function declaration
+}
+
+const myFunc2 = async function() {
+    // async function expression
+}
+
+const myFunc3 = async () =&gt; {
+    // async arrow function expression
+}
+      </code></pre>
+
+                <p>
+                    Adding the&nbsp;<code>async</code>&nbsp;keyword before a
+                    function does 2 major things to the function:
+                </p>
+                <ol>
+                    <li>
+                        It enables your ability to use
+                        the&nbsp;<code>await</code>&nbsp;keyword inside the
+                        function. The&nbsp;<code>await</code>&nbsp;keyword in
+                        JavaScript can&nbsp;<strong>only</strong>&nbsp;be used
+                        inside an async function.
+                    </li>
+                    <li>
+                        When your async function is called, it automatically
+                        returns a pending promise. When your
+                        function&nbsp;<code>return</code>s a value, it resolves
+                        the promise with that value. If your
+                        function&nbsp;<code>throw</code>s an error, it rejects
+                        the promise with the thrown error.
+                    </li>
+                </ol>
+
+                <p>
+                    First let's talk about
+                    the&nbsp;<code>await</code>&nbsp;keyword
+                </p>
+
+                <h3>
+                    <strong><code>await</code>&nbsp;keyword</strong>
+                </h3>
+
+                <p>
+                    This keyword is a way to make normally asynchronous
+                    operations synchronous. In other words, anytime there's a
+                    function that normally would return a promise, it allows you
+                    to treat that function as if it were a synchronous function,
+                    and it pauses the execution of the remainder of your async
+                    function until that asynchronous function call completes.
+                </p>
+
+                <p>
+                    This way, we can actually set variables to the values of
+                    asynchronous functions inline instead of having to use the
+                    promise's&nbsp;<code>.then</code>&nbsp;and a callback
+                    function.
+                </p>
+
+                <h3><strong>Star Wars API example refactor</strong></h3>
+
+                <p>
+                    Let's modernize our Star Wars function! Again, read the
+                    comments carefully:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+// Changed up this function because it&#39;s so simplified due to async/await that we
+// don&#39;t necessarily need to create a helper function at all!
+async function getData() {
+    // Every time you see the `await` keyword, the function will pause and wait
+    // for the next asynchronous call (like fetch) to finish before moving on
+    const lukeResponse = await fetch(&quot;https://swapi.co/api/people/1&quot;)
+    const lukeData = await lukeResponse.json()
+    console.log(lukeData.homeworld)  // Logs &quot;https://swapi.co/api/planets/1&quot;
+
+    const planetResponse = await fetch(lukeData.homeworld)
+    const planetData = await planetResponse.json()
+    console.log(planetData.name)  // Logs &quot;Tatooine&quot;!
+
+    // Reset the lukeData.homeworld to be the planet name instead of just the URL
+    lukeData.homeworld = planetData.name
+
+    // Resolve the automatically-created promise with the lukeData we&#39;ve built
+    return lukeData
+}
+
+// async functions automatically return promises and resolve with whatever
+// got returned from that function. So eventually we&#39;ll need to use a .then()
+// to get the value, unless we&#39;re inside another async function.
+getData()
+    .then(lukeData =&gt; console.log(lukeData))
+      </code></pre>
+
+                <p>
+                    You can see that&nbsp;<code>async/await</code>&nbsp;can
+                    dramatically simplify the look and flow of asynchronous
+                    operations. Being able to read through async code as if it
+                    were synchronous can really make life nicer as a developer.
+                </p>
+
+                <h3><strong>Conclusion</strong></h3>
+
+                <p>
+                    There's probably a million other things that could be said
+                    about writing asynchronous code. Hopefully this introduction
+                    has given you a sense of curiosity and some tools to start
+                    playing with writing (and understanding) your own
+                    asynchronous code. For me, it took a lot of practice and
+                    messing around before I finally started to really understand
+                    the syntax and power behind callbacks, promises, and async
+                    functions.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section AJAX & Promises, Lesson 003) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AJAX_PROMISES-003"
+            data-lesson-title="JS Promises Part 1"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AJAX_PROMISES-003"
+            data-lesson-title="JS Promises Part 1"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>

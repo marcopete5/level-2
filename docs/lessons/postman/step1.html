@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Postman Introduction — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+            .image-embed-inline {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                border: 1px solid #e5e7eb;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">Postman Introduction</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>
+                    Students will be able to perform CRUD operations on a
+                    variety of API endpoints using Postman
+                </li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    width="1184"
+                    height="666"
+                    src="https://www.youtube.com/embed/A_vR0kSWZEY?list=PL1whVIy6oz7N-MH-rd4WEFNbhW6TEFgZj"
+                    title="Postman Intro"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://www.youtube.com/watch?v=A_vR0kSWZEY&amp;list=PL1whVIy6oz7N-MH-rd4WEFNbhW6TEFgZj&amp;index=3"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div class="section" id="notes" aria-labelledby="notes-heading">
+                <h3 id="notes-heading">Notes</h3>
+
+                <p>
+                    Postman is an important tool we will use for the rest of
+                    class.
+                </p>
+
+                <p>
+                    We will use to for creating requests to help us explore APIs
+                    and for testing our own API endpoints.
+                </p>
+
+                <h4><strong>Installation</strong></h4>
+                <p>
+                    There is a Chrome extension for Postman, but for this class
+                    we will use the MacOS version.
+                </p>
+                <p>
+                    Go to&nbsp;<a
+                        href="https://www.getpostman.com/"
+                        target="_blank"
+                        rel="noopener"
+                        >https://www.getpostman.com/</a
+                    >&nbsp;and download Postman for MacOS.
+                </p>
+
+                <h4><strong>Tutorial</strong></h4>
+                <p>
+                    Postman has a tutorial of how to use it. Follow along in
+                    this tutorial to become aware of what it can do.
+                </p>
+
+                <h4><strong>Endpoints</strong></h4>
+                <p>
+                    API endpoints are unique URLs that deliver data. The APIs we
+                    will work with and create will deliver&nbsp;<a
+                        href="https://coursework.vschool.io/json/"
+                        target="_blank"
+                        rel="noopener"
+                        >JSON</a
+                    >
+                </p>
+                <p>Some examples are:</p>
+                <ul>
+                    <li>
+                        <a
+                            href="http://pokeapi.co/api/v2/pokemon/1"
+                            target="_blank"
+                            rel="noopener"
+                            >http://pokeapi.co/api/v2/pokemon/1</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="http://swapi.co/api/people/2"
+                            target="_blank"
+                            rel="noopener"
+                            >http://swapi.co/api/people/2</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://api.vschool.io/ericnatejones/todo/"
+                            target="_blank"
+                            rel="noopener"
+                            >https://api.vschool.io/ericnatejones/todo/</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://waterservices.usgs.gov/nwis/iv/?format=json&amp;sites=13246000&amp;parameterCd=00060"
+                            target="_blank"
+                            rel="noopener"
+                            >https://waterservices.usgs.gov/nwis/iv/?format=json&amp;sites=13246000&amp;parameterCd=00060</a
+                        >
+                    </li>
+                </ul>
+                <p>
+                    If you go to any of these URLs, you will find data in the
+                    form of JSON. We will use go through how to use Postman to
+                    do this data next.
+                </p>
+
+                <h4><strong>GET</strong></h4>
+                <p>
+                    Open Postman. There is a dropdown that probably has GET
+                    selected. This dropdown will have many different kinds of
+                    requests. Don't be overwhelmed by these, we will probably
+                    only use GET, POST, PUT and DELETE in this class.
+                </p>
+                <p>
+                    The drop down should have GET selected. Now paste a URL. Try
+                    this one to compare:
+                    <a
+                        href="http://swapi.dev/api/people/2"
+                        target="_blank"
+                        rel="noopener"
+                        >http://swapi.dev/api/people/2</a
+                    >
+                </p>
+                <p>Click Send.</p>
+                <p>You should have gotten this block of data:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+{
+  &quot;name&quot;: &quot;C-3PO&quot;,
+  &quot;height&quot;: &quot;167&quot;,
+  &quot;mass&quot;: &quot;75&quot;,
+  &quot;hair_color&quot;: &quot;n/a&quot;,
+  &quot;skin_color&quot;: &quot;gold&quot;,
+  &quot;eye_color&quot;: &quot;yellow&quot;,
+  &quot;birth_year&quot;: &quot;112BBY&quot;,
+  &quot;gender&quot;: &quot;n/a&quot;,
+  &quot;homeworld&quot;: &quot;http://swapi.co/api/planets/1/&quot;,
+  &quot;films&quot;: [
+    &quot;http://swapi.co/api/films/5/&quot;,
+    &quot;http://swapi.co/api/films/4/&quot;,
+    &quot;http://swapi.co/api/films/6/&quot;,
+    &quot;http://swapi.co/api/films/3/&quot;,
+    &quot;http://swapi.co/api/films/2/&quot;,
+    &quot;http://swapi.co/api/films/1/&quot;
+  ],
+  &quot;species&quot;: [
+    &quot;http://swapi.co/api/species/2/&quot;
+  ],
+  &quot;vehicles&quot;: [],
+  &quot;starships&quot;: [],
+  &quot;created&quot;: &quot;2014-12-10T15:10:51.357000Z&quot;,
+  &quot;edited&quot;: &quot;2014-12-20T21:17:50.309000Z&quot;,
+  &quot;url&quot;: &quot;http://swapi.co/api/people/2/&quot;
+}
+      </code></pre>
+
+                <p>
+                    It should hopefully look pretty like this too. If it
+                    doesn't, open a new tab. That should restore the defaults.
+                    Make sure it's a GET request.
+                </p>
+                <p>
+                    You may say, &quot;But we could have gotten that data by
+                    just putting that URL in the browser!&quot;
+                </p>
+                <p>
+                    That's true. For most GET requests, Postman is nice, but not
+                    necessary. Some GET requests, however, require headers.
+                </p>
+                <p>
+                    Click on the Headers tab. You can see that headers are a
+                    key/value pair. An example of a header you will likely see
+                    is authorization. The key might be &quot;AuthToken&quot; and
+                    the value might be &quot;e8234ghg8&quot;
+                </p>
+
+                <h4><strong>POST</strong></h4>
+                <p>POST requests is where Postman becomes really useful.</p>
+                <p>
+                    While GET requests retrieve information, POST requests can
+                    save new information in the form of a new object in the APIs
+                    database.
+                </p>
+                <p>GET - Retrieve dataPOST - Save new data</p>
+                <p>
+                    There are a few settings we will change for the purposes of
+                    the course.
+                </p>
+                <p>
+                    Change the dropdown from <code>GET</code> to
+                    <code>POST</code>. Enter the URL
+                    <code>https://api.vschool.io/[your name]/todo/</code> and
+                    replace the name section in the URL with your name. If your
+                    name is Fred, you can use
+                    <code>https://api.vschool.io/fred/todo/</code>
+                </p>
+                <p>
+                    The creator of this API (our beloved Bob) made it so that
+                    when a new object was submitted using a POST request and
+                    this URL, it would add a new todo item.
+                </p>
+                <p>
+                    If the user (in this case fred) already exists, it would add
+                    to the list of todos.
+                </p>
+                <p>
+                    If the user doesn't exist, it would start a new list
+                    belonging to the new user.
+                </p>
+                <p>
+                    Next thing we need to change is in the
+                    <code>body</code> tab. Change <code>form-data</code> to
+                    <code>raw</code>.
+                </p>
+                <p>
+                    There is now an orange dropdown that probably says
+                    <code>text</code>. Change that to
+                    <code>JSON (application/JSON)</code>
+                </p>
+                <p>
+                    In our text field, we can now submit a JSON object. The
+                    object must follow this pattern:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+{
+    &quot;title&quot;: &quot;Title here&quot;, // this one is the only thing that is actually required
+    &quot;description&quot;: &quot;Description here&quot;,
+    &quot;price&quot;: 20, // Must be a number of some kind (integer or float)
+    &quot;imgUrl&quot;: &quot;http://www.example.com/some-link-to-a-cool-photo.jpg&quot;,
+    &quot;completed&quot;: false // must be a boolean (true or false). If nothing provided, defaults to false.
+}
+      </code></pre>
+
+                <p>
+                    Like the example says, <code>title</code> is the only
+                    key/value pair that's required. Go ahead and send a new
+                    item!!
+                </p>
+                <p>
+                    If your item didn't follow the pattern above, you will
+                    receive an error in the response.
+                </p>
+                <p>
+                    If your item did follow the pattern above, you will receive
+                    back your newly created item!!
+                </p>
+
+                <h4><strong>PUT</strong></h4>
+                <p>
+                    We are going to do one more get to show how to use this api
+                    to get one specific todo item.
+                </p>
+                <p>
+                    If you post several todo items, and do a GET to the URL, you
+                    will get a list of all the todo items. But to get one todo
+                    item, we add one more part to the URL.
+                </p>
+                <p>
+                    <code
+                        >https://api.vschool.io/fred/todo/[_id-of-the-specific-item]</code
+                    >
+                </p>
+                <p>
+                    So, find the <code>_id</code>, and make a get request to
+                    make sure you are getting the todo item you intended to.
+                </p>
+                <p>
+                    We need to be able to select just one to be able to edit or
+                    delete (PUT or DELETE) specific todo items.
+                </p>
+                <p>Change the dropdown from GET to PUT.</p>
+                <p>
+                    You may need to scroll up to get to the body that you can
+                    submit. This will be similar to setting up a POST request.
+                    Select the same options as when we did the POST.
+                </p>
+                <p>A PUT updates or edits an already existing item.</p>
+                <p>
+                    This API is written to only update the fields (key value
+                    pairs) that are submitted, but if it receives all the
+                    fields, it will just update the ones that are different.
+                </p>
+                <p>Go ahead and edit one or more of the appropriate fields.</p>
+                <p>Appropriate fields for this API are:</p>
+                <ul>
+                    <li>title</li>
+                    <li>description</li>
+                    <li>price</li>
+                    <li>imgUrl</li>
+                    <li>completed</li>
+                </ul>
+                <p>
+                    You can add new fields to this item, but be sure that
+                    is&nbsp;<a
+                        href="http://jsonlint.com/"
+                        target="_blank"
+                        rel="noopener"
+                        >valid JSON</a
+                    >
+                </p>
+                <p>
+                    Submit your PUT and hopefully the response is your new item.
+                    If the JSON you sent wasn't valid JSON or didn't follow the
+                    pattern we went over, the response will be the old item.
+                </p>
+
+                <h4><strong>DELETE</strong></h4>
+                <p>
+                    Let's end on an easy one! Don't change the URL, it will
+                    still be the normal URL with the items _id that you want to
+                    delete.
+                </p>
+                <p>Change the dropdown to DELETE and click send.</p>
+                <p>You should get a:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+{
+  &quot;msg&quot;: &quot;Successfully deleted record&quot;
+}
+      </code></pre>
+
+                <p>Hooray!!</p>
+                <p>
+                    Be sure to practice using Postman every chance you get. It
+                    will soon become an invaluable tool.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section POSTMAN, Lesson 001) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-POSTMAN-001"
+            data-lesson-title="Postman Introduction"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-POSTMAN-001"
+            data-lesson-title="Postman Introduction"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>

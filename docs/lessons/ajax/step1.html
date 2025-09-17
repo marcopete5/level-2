@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AJAX Part 1 — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+            .image-embed-inline {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                border: 1px solid #e5e7eb;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">AJAX Part 1</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>explain what AJAX stands for and why it is important</li>
+                <li>
+                    identify the different steps involved in making an HTTP
+                    request using the <code>XMLHttpRequest</code> object.
+                </li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cvzeq3UR?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/cvzeq3UR?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div class="section" id="notes" aria-labelledby="notes-heading">
+                <h3 id="notes-heading">Notes</h3>
+
+                <p>
+                    <strong>Introducing AJAX</strong><br />
+                    In the past, web pages required reloading the whole page
+                    every time you wanted to update the content. For example, in
+                    web-based email (like gmail.com) this meant that users had
+                    to manually reload their inbox to check and see if they had
+                    any new email. This had huge drawbacks: it was slow and it
+                    required user input (they had to know that they needed to
+                    refresh the page to re-check their email). When the user
+                    reloaded their inbox, the server had to reconstruct the
+                    entire web page and resend all of the HTML, CSS, JavaScript,
+                    as well as the data containing the user's email. This was
+                    hugely inefficient. Ideally, the server should only have to
+                    send the user's new messages, not the entire page. By 2003,
+                    all the major browsers solved this issue by adopting
+                    JavaScript's <code>XMLHttpRequest</code> (XHR) object,
+                    allowing browsers to communicate with the server without
+                    requiring a page reload.
+                </p>
+
+                <p>
+                    The <code>XMLHttpRequest</code> object is part of a
+                    technology called AJAX (<strong>A</strong>synchronous
+                    <strong>J</strong>avaScript <strong>a</strong>nd
+                    <strong>X</strong>ML). With Ajax, data can now be passed
+                    between the browser and the server, using the
+                    <code>XMLHttpRequest</code> API, without having to reload
+                    the web page! With the widespread adoption of the
+                    <code>XMLHttpRequest</code> object it quickly became
+                    possible to build web applications like Google Maps and
+                    Gmail that used <code>XMLHttpRequest</code> to get new map
+                    tiles, or new email without having to reload the entire
+                    page.
+                </p>
+
+                <p>
+                    <strong>Working with AJAX</strong><br />
+                    Below is an example of how to create a new XMLHttpRequest
+                    object and how to use it to get data and use that data
+                    without having to refresh the page. We'll walk through each
+                    piece below.
+                </p>
+
+                <pre><code class="language-javascript" role="region" aria-label="Code block">
+const xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+        const jsonData = xhr.responseText;
+        const data = JSON.parse(jsonData);
+        const name = data.name;
+        document.getElementById(&quot;demo1&quot;).textContent = &quot;JSON results: &quot; + jsonData;
+        document.getElementById(&quot;demo2&quot;).textContent = &quot;Parsed JSON&#39;s &#39;name&#39; property: &quot; + data.name;
+        spaceshipurl = data.starships[0];
+        console.log(spaceshipurl);
+    }
+};
+
+xhr.open(&quot;GET&quot;, &quot;http://swapi.dev/api/people/&quot;, true);
+xhr.send();
+      </code></pre>
+
+                <p>
+                    Let's walk through each piece:<br />
+                    <strong>Creating the xhr object</strong>
+                </p>
+
+                <p><code>const xhr = new XMLHttpRequest();</code></p>
+
+                <p>
+                    We oftentimes simplify the name &quot;XMLHttpRequest&quot;
+                    to just &quot;XHR&quot;. In the first line of our XHR code,
+                    we use the built-in JavaScript
+                    <code>XMLHttpRequest</code> constructor to create a new
+                    object that we can use to perform an AJAX request.<br />
+                    Next, we're going to skip ahead to the last couple of lines
+                    before we talk about the whole middle section with the
+                    <code>onreadystatechange</code>. Understanding the
+                    <code>open</code> and <code>send</code> methods will give us
+                    more insight into the <code>onreadystatechange</code> event
+                    handler.
+                </p>
+
+                <p>
+                    <strong><code>xhr.open()</code></strong>
+                </p>
+
+                <p>
+                    <code
+                        >xhr.open(&quot;GET&quot;,
+                        &quot;http://swapi.dev/api/people/&quot;, true);</code
+                    >
+                </p>
+
+                <p>
+                    The <code>open</code> method on the XHR object allows us to
+                    specify a few bits of additional information dealing with
+                    the AJAX request. In the first parameter, we tell it we want
+                    this request to be a &quot;GET&quot; request. If you don't
+                    know what that means yet, the short answer is that it's our
+                    way of telling the server we want to receive (GET)
+                    information rather than submit (POST) information.<br />
+                    The second parameter is the URL address of where this data
+                    resides. In the example above, the URL
+                    <code>http://swapi.dev/api/people</code> is a location on
+                    the web where JSON data about an individual Star Wars
+                    character (in this instance, Luke Skywalker who has an ID of
+                    1 in their database) can be found. If you go to that url in
+                    a browser, you'll see a page with a bunch of JSON data on
+                    it. When you make an XHR request to that URL, the data that
+                    comes back is that JSON, which can then be turned into a
+                    JavaScript object and used in your web app!<br />
+                    The third parameter is a boolean of whether or not we want
+                    the request to be asynchronous. One of the biggest benefits
+                    of AJAX is that it is asynchronous, so we'll typically want
+                    this to be set to <code>true</code>.
+                </p>
+
+                <p>
+                    <strong><code>xhr.send()</code></strong>
+                </p>
+
+                <p><code>xhr.send();</code></p>
+
+                <p>
+                    The next line with the <code>send</code> method is what
+                    kicks off the whole process. It simply sends the request to
+                    the specified address.
+                </p>
+
+                <p>
+                    <strong
+                        ><code>readyState</code> and
+                        <code>onreadystatechange</code></strong
+                    ><br />
+                    Every XHR object has a property called
+                    <code>readyState</code>. The
+                    <code>readyState</code> property give us updates on how far
+                    along in the process the request is before, during, and
+                    after executing the <code>send</code> method. For example,
+                    when you first create the XHR object, it starts at 0, which
+                    means &quot;unsent&quot;. Once you call the
+                    <code>open</code> method, it changes the
+                    <code>readyState</code> property to 1, which means
+                    &quot;opened&quot;. Every time the
+                    <code>readyState</code> property changes, the XHR object
+                    also fires a <code>readystatechange</code> event so that we
+                    can do things throughout the AJAX process if we want. The
+                    XHR object has a method it runs every time there is a
+                    <code>readystatechange</code> event, called
+                    <code>onreadystatechange</code>.<br />
+                    Here's the relevant code from above again:
+                </p>
+
+                <pre><code class="language-javascript" role="region" aria-label="Code block">
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+        const jsonData = xhr.responseText;
+        const data = JSON.parse(jsonData);
+        const name = data.name;
+        document.getElementById(&quot;demo1&quot;).textContent = &quot;JSON results: &quot; + jsonData;
+        document.getElementById(&quot;demo2&quot;).textContent = &quot;Parsed JSON&#39;s &#39;name&#39; property: &quot; + data.name;
+        spaceshipurl = data.starships[0];
+        console.log(spaceshipurl);
+    }
+};
+      </code></pre>
+
+                <p>
+                    In the above code, we set the
+                    <code>onreadystatechange</code> method to our own function,
+                    so any time there is a <code>readystatechange</code> event,
+                    it will now run our code.<br />
+                    The first things we're doing in this code is checking what
+                    the <code>readyState</code> and
+                    <code>status</code> properties are. We do this because we
+                    need to know for sure that we have successfully received
+                    some response data from our request before we can start
+                    doing anything with that data. When the
+                    <code>readyState</code> property is 4, that means the server
+                    has sent back a response. The response
+                    <strong>status</strong> that comes back from a GET request
+                    will be <code>200</code> if the request was successful. So
+                    in our if statement, we need to check that the
+                    <code>readyState</code> is 4 and the <code>status</code> is
+                    200.<br />
+                    Once that is true, we can find the data inside the
+                    <code>responseText</code> property of the XHR object
+                    (<code>xhr.responseText</code>).
+                </p>
+
+                <p>
+                    The data that we got back from the server is in JSON format,
+                    which alone doesn't help us access or change anything with
+                    plain JavaScript. We need to use
+                    <code>JSON.parse()</code> to change the JSON data into a
+                    useable JavaScript object. This is what
+                    <code>var data = JSON.parse(jsonData);</code> is doing. Now
+                    we have the <code>data</code> variable which contains the
+                    JavaScript object version of the JSON data we received back
+                    from the server.
+                </p>
+
+                <p>
+                    <strong>Using the data</strong><br />
+                    The rest of the code inside the <code>if</code> block is all
+                    about using the data we got back to display the results to
+                    the user. While the result on the page may seem trivial (the
+                    page goes from being a blank page to having some text on
+                    it), it's actually a very revolutionary thing in the history
+                    of web development! Users no longer have to submit a form to
+                    the server, wait for the server to render a brand new HTML
+                    page with all the data the user asked for and wait for the
+                    browser to re-load all the same HTML, CSS, and JavaScript
+                    that it had already loaded, now with just a few small
+                    changes. Instead, the user can now interact with the web
+                    page and let all the data exchanges with the server happen
+                    in the background while they continue to use the
+                    application.
+                </p>
+
+                <p>
+                    <strong>Conclusion</strong><br />
+                    For most of the web applications you write, you probably
+                    won't be writing manual XMLHttpRequest objects and checking
+                    for readyState changes. Libraries like Axios and jQuery make
+                    this process <em>much</em> more developer-friendly. However,
+                    understanding what is happening underneath all the magic of
+                    libraries that make this easier is helpful and could help
+                    you understand problems you may face when using other
+                    people's code.
+                </p>
+
+                <p>
+                    <img
+                        class="image-embed-inline"
+                        src="https://coursework.vschool.io/content/images/size/w2000/2016/07/ajax.jpg"
+                        alt="AJAX illustration"
+                        style="max-width: 100%; height: auto" />
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section AJAX & Promises, Lesson 001) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AJAX_PROMISES-001"
+            data-lesson-title="AJAX Part 1"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AJAX_PROMISES-001"
+            data-lesson-title="AJAX Part 1"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>

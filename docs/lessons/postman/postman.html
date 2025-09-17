@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Postman Practice — Assignment</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">Postman Practice</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <div class="section" id="intro" aria-labelledby="intro-heading">
+                <h3 id="intro-heading">Introduction</h3>
+                <p>
+                    For problems #1 and #2, reference the
+                    <a
+                        href="https://swapi.dev/documentation"
+                        target="_blank"
+                        rel="noopener"
+                        >Star Wars API</a
+                    >
+                </p>
+                <ol>
+                    <li>Use Postman to GET a list of planets.</li>
+                    <li>Use Postman to GET a single person object.</li>
+                </ol>
+            </div>
+
+            <div class="section" id="todos" aria-labelledby="todos-heading">
+                <h3 id="todos-heading">VS Todo API</h3>
+                <p>
+                    For problems below, use the
+                    <code>https://api.vschool.io/[your_name]/todo</code>
+                    endpoint.
+                </p>
+                <ol>
+                    <li>
+                        Use Postman to POST 3 new todo objects. Run another GET
+                        to see them. Use the following template for your JSON
+                        body:
+                    </li>
+                </ol>
+
+                <pre><code class="language-json" role="region" aria-label="Code block">
+{
+  &quot;title&quot;: &quot;This is required&quot;,
+  &quot;description&quot;: &quot;This is optional&quot;,
+  &quot;price&quot;: 0, //must be a number
+  &quot;imgUrl&quot;: &quot;http://path-to-url.jpg&quot;,
+  &quot;completed&quot;: false //must be boolean
+}
+      </code></pre>
+
+                <ol start="2">
+                    <li>
+                        GET one single todo using its <code>id</code> property.
+                    </li>
+                    <li>
+                        DELETE one single todo using its
+                        <code>id</code> property.
+                    </li>
+                    <li>
+                        PUT one single todo using its <code>id</code> property.
+                    </li>
+                </ol>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section POSTMAN, Lesson 007) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-POSTMAN-007"
+            data-lesson-title="Postman Practice"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-POSTMAN-007"
+            data-lesson-title="Postman Practice"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>
