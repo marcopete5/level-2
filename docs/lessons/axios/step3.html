@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>POST w/ Axios — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">POST w/ Axios</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>
+                    Students will be able to implement a simple POST request
+                    using axios
+                </li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/czNwNESP?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/czNwNESP?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div class="section" id="notes" aria-labelledby="notes-heading">
+                <h3 id="notes-heading">Making POST Requests with Axios</h3>
+
+                <h4>Introduction to POST Requests</h4>
+                <p>
+                    POST requests are used to send data to a server, typically
+                    to create or update resources. In this guide, we'll explore
+                    how to use Axios to make POST requests in JavaScript.
+                </p>
+
+                <h4>Understanding the Code</h4>
+                <p>Let's break down the provided code step by step:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+const todoForm = document.todoform
+
+todoForm.addEventListener("submit", function(event){
+    event.preventDefault()
+
+    const newTodo = {
+        title: todoForm.title.value,
+        description: todoForm.description.value,
+        imgUrl: todoForm.imgUrl.value
+    }
+
+    axios.post("&lt;https://api.vschool.io/scrimbalessons/todo&gt;", newTodo)
+        .then(response =&gt; console.log(response.data))
+        .catch(error =&gt; console.log(error))
+})
+      </code></pre>
+
+                <h4>Capturing Form Submission</h4>
+                <ul>
+                    <li>
+                        We select the todo form from the document using
+                        <code>document.todoform</code>.
+                    </li>
+                    <li>
+                        We add an event listener to the form for the "submit"
+                        event.
+                    </li>
+                </ul>
+
+                <h4>Preventing Default Behavior</h4>
+                <ul>
+                    <li>
+                        We prevent the default form submission behavior using
+                        <code>event.preventDefault()</code>. This ensures that
+                        the form doesn't reload the page when submitted.
+                    </li>
+                </ul>
+
+                <h4>Creating New Todo Object</h4>
+                <ul>
+                    <li>
+                        We create a new todo object (<code>newTodo</code>) using
+                        the values entered in the form fields
+                        (<code>title</code>, <code>description</code>, and
+                        <code>imgUrl</code>).
+                    </li>
+                </ul>
+
+                <h4>Sending POST Request with Axios</h4>
+                <ul>
+                    <li>
+                        We use <code>axios.post()</code> to send a POST request
+                        to the specified API endpoint
+                        (<code>https://api.vschool.io/scrimbalessons/todo</code>)
+                        with the new todo object (<code>newTodo</code>) as the
+                        request body.
+                    </li>
+                    <li>
+                        If the request is successful, we log the response data
+                        to the console.
+                    </li>
+                    <li>
+                        If an error occurs, we log the error to the console.
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section AXIOS, Lesson 004) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AXIOS-004"
+            data-lesson-title="POST w/ Axios"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AXIOS-004"
+            data-lesson-title="POST w/ Axios"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>
