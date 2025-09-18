@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Axios Todo Project — Capstone</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">Axios Todo Project</h1>
+                <h2>Capstone Project</h2>
+            </header>
+
+            <div class="section" aria-labelledby="intro-heading">
+                <h3 id="intro-heading">Axios Todo Project</h3>
+                <p>
+                    <strong
+                        >Build it, own it! Create a dynamic Todo List using V
+                        School Todo API.</strong
+                    >
+                </p>
+                <p>
+                    You’ll build a frontend site that pulls todos from the
+                    <a
+                        href="https://coursework.vschool.io/v-schools-todo-api-documentation/"
+                        target="_blank"
+                        rel="noopener"
+                        >V School Todo API</a
+                    >, displays them, and supports CRUD operations (Create,
+                    Read, Update, Delete). Changes persist in the database, so
+                    refreshing the page shows the current todo list.
+                </p>
+            </div>
+
+            <div class="section" aria-labelledby="setup-heading">
+                <h3 id="setup-heading">Setup</h3>
+                <p>
+                    Use
+                    <a
+                        href="https://cdnjs.com/libraries/axios"
+                        target="_blank"
+                        rel="noopener"
+                        >Axios via CDN</a
+                    >
+                    to make API requests. Work through each part in order,
+                    collaborating with peers between steps to discuss code and
+                    explore new approaches.
+                </p>
+            </div>
+
+            <div class="section" aria-labelledby="workshops-heading">
+                <h3 id="workshops-heading">Workshops to Review</h3>
+                <ul>
+                    <li>
+                        <a
+                            href="https://techprograms.notion.site/Project-Set-Up-Vanilla-JS-Front-end-Full-Stack-4a8a2936a5c54a7ebf024ee74e15294a"
+                            target="_blank"
+                            rel="noopener"
+                            >Project Set-Up / Vanilla JS, Front-end,
+                            Full-Stack</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://techprograms.notion.site/Functions-and-Parameters-d31d7034f3944186b0003d471cfc1b29"
+                            target="_blank"
+                            rel="noopener"
+                            >Functions and Parameters</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://techprograms.notion.site/Minimal-Viable-Product-MVP-CSS-tips-and-tricks-854f7aac43c3433581ec9835598d79d2"
+                            target="_blank"
+                            rel="noopener"
+                            >Minimal Viable Product (MVP) / CSS Tips and
+                            Tricks</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section" aria-labelledby="requirements-heading">
+                <h3 id="requirements-heading">General Requirements</h3>
+                <p>
+                    Instructors will check for functionality, responsiveness,
+                    and similarity to the
+                    <a
+                        href="https://marcopete5.github.io/level-2/assignments/capstone/index.html"
+                        target="_blank"
+                        rel="noopener"
+                        >demo app</a
+                    >. Expect a discussion on challenges and helpful resources.
+                    Spend <strong>1–3 days on JavaScript</strong> and
+                    <strong>1–2 days on CSS</strong>.
+                </p>
+
+                <h3>
+                    <a
+                        href="https://marcopete5.github.io/level-2/assignments/capstone/index.html"
+                        target="_blank"
+                        rel="noopener"
+                        class="btn-primary"
+                        >CLICK FOR DEMO</a
+                    >
+                </h3>
+            </div>
+
+            <div class="section" aria-labelledby="pro-tip-heading">
+                <h3 id="pro-tip-heading">Pro Tip</h3>
+                <p>
+                    <strong>Pro Tip:</strong> Use
+                    <a
+                        href="https://www.postman.com/"
+                        target="_blank"
+                        rel="noopener"
+                        >Postman</a
+                    >
+                    to populate the API with sample todos, including images, to
+                    test your styling.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section AXIOS, Capstone 008) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-CAP-002"
+            data-lesson-title="Axios Todo Project"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-CAP-002"
+            data-lesson-title="Axios Todo Project"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>
