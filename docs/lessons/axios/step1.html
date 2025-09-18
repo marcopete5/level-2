@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Introduction to Axios — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+            .image-embed-inline {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                border: 1px solid #e5e7eb;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">Introduction to Axios</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>explain what axios is and how it can be installed</li>
+                <li>
+                    explain the difference between an HTTP request and a promise
+                </li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/cnZaB4Cv?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/cnZaB4Cv?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div class="section" id="notes" aria-labelledby="notes-heading">
+                <h3 id="notes-heading">Notes</h3>
+
+                <p>
+                    <img
+                        class="image-embed-inline"
+                        src="https://coursework.vschool.io/content/images/size/w2000/2017/08/http-banner.jpg"
+                        alt="HTTP banner"
+                        style="max-width: 100%; height: auto" />
+                </p>
+
+                <p>
+                    Axios is a JavaScript library that helps us make AJAX calls
+                    to APIs.
+                </p>
+
+                <p>
+                    We will being using to make requests for data in the form of
+                    JSON.
+                </p>
+
+                <p>
+                    There are a few acronyms in those two statements that should
+                    be understood before getting too deep in how to use Axios.
+                    If those two statements made sense to you, click&nbsp;<a
+                        href="https://coursework.vschool.io/axios/#axios"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >
+                </p>
+
+                <h4><strong>AJAX</strong></h4>
+                <p>
+                    AJAX allows web pages to be updated asynchronously by
+                    exchanging data with a web server behind the scenes. This
+                    means that it is possible to update parts of a web page,
+                    without reloading the whole page.
+                </p>
+                <p>
+                    Asynchronously means that it's happening at the same time as
+                    your app is loading or doing other tasks.
+                </p>
+
+                <p>The steps an AJAX call makes are the following:</p>
+                <ol>
+                    <li>
+                        An event occurs in a web page (the page is loaded, a
+                        button is clicked)
+                    </li>
+                    <li>An XMLHttpRequest object is created by JavaScript</li>
+                    <li>
+                        The XMLHttpRequest object sends a request to a web
+                        server
+                    </li>
+                    <li>The server processes the request</li>
+                    <li>The server sends a response back to the web page</li>
+                    <li>The response is read by JavaScript</li>
+                    <li>
+                        Proper action (like page update) is performed by
+                        JavaScript
+                    </li>
+                </ol>
+
+                <p>
+                    Previously, there was a lot of code required to make these
+                    requests. Many library's created solutions to preform the
+                    common functions needed. jQuery had
+                    a&nbsp;<code>.get()</code>&nbsp;method, and
+                    a&nbsp;<code>.ajax()</code>&nbsp;method. We will learn how
+                    to use Axios and Axios's methods. Axios's whole job is to
+                    help us with these calls. It is what we will use in React.
+                    Angular has a $http service that does this same thing. If
+                    jQuery and Angular both have their own, why doesn't React?
+                </p>
+
+                <p>
+                    In the creators words, "In general we resist adding features
+                    that can be implemented in userland. We don't want to bloat
+                    your apps with useless library code."
+                </p>
+
+                <h4><strong>APIs</strong></h4>
+                <p>
+                    API is a very general term used to describe applications
+                    talking with each other. Within the context of this class,
+                    it will be servers communicating with our stuff.
+                </p>
+                <p>
+                    For example, we can have our app ask for weather data from a
+                    weather API.
+                </p>
+                <p>
+                    In the past, data was sent in XML (The X in AJAX). Modern
+                    web developers use JSON.
+                </p>
+
+                <h4><strong>JSON</strong></h4>
+                <p>
+                    JSON is JavaScript Object Notation. It's pretty much a
+                    JavaScript object with a few key differences. Axios will
+                    take care of turning JSON in JavaScript for us. It's not too
+                    difficult because the two are structured the same.
+                </p>
+
+                <h3><strong>Axios</strong></h3>
+                <p>
+                    Axios is an NPM package, so we will need to install it into
+                    whatever project we are working on. For now, set up a node
+                    environment with the following commands.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+mkdir axios-practice
+cd axios-practice
+npm init -y
+      </code></pre>
+
+                <p>Now install axios.</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+npm install axios
+      </code></pre>
+
+                <p>Create an&nbsp;<code>app.js</code></p>
+                <p>
+                    We will be using Star Wars API for a bit because it's free
+                    and easy. We can request information for all sorts of Star
+                    Wars stuff.
+                </p>
+                <p>Go to swapi.co</p>
+                <p>
+                    Often times you will need to read some documentation to
+                    understand how an api works. In this one, different urls
+                    will give you different data. The data you wish to request
+                    will be specified by the parameters given in the
+                    url.&nbsp;<code>https://swapi.co/api/people/</code>&nbsp;would
+                    suggest that you want a list of the people. If you go to
+                    that url, you will see an array of people. You can also
+                    request data on just one person at a time like
+                    this:&nbsp;<code>https://swapi.co/api/people/1</code>
+                </p>
+                <p>
+                    We want that information to be available to our apps, and
+                    we'll use the axios library to do that. First, import axios
+                    using&nbsp;<code>require</code>.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+//app.js
+
+const axios = require(&quot;axios&quot;);
+      </code></pre>
+
+                <p>
+                    ** if the above is throwing errors, you can try directly
+                    adding the axios script to your index.html as shown below.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+To use Axios on the front-end vs with node, just use the cdn.
+&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+      </code></pre>
+
+                <p>
+                    We can then use Axios's&nbsp;<code>.get()</code>&nbsp;method
+                    to request the data.&nbsp;<code>.get()</code>&nbsp;only
+                    requires a string that is the url. axios.get('the url') We
+                    might be tempted to do something like this:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+//app.js
+
+const axios = require(&quot;axios&quot;);
+
+const lukeSkywalker = axios.get(&#39;https://swapi.co/api/people/1&#39;);
+
+console.log(lukeSkywalker);
+      </code></pre>
+
+                <p>
+                    If we do this, however, we will see&nbsp;<code
+                        >Promise { &lt;pending&gt; }</code
+                    >
+                </p>
+                <p>
+                    This is because Axios is utilizing AJAX's synchronous
+                    abilities. Your JavaScript file and the request for the data
+                    are happening AT THE SAME TIME!!! Instead
+                    of&nbsp;<code>.get()</code>&nbsp;assigning
+                    our&nbsp;<code>lukeSkywalker</code>&nbsp;variable the actual
+                    data, it returns a&nbsp;<code>promise</code>. A promise that
+                    it will give us data eventually.
+                </p>
+                <p>
+                    It's like asking your friend, "What's the weather like
+                    outside?" and she says, "I don't know right now, but I
+                    PROMISE I will get that information for you" She goes out
+                    side, comes back, and&nbsp;<strong>THEN</strong>&nbsp;tells
+                    you what the weather is.
+                </p>
+                <p>
+                    This promise is an object. It has
+                    a&nbsp;<code>.then()</code>&nbsp;method on
+                    it.&nbsp;<code>.then()</code>&nbsp;takes a callback function
+                    that will run when the data comes back.
+                </p>
+                <ol>
+                    <li>
+                        We will write a function that will run when the data
+                        comes back.
+                    </li>
+                    <li>Then we will use axios's&nbsp;<code>.get()</code></li>
+                    <li>
+                        We will then use our first function in the
+                        promises&nbsp;<code>.then()</code>
+                    </li>
+                </ol>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+function assignResponseToVariable(response){
+    console.log(response.data);
+}
+
+axios.get(&#39;https://swapi.co/api/people/1&#39;).then(assignResponseToVariable)
+      </code></pre>
+
+                <p>
+                    To simplify this, we will usually see the function as an
+                    anonymous function like this:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+axios.get(&#39;https://swapi.co/api/people/1&#39;).then(response =&gt; {
+    console.log(response.data);
+})
+      </code></pre>
+
+                <h4><strong>errors</strong></h4>
+                <p>
+                    Using our previous example of our friend checking the
+                    weather for us, imagine she's gets distracted, breaks her
+                    leg, or for some other reason isn't able to see what the
+                    weather is doing. She would come back and say, "I'm sorry, I
+                    promised you I would tell you what the weather was like, but
+                    the front door is stuck shut."
+                </p>
+                <p>
+                    We can&nbsp;<strong>catch</strong>&nbsp;these errors with
+                    the&nbsp;<code>.catch()</code>&nbsp;method.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+axios.get(&#39;https://swapi.co/api/people/1&#39;).then(response =&gt; {
+    console.log(response.data);
+  }).catch(error =&gt; {
+    console.log(error)
+  });
+      </code></pre>
+
+                <p>
+                    We can make posts with
+                    the&nbsp;<code>.post()</code>&nbsp;method. This method takes
+                    two arguments. The url, and the object to be posted. If you
+                    aren't familiar with making posts, this might be a good
+                    stopping place for now. Consider learning about the
+                    tool&nbsp;<a
+                        href="https://coursework.vschool.io/postman/"
+                        target="_blank"
+                        rel="noopener"
+                        >Postman</a
+                    >&nbsp;and then coming back.
+                </p>
+                <p>
+                    We will be using the VSchool todo API. The creator of this
+                    API (our beloved Bob) made it so that when a new object was
+                    submitted using a POST request and the following URL, it
+                    would add a new todo item.
+                </p>
+                <p>
+                    The todo API is great for practicing your get, post, put,
+                    and delete mehtods. Read the documentation&nbsp;<a
+                        href="https://coursework.vschool.io/v-schools-todo-api-documentation/"
+                        target="_blank"
+                        rel="noopener"
+                        >here</a
+                    >.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+https://api.vschool.io/[your name]/todo/
+      </code></pre>
+
+                <p>
+                    You can then "get" a list of your current todos using the
+                    same url.
+                </p>
+                <p>The code to post something would look like this:</p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+axios.post(&#39;https://api.vschool.io/suzan/todo/&#39;, newTodo).then(response =&gt; {
+    console.log(response.data);
+  }).catch(error =&gt; {
+    console.log(error)
+  });
+      </code></pre>
+
+                <p>
+                    The only difference is switching
+                    out&nbsp;<code>get</code>&nbsp;with&nbsp;<code>post</code>,
+                    and throwing in a&nbsp;<code>newTodo</code>&nbsp;object as a
+                    second arguments. Notice that we still receive a response
+                    back. That is because a&nbsp;<code>POST</code>&nbsp;returns
+                    a response. In the case of this API, it would give us our
+                    new todo. This is nice because there are a few default
+                    properties like&nbsp;<code
+                        >&quot;completed&quot;: false</code
+                    >&nbsp;or on other APIs maybe a date and time of creation.
+                </p>
+                <p>
+                    If you ran this code, you'd get an error complaining
+                    about&nbsp;<code>newTodo</code>&nbsp;not being defined.
+                    Define it earlier in your code.
+                </p>
+                <p>
+                    It needs to be an object and at least have a "title"
+                    property. If you give it properties that API does take, it
+                    will ignore them.
+                </p>
+                <p>
+                    The last argument of any either of these is what's called
+                    a&nbsp;<code>config</code>&nbsp;object. We use this to set
+                    headers or other things we might need to change about our
+                    requests.
+                </p>
+                <p>
+                    Examples of a&nbsp;<code>put</code>&nbsp;and
+                    a&nbsp;<code>delete</code>. Both require
+                    the&nbsp;<code>_id</code>&nbsp;of the single todo
+                    after&nbsp;<code>todo/</code>:
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+axios.put(&#39;https://api.vschool.io/suzan/todo/5d0d36055723f72a73236f26&#39;, editedTodo).then(response =&gt; {
+    console.log(response.data);
+  }).catch(error =&gt; {
+    console.log(error)
+  });
+      </code></pre>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+axios.delete(&#39;https://api.vschool.io/suzan/todo/5d0d36055723f72a73236f26&#39;).then(response =&gt; {
+    console.log(response.data);
+  }).catch(error =&gt; {
+    console.log(error)
+  });
+      </code></pre>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-css.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section AXIOS, Lesson 001) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AXIOS-001"
+            data-lesson-title="Introduction to Axios"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AXIOS-001"
+            data-lesson-title="Introduction to Axios"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pokémon List — Assignment</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            details summary {
+                cursor: pointer;
+                font-weight: 600;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">Pokémon List</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <div class="section" aria-labelledby="intro-heading">
+                <h3 id="intro-heading">Instructions</h3>
+                <p>
+                    The following exercise should be completed in vanilla
+                    JavaScript.
+                </p>
+                <p>
+                    Use&nbsp;<code>https://api.vschool.io/pokemon</code>&nbsp;as
+                    your URL for your Axios request to get the big list of
+                    Pokémon.
+                </p>
+                <p>It will be easiest to do this in steps:</p>
+                <ul>
+                    <li>Step one - get the data</li>
+                    <li>Step two - display the data</li>
+                </ul>
+            </div>
+
+            <div class="section" aria-labelledby="step-one-heading">
+                <h3 id="step-one-heading"><strong>Step One</strong></h3>
+                <p>
+                    Write a function that runs an <code>axios</code> get
+                    request, the response data will be structured something like
+                    this:
+                </p>
+
+                <pre><code class="language-json" role="region" aria-label="Sample JSON response">
+{
+    &quot;meta&quot;: {
+        &quot;limit&quot;: 1,
+        &quot;next&quot;: null,
+        &quot;offset&quot;: 0,
+        &quot;previous&quot;: null,
+        &quot;total_count&quot;: 1
+    },
+    &quot;objects&quot;: [
+        {
+            &quot;created&quot;: &quot;2013-11-09T15:14:48.957604&quot;,
+            &quot;modified&quot;: &quot;2013-11-09T15:14:48.957565&quot;,
+            &quot;name&quot;: &quot;national&quot;,
+            &quot;pokemon&quot;: [
+                {
+                    &quot;name&quot;: &quot;rattata&quot;,
+                    &quot;resource_uri&quot;: &quot;api/v1/pokemon/19/&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;charmander&quot;,
+                    &quot;resource_uri&quot;: &quot;api/v1/pokemon/4/&quot;
+                },
+                ...etc
+            ]
+        }
+    ]
+}
+      </code></pre>
+
+                <p>
+                    Tip: You won't be able to use node for this without extra
+                    work so you'll need to use an HTML file that links to your
+                    JavaScript and run it in the browser.
+                </p>
+            </div>
+
+            <div class="section" aria-labelledby="step-two-heading">
+                <h3 id="step-two-heading"><strong>Step Two</strong></h3>
+                <p>
+                    Make each Pokémon's name show up on a separate line in the
+                    browser.
+                </p>
+                <p>
+                    You will be using a for loop to iterate through each pokemon
+                    object, and some DOM manipulation to add nodes for each
+                    Pokémon.
+                </p>
+                <ul>
+                    <li>
+                        The data that comes from the URL endpoint above is
+                        complex. Pay attention to the structure of the response
+                        data to access the array of pokemon.
+                    </li>
+                </ul>
+
+                <details>
+                    <summary>Hints</summary>
+                    <ul>
+                        <li>
+                            Use the network tab view data you’re getting back
+                            from the HTTP request
+                        </li>
+                    </ul>
+                </details>
+            </div>
+
+            <hr class="section-divider" />
+            <h3>
+                <a
+                    href="https://marcopete5.github.io/level-2/assignments/pokemon-list/index.html"
+                    target="_blank"
+                    rel="noopener"
+                    >DEMO OF COMPLETED ASSIGNMENT</a
+                >
+            </h3>
+
+            <hr class="section-divider" />
+
+            <div class="section" aria-labelledby="rubric-heading">
+                <h3 id="rubric-heading">Task Rubric</h3>
+                <table
+                    class="rubric-table"
+                    role="table"
+                    aria-label="Assignment rubric">
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Level 1: Emerging</th>
+                            <th>Level 2: Developing</th>
+                            <th>Level 3: Proficient</th>
+                            <th>Level 4: Mastery</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                HTTP GET requests using <code>fetch()</code>
+                            </td>
+                            <td>
+                                GET request does not successfully retrieve data
+                                and convert it from JSON
+                            </td>
+                            <td>
+                                GET request retrieves data but is not displayed
+                                either due to errors or not using
+                                <code>fetch()</code> correctly.
+                            </td>
+                            <td>
+                                GET request retrieves data and displays complete
+                                list. Minor issues with accessing the data from
+                                the response data object, e.g. doesn’t use
+                                convenient de-structuring shorthand syntax
+                            </td>
+                            <td>
+                                GET request retrieves data and displays complete
+                                list. Data is retrieved cleanly from response
+                                data object using de-structuring
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section" aria-labelledby="submitting-heading">
+                <h3 id="submitting-heading">Submitting Assignments</h3>
+                <p>
+                    Please remember to regularly submit your assignments to
+                    GitHub!
+                </p>
+
+                <h4>Using Git Command Line:</h4>
+                <ol>
+                    <li>Open Terminal and navigate to your project folder.</li>
+                    <li>
+                        Add Changes:
+                        <code
+                            >git add
+                            &lt;relative/path/to/assignment/folder&gt;</code
+                        >
+                    </li>
+                    <li>
+                        Commit Changes:
+                        <code
+                            >git commit -m &quot;submitting assignment
+                            &lt;name&gt;&quot;</code
+                        >
+                    </li>
+                    <li>Push to GitHub: <code>git push origin main</code></li>
+                </ol>
+
+                <h4>Using VSCode's Source Control:</h4>
+                <ol>
+                    <li>Open VSCode and click on the Source Control tab.</li>
+                    <li>
+                        Stage Changes: Click the &quot;+&quot; icon next to each
+                        file.
+                    </li>
+                    <li>
+                        Commit Changes: Enter a commit message and click Commit.
+                    </li>
+                    <li>Push to GitHub: Click the Sync Changes button.</li>
+                </ol>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section AXIOS, Lesson 003) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AXIOS-003"
+            data-lesson-title="Pokémon List"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AXIOS-003"
+            data-lesson-title="Pokémon List"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>

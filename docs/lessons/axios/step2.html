@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GET w/ Axios — Lesson</title>
+
+        <!-- Shared stylesheet -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism theme (syntax colors) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" />
+
+        <style>
+            /* Accessibility touches */
+            :focus {
+                outline: 3px solid #2563eb;
+                outline-offset: 2px;
+            }
+            .btn-primary {
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="slide-container" aria-labelledby="page-title">
+            <header class="slide-header">
+                <h1 id="page-title">GET w/ Axios</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <h3 id="learning-objectives">Learning Objectives</h3>
+            <ul aria-labelledby="learning-objectives">
+                <li>
+                    Students will be able to implement a simple GET request
+                    using axios
+                </li>
+            </ul>
+
+            <h3 id="video">Video</h3>
+            <div class="section" aria-labelledby="video">
+                <iframe
+                    class="video-embed"
+                    src="https://v1.scrimba.com/scrim/c7zkzyfv?pl=pYp4bpNUM"
+                    title="Video"
+                    loading="lazy"></iframe>
+                <p>
+                    <a
+                        class="btn-primary"
+                        href="https://v1.scrimba.com/scrim/c7zkzyfv?pl=pYp4bpNUM"
+                        target="_blank"
+                        rel="noopener"
+                        >Open in Browser</a
+                    >
+                </p>
+            </div>
+
+            <div class="section" id="notes" aria-labelledby="notes-heading">
+                <h3 id="notes-heading">Using Axios for HTTP Requests</h3>
+
+                <h4>Understanding Axios</h4>
+                <p>
+                    Axios is like a helpful messenger that helps us talk to the
+                    internet. It makes it easy for our code to ask for
+                    information from a website or send information to it.
+                </p>
+
+                <h4>Getting Todos from the Website</h4>
+                <p>
+                    Imagine we have a list of things to do called "todos" on a
+                    website. We can use Axios to ask the website to give us all
+                    the todos it has.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+axios.get("&lt;https://api.vschool.io/scrimbalessons/todo&gt;")
+    .then(response =&gt; {
+        for(let i = 0; i &lt; response.data.length; i++){
+            const h1 = document.createElement('h1')
+            h1.textContent = response.data[i].title
+            document.body.appendChild(h1)
+        }
+    })
+    .catch(error =&gt; console.log(error))
+      </code></pre>
+
+                <p>In this code:</p>
+                <ul>
+                    <li>
+                        <code>axios.get()</code> asks the website to give us all
+                        the todos.
+                    </li>
+                    <li>
+                        When the website responds, we go through each todo and
+                        add its title to our webpage.
+                    </li>
+                    <li>
+                        If something goes wrong, like the internet connection
+                        fails, we'll see an error message.
+                    </li>
+                </ul>
+
+                <h4>Getting One Specific Todo</h4>
+                <p>
+                    Sometimes we only want one specific todo. We can tell the
+                    website the ID of the todo we want, and it will give us just
+                    that one.
+                </p>
+
+                <pre><code class="language-jsx" role="region" aria-label="Code block">
+axios.get("&lt;https://api.vschool.io/scrimbalessons/todo/5d8bd511ee91575e6d49e06e&gt;")
+     .then(response =&gt; console.log(response.data))
+     .catch(error =&gt; console.log(error))
+      </code></pre>
+
+                <p>In this code:</p>
+                <ul>
+                    <li>
+                        <code>axios.get()</code> asks the website to give us one
+                        todo with a specific ID.
+                    </li>
+                    <li>
+                        When the website responds, we show the information about
+                        that todo.
+                    </li>
+                    <li>
+                        If something goes wrong, we'll see an error message.
+                    </li>
+                </ul>
+
+                <h4>Conclusion</h4>
+                <p>
+                    Axios is our friendly helper for talking to websites. With
+                    it, we can easily ask for information from the internet and
+                    handle the responses. This example showed how to use Axios
+                    to get a list of todos from a website and also how to get
+                    just one specific todo.
+                </p>
+            </div>
+        </main>
+
+        <!-- Prism core -->
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"
+            as="script" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+        <!-- Autoload languages based on language-xxxx class names -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"
+            data-autoloader-path="https://cdn.jsdelivr.net/npm/prismjs@1/components/"></script>
+
+        <!-- Seed common components now; autoloader fetches others as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+
+        <!-- Lesson entry (Level 2, Section AXIOS, Lesson 002) -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AXIOS-002"
+            data-lesson-title="GET w/ Axios"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback form (no visible button included) -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L2-AXIOS-002"
+            data-lesson-title="GET w/ Axios"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
+    </body>
+</html>
