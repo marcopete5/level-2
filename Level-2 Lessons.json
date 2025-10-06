@@ -1,0 +1,533 @@
+[
+    {
+        "lessonId": "L2-AJAX_PROMISES-001",
+        "title": "AJAX Part 1",
+        "section": "AJAX & Promises",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AJAX_PROMISES-002",
+        "title": "AJAX Part 2",
+        "section": "AJAX & Promises",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AJAX_PROMISES-003",
+        "title": "JS Promises Part 1",
+        "section": "AJAX & Promises",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AJAX_PROMISES-004",
+        "title": "JS Promises Part 2",
+        "section": "AJAX & Promises",
+        "level": 2,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AJAX_PROMISES-005",
+        "title": "Introduction to Native Fetch",
+        "section": "AJAX & Promises",
+        "level": 2,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AJAX_PROMISES-006",
+        "title": "Chrome Network Dev Tools",
+        "section": "AJAX & Promises",
+        "level": 2,
+        "order": 6,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AXIOS-001",
+        "title": "Introduction to Axios",
+        "section": "Axios",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AXIOS-002",
+        "title": "GET w/ Axios",
+        "section": "Axios",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AXIOS-003",
+        "title": "Pokémon List",
+        "section": "Axios",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AXIOS-004",
+        "title": "POST w/ Axios",
+        "section": "Axios",
+        "level": 2,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AXIOS-005",
+        "title": "DELETE w/ Axios",
+        "section": "Axios",
+        "level": 2,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AXIOS-006",
+        "title": "PUT w/ Axios",
+        "section": "Axios",
+        "level": 2,
+        "order": 6,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-AXIOS-007",
+        "title": "Auto Update your Webpage",
+        "section": "Axios",
+        "level": 2,
+        "order": 7,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-CAP-001",
+        "title": "Level 2 Assignment Review",
+        "section": "Capstone",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-CAP-002",
+        "title": "Axios Todo Project",
+        "section": "Capstone",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-CLASSES-001",
+        "title": "Classes",
+        "section": "Classes",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-CLASSES-002",
+        "title": "The Princess is in Another Castle - Assignment",
+        "section": "Classes",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-CSS_TRANSITIONS-001",
+        "title": "CSS Transitions",
+        "section": "CSS Transitions",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-CSS_TRANSITIONS-002",
+        "title": "DJ CSS - Assignment",
+        "section": "CSS Transitions",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-CSS_TRANSITIONS-003",
+        "title": "Styling an Authentication Form - Assignment",
+        "section": "CSS Transitions",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-ES6_REVIEW-001",
+        "title": "ES6 Review Part 1",
+        "section": "ES6 Review",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-ES6_REVIEW-002",
+        "title": "ES6 Review Part 2",
+        "section": "ES6 Review",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-ES6_REVIEW-003",
+        "title": "ES6 Practice - Assignment",
+        "section": "ES6 Review",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-ES6_REVIEW-004",
+        "title": "Slopestyle - Assignment",
+        "section": "ES6 Review",
+        "level": 2,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-FORMS-001",
+        "title": "Forms Part 1",
+        "section": "Forms",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-FORMS-002",
+        "title": "Simple Calculator",
+        "section": "Forms",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-FORMS-003",
+        "title": "Forms Part 2",
+        "section": "Forms",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-FORMS-004",
+        "title": "Travel Form",
+        "section": "Forms",
+        "level": 2,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-FORMS-005",
+        "title": "Mario Pest Control",
+        "section": "Forms",
+        "level": 2,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS_CONTINUED-001",
+        "title": "forEach, find, &amp; findIndex",
+        "section": "Higher Order Functions Continued",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS_CONTINUED-002",
+        "title": "Some &amp; Every",
+        "section": "Higher Order Functions Continued",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS_CONTINUED-003",
+        "title": "Sort",
+        "section": "Higher Order Functions Continued",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS_CONTINUED-004",
+        "title": "Sort Exercises - Assignment",
+        "section": "Higher Order Functions Continued",
+        "level": 2,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS_CONTINUED-005",
+        "title": "Reduce",
+        "section": "Higher Order Functions Continued",
+        "level": 2,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS_CONTINUED-006",
+        "title": "Reduce Exercises - Assignment",
+        "section": "Higher Order Functions Continued",
+        "level": 2,
+        "order": 6,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS_CONTINUED-007",
+        "title": "Multiple Methods Practice - Assignment",
+        "section": "Higher Order Functions Continued",
+        "level": 2,
+        "order": 7,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS-001",
+        "title": "Introduction to Higher Order Functions",
+        "section": "Higher Order Functions",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS-002",
+        "title": "Map",
+        "section": "Higher Order Functions",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS-003",
+        "title": "Map Exercises - Assignment",
+        "section": "Higher Order Functions",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS-004",
+        "title": "Filter",
+        "section": "Higher Order Functions",
+        "level": 2,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HIGHER_ORDER_FUNCTIONS-005",
+        "title": "Filter Exercises - Assignment",
+        "section": "Higher Order Functions",
+        "level": 2,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HTTP-001",
+        "title": "HTTP",
+        "section": "HTTP",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HTTP-002",
+        "title": "CRUD",
+        "section": "HTTP",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HTTP-003",
+        "title": "JSON",
+        "section": "HTTP",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HTTP-004",
+        "title": "JSON",
+        "section": "HTTP",
+        "level": 2,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HTTP-005",
+        "title": "URLs",
+        "section": "HTTP",
+        "level": 2,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-HTTP-006",
+        "title": "GET Request in Browser",
+        "section": "HTTP",
+        "level": 2,
+        "order": 6,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-INTRO-001",
+        "title": "Welcome to Level 2",
+        "section": "Intro",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-MID-001",
+        "title": "Mid Level Skill Check",
+        "section": "Mid-Level",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-POSTMAN-001",
+        "title": "Postman Introduction",
+        "section": "Postman",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-POSTMAN-002",
+        "title": "GET w/ Postman",
+        "section": "Postman",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-POSTMAN-003",
+        "title": "POST w/ Postman",
+        "section": "Postman",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-POSTMAN-004",
+        "title": "DELETE w/ Postman",
+        "section": "Postman",
+        "level": 2,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-POSTMAN-005",
+        "title": "PUT w/ Postman",
+        "section": "Postman",
+        "level": 2,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-POSTMAN-006",
+        "title": "CRUD w/ Postman",
+        "section": "Postman",
+        "level": 2,
+        "order": 6,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-POSTMAN-007",
+        "title": "Postman Practice",
+        "section": "Postman",
+        "level": 2,
+        "order": 7,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-WEB_STORAGE_AND_TIMING_FUNCTIONS-003",
+        "title": "Go Speed Clicker - Assignment",
+        "section": "Web Storage & Timing Functions",
+        "level": 2,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-WEB_STORAGE_AND_TIMING_FUNCTIONS-001",
+        "title": "Web Storage",
+        "section": "Web Storage & Timing Functions",
+        "level": 2,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L2-WEB_STORAGE_AND_TIMING_FUNCTIONS-002",
+        "title": "setTimeout & setInterval",
+        "section": "Web Storage & Timing Functions",
+        "level": 2,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    }
+]
